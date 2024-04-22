@@ -201,8 +201,8 @@
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#introducion">
-   Introdución
+  <a class="reference internal nav-link" href="#introduccion">
+   Introducción
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -231,8 +231,8 @@
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#introducion">
-   Introdución
+  <a class="reference internal nav-link" href="#introduccion">
+   Introducción
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -251,8 +251,8 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="pronostico-de-precio-de-bolsa-de-la-energia">
 <h1>Pronóstico de precio de bolsa de la energía<a class="headerlink" href="#pronostico-de-precio-de-bolsa-de-la-energia" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="introducion">
-<h2>Introdución<a class="headerlink" href="#introducion" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="introduccion">
+<h2>Introducción<a class="headerlink" href="#introduccion" title="Permalink to this headline">¶</a></h2>
 <p>El pronóstico del precio de bolsa de la energía en el mercado colombiano es una herramienta crucial para diversos actores en el sector energético y económico del país. Esta importancia radica en varios aspectos fundamentales que impactan tanto en la estabilidad del suministro eléctrico como en la viabilidad financiera de las empresas y el bienestar de los consumidores, como se detalla a continuación:</p>
 <ol class="simple">
 <li><p><strong>Planificación del suministro eléctrico:</strong> El pronóstico del precio de bolsa de la energía permite a las empresas generadoras, distribuidoras y consumidores planificar sus actividades y recursos de manera eficiente. Conociendo de antemano las tendencias esperadas en los precios de la energía, las empresas pueden tomar decisiones informadas sobre inversiones en infraestructura, contratos de suministro y estrategias de gestión de la demanda. Esto contribuye a garantizar un suministro eléctrico confiable y estable en el país.</p></li>
@@ -637,6 +637,45 @@ memory usage: 1.3+ MB
   </tbody>
 </table>
 </div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dic_fec</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;fec_ini&#39;</span><span class="p">:</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;fechaoperacion&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span>
+           <span class="s1">&#39;fec_fin&#39;</span><span class="p">:</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;fechaoperacion&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()}</span>
+<span class="n">dic_fec</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;fec_ini&#39;: Timestamp(&#39;2006-01-01 00:00:00&#39;),
+ &#39;fec_fin&#39;: Timestamp(&#39;2023-12-31 00:00:00&#39;)}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 156360 entries, 0 to 156359
+Data columns (total 6 columns):
+ #   Column          Non-Null Count   Dtype         
+---  ------          --------------   -----         
+ 0   fechaoperacion  156360 non-null  datetime64[ns]
+ 1   ano             156360 non-null  int64         
+ 2   mes             156360 non-null  int64         
+ 3   dia             156360 non-null  int64         
+ 4   periodo         156360 non-null  object        
+ 5   valor           156360 non-null  float64       
+dtypes: datetime64[ns](1), float64(1), int64(3), object(1)
+memory usage: 7.2+ MB
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 </div>
