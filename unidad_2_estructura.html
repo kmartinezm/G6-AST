@@ -1,0 +1,1637 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Unidad 2: Estructura de los datos en series de tiempo &#8212; Análisis de Series de Tiempo</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Pronóstico de precio de bolsa de la energía" href="main_pbna.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/logo_jav.PNG" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Análisis de Series de Tiempo</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="main_pbna.html">
+   Pronóstico de precio de bolsa de la energía
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Unidad 2: Estructura de los datos en series de tiempo
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/unidad_2_estructura.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/kmartinezm/G6-AST.git"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/kmartinezm/G6-AST.git/issues/new?title=Issue%20on%20page%20%2Funidad_2_estructura.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/kmartinezm/G6-AST.git/master?urlpath=tree/docs/unidad_2_estructura.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduccion">
+   2.1 Introducción
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#accion">
+   2.2 Acción
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#preparacion-de-los-datos">
+     2.2.1 Preparación de los datos
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#funciones-para-detectar-patrones-y-ciclos-de-la-variable">
+     2.2.2 Funciones para detectar patrones y ciclos de la variable
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#caso-base-mensual-promedio-movil">
+       Caso Base (Mensual): Promedio Movil
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#caso-base-mensual-rezagos">
+       Caso Base (Mensual): Rezagos
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#caso-base-mensual-estacionalidad">
+       Caso Base (Mensual): Estacionalidad
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#caso-1-trimestre-promedio-movil">
+       Caso 1 (Trimestre): Promedio Movil
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#caso-1-trimestre-rezagos">
+       Caso 1 (Trimestre): Rezagos
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#caso-1-trimestre-estacionalidad">
+       Caso 1 (Trimestre): Estacionalidad
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#caso-2-semestre-promedio-movil">
+       Caso 2 (Semestre): Promedio Movil
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#caso-2-semestre-rezagos">
+       Caso 2 (Semestre): Rezagos
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#caso-2-semestre-estacionalidad">
+       Caso 2 (Semestre): Estacionalidad
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#caso-3-anual-promedio-movil">
+       Caso 3 (Anual): Promedio Movil
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#caso-3-anual-rezagos">
+       Caso 3 (Anual): Rezagos
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#caso-3-anual-estacionalidad">
+       Caso 3 (Anual): Estacionalidad
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Unidad 2: Estructura de los datos en series de tiempo</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduccion">
+   2.1 Introducción
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#accion">
+   2.2 Acción
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#preparacion-de-los-datos">
+     2.2.1 Preparación de los datos
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#funciones-para-detectar-patrones-y-ciclos-de-la-variable">
+     2.2.2 Funciones para detectar patrones y ciclos de la variable
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#caso-base-mensual-promedio-movil">
+       Caso Base (Mensual): Promedio Movil
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#caso-base-mensual-rezagos">
+       Caso Base (Mensual): Rezagos
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#caso-base-mensual-estacionalidad">
+       Caso Base (Mensual): Estacionalidad
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#caso-1-trimestre-promedio-movil">
+       Caso 1 (Trimestre): Promedio Movil
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#caso-1-trimestre-rezagos">
+       Caso 1 (Trimestre): Rezagos
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#caso-1-trimestre-estacionalidad">
+       Caso 1 (Trimestre): Estacionalidad
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#caso-2-semestre-promedio-movil">
+       Caso 2 (Semestre): Promedio Movil
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#caso-2-semestre-rezagos">
+       Caso 2 (Semestre): Rezagos
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#caso-2-semestre-estacionalidad">
+       Caso 2 (Semestre): Estacionalidad
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#caso-3-anual-promedio-movil">
+       Caso 3 (Anual): Promedio Movil
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#caso-3-anual-rezagos">
+       Caso 3 (Anual): Rezagos
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#caso-3-anual-estacionalidad">
+       Caso 3 (Anual): Estacionalidad
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="unidad-2-estructura-de-los-datos-en-series-de-tiempo">
+<h1>Unidad 2: Estructura de los datos en series de tiempo<a class="headerlink" href="#unidad-2-estructura-de-los-datos-en-series-de-tiempo" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduccion">
+<h2>2.1 Introducción<a class="headerlink" href="#introduccion" title="Permalink to this headline">¶</a></h2>
+<p>Dado que una serie de tiempo es un conjunto de observaciones sobre los valores que toma una variable (cuantitativa) a través del tiempo, exploraremos las tendencias o cambios que se reflejan y afectan su comportamiento.</p>
+</div>
+<div class="section" id="accion">
+<h2>2.2 Acción<a class="headerlink" href="#accion" title="Permalink to this headline">¶</a></h2>
+<p>Ahora, en esta Unidad 2, se debe continuar con los datos presentados en dicho entregable y se debe evidenciar, en una de las variables en el tiempo, la aproximación en promedio móvil, en rezagos y en estacionalidad. Todo lo anterior, a través de funciones y gráficas que permitan detectar patrones y ciclos de la variable.</p>
+<div class="section" id="preparacion-de-los-datos">
+<h3>2.2.1 Preparación de los datos<a class="headerlink" href="#preparacion-de-los-datos" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># importando librerias</span>
+
+<span class="c1"># librerias para la transformación de datos</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">from</span> <span class="nn">statsmodels.tsa.seasonal</span> <span class="kn">import</span> <span class="n">seasonal_decompose</span>
+
+<span class="c1"># libreria para visualización de datos</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># recopilación de datos</span>
+<span class="n">df_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./dataset.csv&#39;</span><span class="p">,</span><span class="n">sep</span><span class="o">=</span><span class="s1">&#39;;&#39;</span><span class="p">)</span>
+<span class="n">df_data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>fechaoperacion</th>
+      <th>codigo</th>
+      <th>contenido</th>
+      <th>hora1</th>
+      <th>hora2</th>
+      <th>hora3</th>
+      <th>hora4</th>
+      <th>hora5</th>
+      <th>hora6</th>
+      <th>hora7</th>
+      <th>...</th>
+      <th>hora15</th>
+      <th>hora16</th>
+      <th>hora17</th>
+      <th>hora18</th>
+      <th>hora19</th>
+      <th>hora20</th>
+      <th>hora21</th>
+      <th>hora22</th>
+      <th>hora23</th>
+      <th>hora24</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1/01/2006</td>
+      <td>PBNA</td>
+      <td>PRECIO DE BOLSA NACIONAL ($/KWH)</td>
+      <td>87.778212</td>
+      <td>77.778212</td>
+      <td>77.778212</td>
+      <td>77.778212</td>
+      <td>77.778212</td>
+      <td>77.778212</td>
+      <td>75.768212</td>
+      <td>...</td>
+      <td>75.768212</td>
+      <td>71.278212</td>
+      <td>69.067212</td>
+      <td>76.278212</td>
+      <td>77.778212</td>
+      <td>87.778212</td>
+      <td>87.778212</td>
+      <td>77.778212</td>
+      <td>77.778212</td>
+      <td>77.778212</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2/01/2006</td>
+      <td>PBNA</td>
+      <td>PRECIO DE BOLSA NACIONAL ($/KWH)</td>
+      <td>76.278212</td>
+      <td>76.278212</td>
+      <td>76.278212</td>
+      <td>76.278212</td>
+      <td>76.278212</td>
+      <td>76.778212</td>
+      <td>76.778212</td>
+      <td>...</td>
+      <td>82.778212</td>
+      <td>82.778212</td>
+      <td>82.778212</td>
+      <td>81.768212</td>
+      <td>87.778212</td>
+      <td>87.778212</td>
+      <td>87.778212</td>
+      <td>82.778212</td>
+      <td>76.778212</td>
+      <td>76.778212</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3/01/2006</td>
+      <td>PBNA</td>
+      <td>PRECIO DE BOLSA NACIONAL ($/KWH)</td>
+      <td>77.678212</td>
+      <td>77.678212</td>
+      <td>77.678212</td>
+      <td>77.678212</td>
+      <td>77.678212</td>
+      <td>77.678212</td>
+      <td>77.678212</td>
+      <td>...</td>
+      <td>82.778212</td>
+      <td>82.778212</td>
+      <td>82.778212</td>
+      <td>82.778212</td>
+      <td>87.778212</td>
+      <td>114.425212</td>
+      <td>87.778212</td>
+      <td>82.778212</td>
+      <td>77.678212</td>
+      <td>77.678212</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4/01/2006</td>
+      <td>PBNA</td>
+      <td>PRECIO DE BOLSA NACIONAL ($/KWH)</td>
+      <td>77.778212</td>
+      <td>77.778212</td>
+      <td>77.778212</td>
+      <td>77.778212</td>
+      <td>77.778212</td>
+      <td>77.778212</td>
+      <td>77.778212</td>
+      <td>...</td>
+      <td>77.778212</td>
+      <td>77.778212</td>
+      <td>77.778212</td>
+      <td>85.778212</td>
+      <td>85.778212</td>
+      <td>87.778212</td>
+      <td>85.778212</td>
+      <td>85.778212</td>
+      <td>81.768212</td>
+      <td>77.778212</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5/01/2006</td>
+      <td>PBNA</td>
+      <td>PRECIO DE BOLSA NACIONAL ($/KWH)</td>
+      <td>86.778212</td>
+      <td>86.778212</td>
+      <td>86.778212</td>
+      <td>86.778212</td>
+      <td>86.778212</td>
+      <td>86.778212</td>
+      <td>88.278212</td>
+      <td>...</td>
+      <td>88.278212</td>
+      <td>88.278212</td>
+      <td>88.278212</td>
+      <td>88.278212</td>
+      <td>88.278212</td>
+      <td>91.134212</td>
+      <td>88.278212</td>
+      <td>88.278212</td>
+      <td>86.778212</td>
+      <td>86.778212</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 27 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># información del dataset</span>
+<span class="n">df_data</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 6515 entries, 0 to 6514
+Data columns (total 27 columns):
+ #   Column          Non-Null Count  Dtype  
+---  ------          --------------  -----  
+ 0   fechaoperacion  6515 non-null   object 
+ 1   codigo          6515 non-null   object 
+ 2   contenido       6515 non-null   object 
+ 3   hora1           6515 non-null   float64
+ 4   hora2           6515 non-null   float64
+ 5   hora3           6515 non-null   float64
+ 6   hora4           6515 non-null   float64
+ 7   hora5           6515 non-null   float64
+ 8   hora6           6515 non-null   float64
+ 9   hora7           6515 non-null   float64
+ 10  hora8           6515 non-null   float64
+ 11  hora9           6515 non-null   float64
+ 12  hora10          6515 non-null   float64
+ 13  hora11          6515 non-null   float64
+ 14  hora12          6515 non-null   float64
+ 15  hora13          6515 non-null   float64
+ 16  hora14          6515 non-null   float64
+ 17  hora15          6515 non-null   float64
+ 18  hora16          6515 non-null   float64
+ 19  hora17          6515 non-null   float64
+ 20  hora18          6515 non-null   float64
+ 21  hora19          6515 non-null   float64
+ 22  hora20          6515 non-null   float64
+ 23  hora21          6515 non-null   float64
+ 24  hora22          6515 non-null   float64
+ 25  hora23          6515 non-null   float64
+ 26  hora24          6515 non-null   float64
+dtypes: float64(24), object(3)
+memory usage: 1.3+ MB
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Nombre de las columnas</span>
+<span class="n">df_data</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;fechaoperacion&#39;, &#39;codigo&#39;, &#39;contenido&#39;, &#39;hora1&#39;, &#39;hora2&#39;, &#39;hora3&#39;,
+       &#39;hora4&#39;, &#39;hora5&#39;, &#39;hora6&#39;, &#39;hora7&#39;, &#39;hora8&#39;, &#39;hora9&#39;, &#39;hora10&#39;,
+       &#39;hora11&#39;, &#39;hora12&#39;, &#39;hora13&#39;, &#39;hora14&#39;, &#39;hora15&#39;, &#39;hora16&#39;, &#39;hora17&#39;,
+       &#39;hora18&#39;, &#39;hora19&#39;, &#39;hora20&#39;, &#39;hora21&#39;, &#39;hora22&#39;, &#39;hora23&#39;, &#39;hora24&#39;],
+      dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">trf_data</span><span class="p">(</span><span class="n">df_data</span><span class="p">):</span>
+    
+    <span class="c1"># copia del dataframe</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df_data</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    
+    <span class="c1"># transformación de fechas</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;fechaoperacion&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;fechaoperacion&#39;</span><span class="p">],</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1">/%m/%Y&#39;</span><span class="p">)</span>
+    
+    <span class="c1"># agregando las columnas de fechas</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;ano&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;fechaoperacion&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">year</span> <span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;mes&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;fechaoperacion&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">month</span> <span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;dia&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;fechaoperacion&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">day</span> <span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    
+    <span class="c1"># selección de columnas</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;fechaoperacion&#39;</span><span class="p">,</span><span class="s1">&#39;ano&#39;</span><span class="p">,</span><span class="s1">&#39;mes&#39;</span><span class="p">,</span><span class="s1">&#39;dia&#39;</span><span class="p">,</span> <span class="s1">&#39;hora1&#39;</span><span class="p">,</span> <span class="s1">&#39;hora2&#39;</span><span class="p">,</span> <span class="s1">&#39;hora3&#39;</span><span class="p">,</span><span class="s1">&#39;hora4&#39;</span><span class="p">,</span> <span class="s1">&#39;hora5&#39;</span><span class="p">,</span> <span class="s1">&#39;hora6&#39;</span><span class="p">,</span> <span class="s1">&#39;hora7&#39;</span><span class="p">,</span> <span class="s1">&#39;hora8&#39;</span><span class="p">,</span> <span class="s1">&#39;hora9&#39;</span><span class="p">,</span> <span class="s1">&#39;hora10&#39;</span><span class="p">,</span><span class="s1">&#39;hora11&#39;</span><span class="p">,</span> <span class="s1">&#39;hora12&#39;</span><span class="p">,</span> <span class="s1">&#39;hora13&#39;</span><span class="p">,</span> <span class="s1">&#39;hora14&#39;</span><span class="p">,</span> <span class="s1">&#39;hora15&#39;</span><span class="p">,</span> <span class="s1">&#39;hora16&#39;</span><span class="p">,</span> <span class="s1">&#39;hora17&#39;</span><span class="p">,</span><span class="s1">&#39;hora18&#39;</span><span class="p">,</span> <span class="s1">&#39;hora19&#39;</span><span class="p">,</span> <span class="s1">&#39;hora20&#39;</span><span class="p">,</span> <span class="s1">&#39;hora21&#39;</span><span class="p">,</span> <span class="s1">&#39;hora22&#39;</span><span class="p">,</span> <span class="s1">&#39;hora23&#39;</span><span class="p">,</span> <span class="s1">&#39;hora24&#39;</span><span class="p">]]</span>
+    
+    <span class="c1"># Convertir la tabla</span>
+    <span class="n">list_id</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="ow">not</span> <span class="s1">&#39;hora&#39;</span> <span class="ow">in</span> <span class="n">i</span><span class="p">]</span>
+    <span class="n">list_value</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="s1">&#39;hora&#39;</span> <span class="ow">in</span> <span class="n">i</span><span class="p">]</span>
+    
+    <span class="c1"># pivotear la tabla</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span><span class="n">id_vars</span><span class="o">=</span><span class="n">list_id</span><span class="p">,</span><span class="n">value_vars</span><span class="o">=</span><span class="n">list_value</span><span class="p">,</span><span class="n">var_name</span><span class="o">=</span><span class="s1">&#39;periodo&#39;</span><span class="p">,</span><span class="n">value_name</span><span class="o">=</span><span class="s1">&#39;valor&#39;</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">df</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># dataset trasnformado</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">trf_data</span><span class="p">(</span><span class="n">df_data</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>fechaoperacion</th>
+      <th>ano</th>
+      <th>mes</th>
+      <th>dia</th>
+      <th>periodo</th>
+      <th>valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2006-01-01</td>
+      <td>2006</td>
+      <td>1</td>
+      <td>1</td>
+      <td>hora1</td>
+      <td>87.778212</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2006-01-02</td>
+      <td>2006</td>
+      <td>1</td>
+      <td>2</td>
+      <td>hora1</td>
+      <td>76.278212</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2006-01-03</td>
+      <td>2006</td>
+      <td>1</td>
+      <td>3</td>
+      <td>hora1</td>
+      <td>77.678212</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2006-01-04</td>
+      <td>2006</td>
+      <td>1</td>
+      <td>4</td>
+      <td>hora1</td>
+      <td>77.778212</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2006-01-05</td>
+      <td>2006</td>
+      <td>1</td>
+      <td>5</td>
+      <td>hora1</td>
+      <td>86.778212</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dic_fec</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;fec_ini&#39;</span><span class="p">:</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;fechaoperacion&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span>
+           <span class="s1">&#39;fec_fin&#39;</span><span class="p">:</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;fechaoperacion&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()}</span>
+<span class="n">dic_fec</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;fec_ini&#39;: Timestamp(&#39;2006-01-01 00:00:00&#39;),
+ &#39;fec_fin&#39;: Timestamp(&#39;2023-12-31 00:00:00&#39;)}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># creando copia del dataframe original</span>
+<span class="c1"># df_vm = df.copy() </span>
+
+<span class="c1"># # seleccionando las columnas</span>
+<span class="c1"># df_vm = df_vm[[&#39;ano&#39;,&#39;mes&#39;,&#39;valor&#39;]]</span>
+
+<span class="c1"># # agrupando los precios de oferta por mes</span>
+<span class="c1"># df_vm = df_vm.groupby([&#39;ano&#39;,&#39;mes&#39;]).mean().reset_index()</span>
+
+<span class="c1"># # creando columna fechaoperacion ano-mes</span>
+<span class="c1"># df_vm[&#39;fechaoperacion&#39;] = df_vm.apply(lambda x: datetime(int(x[&#39;ano&#39;]),int(x[&#39;mes&#39;]),1),axis=1)</span>
+
+<span class="c1"># df_vm = df_vm[[&#39;fechaoperacion&#39;,&#39;ano&#39;,&#39;mes&#39;,&#39;valor&#39;]]</span>
+<span class="c1"># df_vm.head()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># creando grafico</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+
+<span class="c1"># creando gráfico de linea</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_vm</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;fechaoperacion&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;valor&#39;</span><span class="p">)</span>
+
+<span class="c1"># monstrando gráfico</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">9</span><span class="o">-</span><span class="mi">32</span><span class="n">fa9e921b20</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> 
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1"># creando gráfico de linea</span>
+<span class="ne">----&gt; </span><span class="mi">5</span> <span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_vm</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;fechaoperacion&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;valor&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> 
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="c1"># monstrando gráfico</span>
+
+<span class="ne">NameError</span>: name &#39;df_vm&#39; is not defined
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 720x576 with 0 Axes&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="funciones-para-detectar-patrones-y-ciclos-de-la-variable">
+<h3>2.2.2 Funciones para detectar patrones y ciclos de la variable<a class="headerlink" href="#funciones-para-detectar-patrones-y-ciclos-de-la-variable" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="caso-base-mensual-promedio-movil">
+<h4>Caso Base (Mensual): Promedio Movil<a class="headerlink" href="#caso-base-mensual-promedio-movil" title="Permalink to this headline">¶</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># creando función para remuestrar movilmente el dataset, usando la función resample</span>
+<span class="k">def</span> <span class="nf">df_resample</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="n">target</span><span class="o">=</span><span class="s1">&#39;fechaoperacion&#39;</span><span class="p">,</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;M&#39;</span><span class="p">):</span>
+    
+    <span class="c1"># creando copia del dataset original</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    
+    <span class="c1"># remuestrear el dataset</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="nb">type</span><span class="p">,</span><span class="n">on</span><span class="o">=</span><span class="n">target</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+    
+    <span class="c1"># ordenando el dataframe</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;fechaoperacion&#39;</span><span class="p">,</span><span class="s1">&#39;valor&#39;</span><span class="p">]]</span>
+    
+    <span class="k">return</span> <span class="n">df</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># creando una copia del dataframe transformado</span>
+<span class="n">df_vcm</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="c1"># remuestreando el dataframe en frecuencia mensual</span>
+<span class="n">df_vcm</span> <span class="o">=</span> <span class="n">df_resample</span><span class="p">(</span><span class="n">df_vcm</span><span class="p">)</span>
+
+<span class="c1"># muestra</span>
+<span class="n">df_vcm</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>fechaoperacion</th>
+      <th>valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2006-01-31</td>
+      <td>79.026486</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2006-02-28</td>
+      <td>75.520919</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2006-03-31</td>
+      <td>65.787447</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2006-04-30</td>
+      <td>54.012347</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2006-05-31</td>
+      <td>53.819582</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># creando grafico</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+
+<span class="c1"># creando gráfico de linea</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_vcm</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;fechaoperacion&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;valor&#39;</span><span class="p">)</span>
+
+<span class="c1"># monstrando gráfico</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/unidad_2_estructura_14_0.png" src="_images/unidad_2_estructura_14_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="caso-base-mensual-rezagos">
+<h4>Caso Base (Mensual): Rezagos<a class="headerlink" href="#caso-base-mensual-rezagos" title="Permalink to this headline">¶</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">plotting</span><span class="o">.</span><span class="n">lag_plot</span><span class="p">(</span><span class="n">df_vcm</span><span class="p">[</span><span class="s1">&#39;valor&#39;</span><span class="p">],</span> <span class="n">lag</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;y(t)&#39;, ylabel=&#39;y(t + 1)&#39;&gt;
+</pre></div>
+</div>
+<img alt="_images/unidad_2_estructura_16_1.png" src="_images/unidad_2_estructura_16_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Creando función para gráficar los rezagos del dataset</span>
+
+<span class="c1"># Crear un panel de gráficos 3x3</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
+
+<span class="c1"># Iterar sobre las filas y columnas del panel</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+        <span class="n">lag</span> <span class="o">=</span> <span class="n">i</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">+</span> <span class="n">j</span> <span class="o">+</span> <span class="mi">1</span>  <span class="c1"># Calcular el lag correspondiente</span>
+        <span class="n">ax</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span>  <span class="c1"># Obtener el eje actual</span>
+        
+        <span class="c1"># Calcular y graficar el lag plot con el lag actual</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df_vcm</span><span class="p">[</span><span class="s1">&#39;valor&#39;</span><span class="p">][:</span><span class="o">-</span><span class="n">lag</span><span class="p">],</span> <span class="n">df_vcm</span><span class="p">[</span><span class="s1">&#39;valor&#39;</span><span class="p">][</span><span class="n">lag</span><span class="p">:],</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Lag = </span><span class="si">{</span><span class="n">lag</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;y(t)&#39;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;y(t + </span><span class="si">{</span><span class="n">lag</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">)</span>
+
+<span class="c1"># Ajustar el espaciado entre los subplots</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/unidad_2_estructura_17_0.png" src="_images/unidad_2_estructura_17_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="caso-base-mensual-estacionalidad">
+<h4>Caso Base (Mensual): Estacionalidad<a class="headerlink" href="#caso-base-mensual-estacionalidad" title="Permalink to this headline">¶</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Establecer &#39;fechaoperacion&#39; como el índice del DataFrame</span>
+<span class="n">df_vcm</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;fechaoperacion&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Asegúrate de que la frecuencia esté definida (por ejemplo, mensual &#39;M&#39;)</span>
+<span class="n">df_vcm</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">freq</span> <span class="o">=</span> <span class="s1">&#39;M&#39;</span>
+
+<span class="c1"># Realizar la descomposición estacional de la serie temporal</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">seasonal_decompose</span><span class="p">(</span><span class="n">df_vcm</span><span class="p">[</span><span class="s1">&#39;valor&#39;</span><span class="p">],</span> <span class="n">model</span><span class="o">=</span><span class="s1">&#39;additive&#39;</span><span class="p">)</span>
+
+<span class="c1"># Graficar la serie original, la tendencia, la estacionalidad y el residuo</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df_vcm</span><span class="p">[</span><span class="s1">&#39;valor&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Original&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">trend</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Tendencia&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">seasonal</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Estacionalidad&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">resid</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Residuo&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/unidad_2_estructura_19_0.png" src="_images/unidad_2_estructura_19_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="caso-1-trimestre-promedio-movil">
+<h4>Caso 1 (Trimestre): Promedio Movil<a class="headerlink" href="#caso-1-trimestre-promedio-movil" title="Permalink to this headline">¶</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># creando una copia </span>
+<span class="n">df_vct</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="c1"># remuestreando a trimestre</span>
+<span class="n">df_vct</span> <span class="o">=</span> <span class="n">df_resample</span><span class="p">(</span><span class="n">df_vct</span><span class="p">,</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;Q&#39;</span><span class="p">)</span>
+
+<span class="c1"># muestra</span>
+<span class="n">df_vct</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>fechaoperacion</th>
+      <th>valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2006-03-31</td>
+      <td>73.375752</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2006-06-30</td>
+      <td>53.608199</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2006-09-30</td>
+      <td>76.138937</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2006-12-31</td>
+      <td>92.003498</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2007-03-31</td>
+      <td>102.905929</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># creando grafico</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+
+<span class="c1"># creando gráfico de linea</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_vct</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;fechaoperacion&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;valor&#39;</span><span class="p">)</span>
+
+<span class="c1"># monstrando gráfico</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/unidad_2_estructura_22_0.png" src="_images/unidad_2_estructura_22_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="caso-1-trimestre-rezagos">
+<h4>Caso 1 (Trimestre): Rezagos<a class="headerlink" href="#caso-1-trimestre-rezagos" title="Permalink to this headline">¶</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Crear un panel de gráficos 3x3</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
+
+<span class="c1"># Iterar sobre las filas y columnas del panel</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+        <span class="n">lag</span> <span class="o">=</span> <span class="n">i</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">+</span> <span class="n">j</span> <span class="o">+</span> <span class="mi">1</span>  <span class="c1"># Calcular el lag correspondiente</span>
+        <span class="n">ax</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span>  <span class="c1"># Obtener el eje actual</span>
+        
+        <span class="c1"># Calcular y graficar el lag plot con el lag actual</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df_vct</span><span class="p">[</span><span class="s1">&#39;valor&#39;</span><span class="p">][:</span><span class="o">-</span><span class="n">lag</span><span class="p">],</span> <span class="n">df_vct</span><span class="p">[</span><span class="s1">&#39;valor&#39;</span><span class="p">][</span><span class="n">lag</span><span class="p">:],</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Lag = </span><span class="si">{</span><span class="n">lag</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;y(t)&#39;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;y(t + </span><span class="si">{</span><span class="n">lag</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">)</span>
+
+<span class="c1"># Ajustar el espaciado entre los subplots</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/unidad_2_estructura_24_0.png" src="_images/unidad_2_estructura_24_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="caso-1-trimestre-estacionalidad">
+<h4>Caso 1 (Trimestre): Estacionalidad<a class="headerlink" href="#caso-1-trimestre-estacionalidad" title="Permalink to this headline">¶</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Establece &#39;fechaoperacion&#39; como el índice del DataFrame</span>
+<span class="n">df_vct</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;fechaoperacion&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Asegúrate de que la frecuencia esté definida (por ejemplo, mensual &#39;M&#39;)</span>
+<span class="n">df_vct</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">freq</span> <span class="o">=</span> <span class="s1">&#39;Q&#39;</span>
+
+<span class="c1"># Realizar la descomposición estacional de la serie temporal</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">seasonal_decompose</span><span class="p">(</span><span class="n">df_vct</span><span class="p">[</span><span class="s1">&#39;valor&#39;</span><span class="p">],</span> <span class="n">model</span><span class="o">=</span><span class="s1">&#39;additive&#39;</span><span class="p">)</span>
+
+<span class="c1"># Graficar la serie original, la tendencia, la estacionalidad y el residuo</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df_vct</span><span class="p">[</span><span class="s1">&#39;valor&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Original&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">trend</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Tendencia&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">seasonal</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Estacionalidad&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">resid</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Residuo&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/unidad_2_estructura_26_0.png" src="_images/unidad_2_estructura_26_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="caso-2-semestre-promedio-movil">
+<h4>Caso 2 (Semestre): Promedio Movil<a class="headerlink" href="#caso-2-semestre-promedio-movil" title="Permalink to this headline">¶</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># creando una copia </span>
+<span class="n">df_vcs</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="c1"># remuestreando de acuerdo a lo que se quiere trimestre</span>
+<span class="n">df_vcs</span> <span class="o">=</span> <span class="n">df_resample</span><span class="p">(</span><span class="n">df_vcs</span><span class="p">,</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;2Q&#39;</span><span class="p">)</span>
+
+<span class="c1"># muestra</span>
+<span class="n">df_vcs</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>fechaoperacion</th>
+      <th>valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2006-03-31</td>
+      <td>73.375752</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2006-09-30</td>
+      <td>64.935127</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2007-03-31</td>
+      <td>96.307089</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2007-09-30</td>
+      <td>80.349321</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2008-03-31</td>
+      <td>85.574471</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># creando grafico</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+
+<span class="c1"># creando gráfico de linea</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_vcs</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;fechaoperacion&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;valor&#39;</span><span class="p">)</span>
+
+<span class="c1"># monstrando gráfico</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/unidad_2_estructura_29_0.png" src="_images/unidad_2_estructura_29_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="caso-2-semestre-rezagos">
+<h4>Caso 2 (Semestre): Rezagos<a class="headerlink" href="#caso-2-semestre-rezagos" title="Permalink to this headline">¶</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Crear un panel de gráficos 3x3</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
+
+<span class="c1"># Iterar sobre las filas y columnas del panel</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+        <span class="n">lag</span> <span class="o">=</span> <span class="n">i</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">+</span> <span class="n">j</span> <span class="o">+</span> <span class="mi">1</span>  <span class="c1"># Calcular el lag correspondiente</span>
+        <span class="n">ax</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span>  <span class="c1"># Obtener el eje actual</span>
+        
+        <span class="c1"># Calcular y graficar el lag plot con el lag actual</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df_vcs</span><span class="p">[</span><span class="s1">&#39;valor&#39;</span><span class="p">][:</span><span class="o">-</span><span class="n">lag</span><span class="p">],</span> <span class="n">df_vcs</span><span class="p">[</span><span class="s1">&#39;valor&#39;</span><span class="p">][</span><span class="n">lag</span><span class="p">:],</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Lag = </span><span class="si">{</span><span class="n">lag</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;y(t)&#39;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;y(t + </span><span class="si">{</span><span class="n">lag</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">)</span>
+
+<span class="c1"># Ajustar el espaciado entre los subplots</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/unidad_2_estructura_31_0.png" src="_images/unidad_2_estructura_31_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_vcs</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>fechaoperacion</th>
+      <th>valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2006-03-31</td>
+      <td>73.375752</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2006-09-30</td>
+      <td>64.935127</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2007-03-31</td>
+      <td>96.307089</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2007-09-30</td>
+      <td>80.349321</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2008-03-31</td>
+      <td>85.574471</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="caso-2-semestre-estacionalidad">
+<h4>Caso 2 (Semestre): Estacionalidad<a class="headerlink" href="#caso-2-semestre-estacionalidad" title="Permalink to this headline">¶</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Establece &#39;fechaoperacion&#39; como el índice del DataFrame</span>
+<span class="n">df_vcs</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;fechaoperacion&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Asegúrate de que la frecuencia esté definida (por ejemplo, mensual &#39;M&#39;)</span>
+<span class="n">df_vcs</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">freq</span> <span class="o">=</span> <span class="s1">&#39;2Q&#39;</span>
+
+<span class="c1"># Realizar la descomposición estacional de la serie temporal</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">seasonal_decompose</span><span class="p">(</span><span class="n">df_vcs</span><span class="p">[</span><span class="s1">&#39;valor&#39;</span><span class="p">],</span> <span class="n">model</span><span class="o">=</span><span class="s1">&#39;additive&#39;</span><span class="p">)</span>
+
+<span class="c1"># Graficar la serie original, la tendencia, la estacionalidad y el residuo</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df_vcs</span><span class="p">[</span><span class="s1">&#39;valor&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Original&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">trend</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Tendencia&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">seasonal</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Estacionalidad&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">resid</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Residuo&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/unidad_2_estructura_34_0.png" src="_images/unidad_2_estructura_34_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="caso-3-anual-promedio-movil">
+<h4>Caso 3 (Anual): Promedio Movil<a class="headerlink" href="#caso-3-anual-promedio-movil" title="Permalink to this headline">¶</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># creando una copia </span>
+<span class="n">df_vca</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="c1"># remuestreando de acuerdo a lo que se quiere trimestre</span>
+<span class="n">df_vca</span> <span class="o">=</span> <span class="n">df_resample</span><span class="p">(</span><span class="n">df_vca</span><span class="p">,</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;Y&#39;</span><span class="p">)</span>
+
+<span class="c1"># muestra</span>
+<span class="n">df_vca</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>fechaoperacion</th>
+      <th>valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2006-12-31</td>
+      <td>73.839090</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2007-12-31</td>
+      <td>83.252195</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2008-12-31</td>
+      <td>87.834835</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2009-12-31</td>
+      <td>139.280431</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2010-12-31</td>
+      <td>128.732954</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># creando grafico</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+
+<span class="c1"># creando gráfico de linea</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_vca</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;fechaoperacion&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;valor&#39;</span><span class="p">)</span>
+
+<span class="c1"># monstrando gráfico</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/unidad_2_estructura_37_0.png" src="_images/unidad_2_estructura_37_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="caso-3-anual-rezagos">
+<h4>Caso 3 (Anual): Rezagos<a class="headerlink" href="#caso-3-anual-rezagos" title="Permalink to this headline">¶</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Crear un panel de gráficos 3x3</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
+
+<span class="c1"># Iterar sobre las filas y columnas del panel</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+        <span class="n">lag</span> <span class="o">=</span> <span class="n">i</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">+</span> <span class="n">j</span> <span class="o">+</span> <span class="mi">1</span>  <span class="c1"># Calcular el lag correspondiente</span>
+        <span class="n">ax</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span>  <span class="c1"># Obtener el eje actual</span>
+        
+        <span class="c1"># Calcular y graficar el lag plot con el lag actual</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df_vca</span><span class="p">[</span><span class="s1">&#39;valor&#39;</span><span class="p">][:</span><span class="o">-</span><span class="n">lag</span><span class="p">],</span> <span class="n">df_vca</span><span class="p">[</span><span class="s1">&#39;valor&#39;</span><span class="p">][</span><span class="n">lag</span><span class="p">:],</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Lag = </span><span class="si">{</span><span class="n">lag</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;y(t)&#39;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;y(t + </span><span class="si">{</span><span class="n">lag</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">)</span>
+
+<span class="c1"># Ajustar el espaciado entre los subplots</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/unidad_2_estructura_39_0.png" src="_images/unidad_2_estructura_39_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="caso-3-anual-estacionalidad">
+<h4>Caso 3 (Anual): Estacionalidad<a class="headerlink" href="#caso-3-anual-estacionalidad" title="Permalink to this headline">¶</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Establece &#39;fechaoperacion&#39; como el índice del DataFrame</span>
+<span class="n">df_vca</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;fechaoperacion&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Asegúrate de que la frecuencia esté definida (por ejemplo, mensual &#39;M&#39;)</span>
+<span class="n">df_vca</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">freq</span> <span class="o">=</span> <span class="s1">&#39;Y&#39;</span>
+
+<span class="c1"># Realizar la descomposición estacional de la serie temporal</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">seasonal_decompose</span><span class="p">(</span><span class="n">df_vca</span><span class="p">[</span><span class="s1">&#39;valor&#39;</span><span class="p">],</span> <span class="n">model</span><span class="o">=</span><span class="s1">&#39;additive&#39;</span><span class="p">)</span>
+
+<span class="c1"># Graficar la serie original, la tendencia, la estacionalidad y el residuo</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df_vca</span><span class="p">[</span><span class="s1">&#39;valor&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Original&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">trend</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Tendencia&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">seasonal</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Estacionalidad&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">resid</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Residuo&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/unidad_2_estructura_41_0.png" src="_images/unidad_2_estructura_41_0.png" />
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="main_pbna.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Pronóstico de precio de bolsa de la energía</p>
+        </div>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Grupo 6:Keyner Martínez, John Vargas y Johan Bolivar<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
