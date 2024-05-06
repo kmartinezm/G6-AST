@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pronóstico de precio de bolsa de la energía &#8212; Análisis de Series de Tiempo</title>
+    <title>Unidad 3: Preprocesamiento y visualización &#8212; Análisis de Series de Tiempo</title>
     
   <link href="_static/css/theme.css" rel="stylesheet">
   <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -54,7 +54,7 @@
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Unidad 2: Estructura de los datos en series de tiempo" href="und2_forecast.html" />
+    <link rel="prev" title="Unidad 2: Estructura de los datos en series de tiempo" href="und2_forecast.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -92,20 +92,20 @@
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
         <ul class="nav bd-sidenav">
- <li class="toctree-l1 current">
-  <a class="reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="main_pbna.html">
    Pronóstico de precio de bolsa de la energía
   </a>
  </li>
 </ul>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="und2_forecast.html">
    Unidad 2: Estructura de los datos en series de tiempo
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="und3_forecast.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Unidad 3: Preprocesamiento y visualización
   </a>
  </li>
@@ -150,7 +150,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/main_pbna.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="_sources/und3_forecast.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -170,7 +170,7 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/kmartinezm/G6-AST.git/issues/new?title=Issue%20on%20page%20%2Fmain_pbna.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/kmartinezm/G6-AST.git/issues/new?title=Issue%20on%20page%20%2Fund3_forecast.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -191,7 +191,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/kmartinezm/G6-AST.git/master?urlpath=tree/docs/main_pbna.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/kmartinezm/G6-AST.git/master?urlpath=tree/docs/und3_forecast.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="_static/images/logo_binder.svg"
@@ -215,13 +215,25 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#introduccion">
-   Introducción
+   2.1 Introducción
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#recopilacion-de-datos">
-   Recopilación de datos
+  <a class="reference internal nav-link" href="#objetivo">
+   2.2 Objetivo
   </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#accion">
+   2.3 Acción
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#preparacion-de-los-datos">
+     2.3.1 Preparación de los datos
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -233,7 +245,7 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Pronóstico de precio de bolsa de la energía</h1>
+                <h1>Unidad 3: Preprocesamiento y visualización</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -245,13 +257,25 @@
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#introduccion">
-   Introducción
+   2.1 Introducción
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#recopilacion-de-datos">
-   Recopilación de datos
+  <a class="reference internal nav-link" href="#objetivo">
+   2.2 Objetivo
   </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#accion">
+   2.3 Acción
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#preparacion-de-los-datos">
+     2.3.1 Preparación de los datos
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -262,25 +286,21 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="pronostico-de-precio-de-bolsa-de-la-energia">
-<h1>Pronóstico de precio de bolsa de la energía<a class="headerlink" href="#pronostico-de-precio-de-bolsa-de-la-energia" title="Permalink to this headline">¶</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="unidad-3-preprocesamiento-y-visualizacion">
+<h1>Unidad 3: Preprocesamiento y visualización<a class="headerlink" href="#unidad-3-preprocesamiento-y-visualizacion" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="introduccion">
-<h2>Introducción<a class="headerlink" href="#introduccion" title="Permalink to this headline">¶</a></h2>
-<p>El pronóstico del precio de bolsa de la energía en el mercado colombiano es una herramienta crucial para diversos actores en el sector energético y económico del país. Esta importancia radica en varios aspectos fundamentales que impactan tanto en la estabilidad del suministro eléctrico como en la viabilidad financiera de las empresas y el bienestar de los consumidores, como se detalla a continuación:</p>
-<ol class="simple">
-<li><p><strong>Planificación del suministro eléctrico:</strong> El pronóstico del precio de bolsa de la energía permite a las empresas generadoras, distribuidoras y consumidores planificar sus actividades y recursos de manera eficiente. Conociendo de antemano las tendencias esperadas en los precios de la energía, las empresas pueden tomar decisiones informadas sobre inversiones en infraestructura, contratos de suministro y estrategias de gestión de la demanda. Esto contribuye a garantizar un suministro eléctrico confiable y estable en el país.</p></li>
-<li><p><strong>Optimización de costos y mitigación de riesgos:</strong> Para las empresas del sector energético, el precio de bolsa de la energía es un componente clave en la determinación de sus costos operativos y de producción. Un pronóstico preciso del precio de bolsa les permite optimizar sus operaciones, reducir costos y gestionar de manera efectiva los riesgos asociados a la volatilidad del mercado eléctrico. Además, les brinda la oportunidad de tomar medidas preventivas para mitigar los impactos adversos en caso de fluctuaciones inesperadas en los precios.</p></li>
-<li><p><strong>Competitividad y atracción de inversión:</strong> Un mercado eléctrico con precios estables y predecibles fomenta un entorno favorable para la inversión tanto nacional como extranjera en el sector energético colombiano. Las empresas e inversores requieren de certidumbre en cuanto a los precios futuros de la energía para realizar evaluaciones de viabilidad económica y tomar decisiones de inversión a largo plazo. El pronóstico del precio de bolsa contribuye a generar confianza en el mercado, lo que a su vez impulsa el desarrollo de infraestructura y la creación de empleo en el sector.</p></li>
-<li><p><strong>Impacto socioeconómico:</strong> Los precios de la energía tienen un impacto directo en la economía y el bienestar de los ciudadanos colombianos. Un aumento significativo en el precio de bolsa puede resultar en mayores costos de energía para los consumidores finales, lo que afecta su capacidad adquisitiva y el costo de vida en general. Por lo tanto, un pronóstico preciso del precio de bolsa permite a los hogares y empresas anticipar y adaptarse a posibles variaciones en sus facturas de energía, mitigando así su impacto negativo en el presupuesto familiar y la competitividad empresarial.</p></li>
-<li><p><strong>Gestión de crisis y emergencias:</strong> En situaciones de crisis o emergencias, como la actual coyuntura de embalses en mínimos históricos en Colombia, el pronóstico del precio de bolsa de la energía adquiere una relevancia aún mayor. Conocer con anticipación los posibles incrementos en los precios de la energía permite a las autoridades y actores del sector implementar medidas de contingencia y políticas regulatorias adecuadas para garantizar la estabilidad del sistema eléctrico y minimizar el impacto socioeconómico de la crisis.</p></li>
-</ol>
+<h2>2.1 Introducción<a class="headerlink" href="#introduccion" title="Permalink to this headline">¶</a></h2>
+<p>A través de gráficos y algunas funciones para preprocesar bases de datos, describiremos el comportamiento subyacente dentro de la relación entre los datos.</p>
 </div>
-<div class="section" id="recopilacion-de-datos">
-<h2>Recopilación de datos<a class="headerlink" href="#recopilacion-de-datos" title="Permalink to this headline">¶</a></h2>
-<p>La recopilación de datos relacionados con el precio de bolsa de energía se realizó mediante la extracción de información de fuentes públicas proporcionadas por el administirador del mercado XM, <a class="reference external" href="https://sinergox.xm.com.co/Paginas/Home.aspx">Sinergox XM</a>:</p>
-<p><img alt="Aplicativo Sinergox XM" src="_images/sinergox.PNG" /></p>
-<p>Dentro del aplicativo SINERGOX de XM, que se presenta en la sección de transacción y precio, se encuentran la base de datos del precio de bolsa de energía nacional.Este aplicativo ofrece un registro de los precios de energía en bolsa nacional para cada hora y día de operación del sistema eléctrico nacional, lo que proporciona una visión completa y actualizada de la dinámica del mercado eléctrico en tiempo real, <a class="reference external" href="https://sinergox.xm.com.co/trpr/Paginas/Historicos/Historicos.aspx?RootFolder=%2Ftrpr%2FHistricos%2FPrecios&amp;FolderCTID=0x012000394993FA303733428C33EC91D1DFA6DB&amp;View=%7B5CA2173E%2D1541%2D4EC7%2D9D1C%2DE145E3DFFAE3%7D#InplviewHash5ca2173e-1541-4ec7-9d1c-e145e3dffae3=Paged%3DTRUE-p_SortBehavior%3D0-p_FileLeafRef%3DPrecio%255fBolsa%255fNacional%255f%2528%2524kwh%2529%255f1996%252exlsx-p_ID%3D294-PageFirstRow%3D91">base de datos pública de los precios de bolsa de energía nacional</a>.</p>
-<p>La disponibilidad de esta información pública es fundamental para diversos actores en el sector energético y económico de Colombia. Permite a las empresas del sector energético, así como a los reguladores y tomadores de decisiones gubernamentales, acceder a datos precisos y oportunos que les ayudan a comprender las tendencias del mercado, evaluar el rendimiento de sus operaciones y diseñar estrategias para optimizar sus actividades. Por lo anterior, se procedió a recopilar el dataset:</p>
+<div class="section" id="objetivo">
+<h2>2.2 Objetivo<a class="headerlink" href="#objetivo" title="Permalink to this headline">¶</a></h2>
+<p>Manipular las bases de datos que involucran datos en series de tempo por medio de funciones para explicar el comportamiento regular en un intervalo de tiempo.</p>
+</div>
+<div class="section" id="accion">
+<h2>2.3 Acción<a class="headerlink" href="#accion" title="Permalink to this headline">¶</a></h2>
+<p>Continuando con la dinámica de la construcción del documento con repositorio en github, se debe incluir en el documento la descomposición, la estacionariedad y la diferenciación, en caso de ser necesarias, de la variable y/o variables seleccionadas con estructura a través del tiempo. Además, si es necesario, se debe implementar alguna transformación con el fin de controlar la tendencia y la variabilidad, de la misma. Debes justificar, el por qué son o no necesarios dichos procedimientos.</p>
+<div class="section" id="preparacion-de-los-datos">
+<h3>2.3.1 Preparación de los datos<a class="headerlink" href="#preparacion-de-los-datos" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># importando librerias</span>
@@ -289,6 +309,8 @@
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">from</span> <span class="nn">statsmodels.tsa.seasonal</span> <span class="kn">import</span> <span class="n">seasonal_decompose</span>
+<span class="kn">from</span> <span class="nn">statsmodels.tsa.stattools</span> <span class="kn">import</span> <span class="n">adfuller</span>
 
 <span class="c1"># libreria para visualización de datos</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -475,69 +497,6 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># información del dataset</span>
-<span class="n">df_data</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
-RangeIndex: 6515 entries, 0 to 6514
-Data columns (total 27 columns):
- #   Column          Non-Null Count  Dtype  
----  ------          --------------  -----  
- 0   fechaoperacion  6515 non-null   object 
- 1   codigo          6515 non-null   object 
- 2   contenido       6515 non-null   object 
- 3   hora1           6515 non-null   float64
- 4   hora2           6515 non-null   float64
- 5   hora3           6515 non-null   float64
- 6   hora4           6515 non-null   float64
- 7   hora5           6515 non-null   float64
- 8   hora6           6515 non-null   float64
- 9   hora7           6515 non-null   float64
- 10  hora8           6515 non-null   float64
- 11  hora9           6515 non-null   float64
- 12  hora10          6515 non-null   float64
- 13  hora11          6515 non-null   float64
- 14  hora12          6515 non-null   float64
- 15  hora13          6515 non-null   float64
- 16  hora14          6515 non-null   float64
- 17  hora15          6515 non-null   float64
- 18  hora16          6515 non-null   float64
- 19  hora17          6515 non-null   float64
- 20  hora18          6515 non-null   float64
- 21  hora19          6515 non-null   float64
- 22  hora20          6515 non-null   float64
- 23  hora21          6515 non-null   float64
- 24  hora22          6515 non-null   float64
- 25  hora23          6515 non-null   float64
- 26  hora24          6515 non-null   float64
-dtypes: float64(24), object(3)
-memory usage: 1.3+ MB
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Nombre de las columnas</span>
-<span class="n">df_data</span><span class="o">.</span><span class="n">columns</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;fechaoperacion&#39;, &#39;codigo&#39;, &#39;contenido&#39;, &#39;hora1&#39;, &#39;hora2&#39;, &#39;hora3&#39;,
-       &#39;hora4&#39;, &#39;hora5&#39;, &#39;hora6&#39;, &#39;hora7&#39;, &#39;hora8&#39;, &#39;hora9&#39;, &#39;hora10&#39;,
-       &#39;hora11&#39;, &#39;hora12&#39;, &#39;hora13&#39;, &#39;hora14&#39;, &#39;hora15&#39;, &#39;hora16&#39;, &#39;hora17&#39;,
-       &#39;hora18&#39;, &#39;hora19&#39;, &#39;hora20&#39;, &#39;hora21&#39;, &#39;hora22&#39;, &#39;hora23&#39;, &#39;hora24&#39;],
-      dtype=&#39;object&#39;)
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">trf_data</span><span class="p">(</span><span class="n">df_data</span><span class="p">):</span>
     
     <span class="c1"># copia del dataframe</span>
@@ -653,45 +612,307 @@ memory usage: 1.3+ MB
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dic_fec</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;fec_ini&#39;</span><span class="p">:</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;fechaoperacion&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span>
-           <span class="s1">&#39;fec_fin&#39;</span><span class="p">:</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;fechaoperacion&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()}</span>
-<span class="n">dic_fec</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># remuestreando la serie de tiempo a valores mensuales</span>
+
+<span class="c1"># creando una copia del dataframe</span>
+<span class="n">df_vcm</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="c1">#  remuestreando el dataframe a mensual</span>
+<span class="n">df_vcm</span> <span class="o">=</span> <span class="n">df_vcm</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;M&#39;</span><span class="p">,</span><span class="n">on</span><span class="o">=</span><span class="s1">&#39;fechaoperacion&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">df_vcm</span> <span class="o">=</span> <span class="n">df_vcm</span><span class="p">[[</span><span class="s1">&#39;fechaoperacion&#39;</span><span class="p">,</span><span class="s1">&#39;valor&#39;</span><span class="p">]]</span>
+
+<span class="c1"># mostrando el dataframe transformado</span>
+<span class="n">df_vcm</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;fec_ini&#39;: Timestamp(&#39;2006-01-01 00:00:00&#39;),
- &#39;fec_fin&#39;: Timestamp(&#39;2023-12-31 00:00:00&#39;)}
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>fechaoperacion</th>
+      <th>valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2006-01-31</td>
+      <td>79.026486</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2006-02-28</td>
+      <td>75.520919</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2006-03-31</td>
+      <td>65.787447</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2006-04-30</td>
+      <td>54.012347</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2006-05-31</td>
+      <td>53.819582</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Establecer &#39;fechaoperacion&#39; como el índice del DataFrame</span>
+<span class="n">df_vcm</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;fechaoperacion&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Asegúrate de que la frecuencia esté definida (por ejemplo, mensual &#39;M&#39;)</span>
+<span class="n">df_vcm</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">freq</span> <span class="o">=</span> <span class="s1">&#39;M&#39;</span>
+
+<span class="c1"># Realizar la descomposición estacional de la serie temporal</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">seasonal_decompose</span><span class="p">(</span><span class="n">df_vcm</span><span class="p">[</span><span class="s1">&#39;valor&#39;</span><span class="p">],</span> <span class="n">model</span><span class="o">=</span><span class="s1">&#39;additive&#39;</span><span class="p">)</span>
+
+<span class="c1"># Graficar la serie original, la tendencia, la estacionalidad y el residuo</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df_vcm</span><span class="p">[</span><span class="s1">&#39;valor&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Original&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">trend</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Tendencia&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">seasonal</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Estacionalidad&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">resid</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Residuo&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/und3_forecast_6_0.png" src="_images/und3_forecast_6_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># estacionario</span>
+<span class="n">adf</span> <span class="o">=</span> <span class="n">adfuller</span><span class="p">(</span><span class="n">df_vcm</span><span class="p">[</span><span class="s1">&#39;valor&#39;</span><span class="p">],</span><span class="n">maxlag</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;El T-Test es: &#39;</span><span class="p">,</span><span class="n">adf</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;El p-value es: &#39;</span><span class="p">,</span><span class="n">adf</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Valores criticos: &#39;</span><span class="p">,</span><span class="n">adf</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>El T-Test es:  -4.2831367549258434
+El p-value es:  0.0004750482118971582
+Valores criticos:  {&#39;1%&#39;: -3.461136478222043, &#39;5%&#39;: -2.875078880098608, &#39;10%&#39;: -2.5739861168199027}
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_vcm</span><span class="p">[</span><span class="s1">&#39;diff&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_vcm</span><span class="p">[</span><span class="s1">&#39;valor&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">diff</span><span class="p">()</span>
+
+<span class="n">df_vcm</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
-RangeIndex: 156360 entries, 0 to 156359
-Data columns (total 6 columns):
- #   Column          Non-Null Count   Dtype         
----  ------          --------------   -----         
- 0   fechaoperacion  156360 non-null  datetime64[ns]
- 1   ano             156360 non-null  int64         
- 2   mes             156360 non-null  int64         
- 3   dia             156360 non-null  int64         
- 4   periodo         156360 non-null  object        
- 5   valor           156360 non-null  float64       
-dtypes: datetime64[ns](1), float64(1), int64(3), object(1)
-memory usage: 7.2+ MB
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>valor</th>
+      <th>diff</th>
+    </tr>
+    <tr>
+      <th>fechaoperacion</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2006-01-31</th>
+      <td>79.026486</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2006-02-28</th>
+      <td>75.520919</td>
+      <td>-3.505567</td>
+    </tr>
+    <tr>
+      <th>2006-03-31</th>
+      <td>65.787447</td>
+      <td>-9.733472</td>
+    </tr>
+    <tr>
+      <th>2006-04-30</th>
+      <td>54.012347</td>
+      <td>-11.775100</td>
+    </tr>
+    <tr>
+      <th>2006-05-31</th>
+      <td>53.819582</td>
+      <td>-0.192766</td>
+    </tr>
+    <tr>
+      <th>2006-06-30</th>
+      <td>52.985621</td>
+      <td>-0.833961</td>
+    </tr>
+    <tr>
+      <th>2006-07-31</th>
+      <td>59.316403</td>
+      <td>6.330782</td>
+    </tr>
+    <tr>
+      <th>2006-08-31</th>
+      <td>66.532754</td>
+      <td>7.216351</td>
+    </tr>
+    <tr>
+      <th>2006-09-30</th>
+      <td>103.448612</td>
+      <td>36.915858</td>
+    </tr>
+    <tr>
+      <th>2006-10-31</th>
+      <td>130.511701</td>
+      <td>27.063089</td>
+    </tr>
+    <tr>
+      <th>2006-11-30</th>
+      <td>80.435968</td>
+      <td>-50.075733</td>
+    </tr>
+    <tr>
+      <th>2006-12-31</th>
+      <td>64.689679</td>
+      <td>-15.746289</td>
+    </tr>
+    <tr>
+      <th>2007-01-31</th>
+      <td>56.593622</td>
+      <td>-8.096057</td>
+    </tr>
+    <tr>
+      <th>2007-02-28</th>
+      <td>106.988677</td>
+      <td>50.395055</td>
+    </tr>
+    <tr>
+      <th>2007-03-31</th>
+      <td>100.712232</td>
+      <td>-6.276445</td>
+    </tr>
+    <tr>
+      <th>2007-04-30</th>
+      <td>91.821965</td>
+      <td>-8.890267</td>
+    </tr>
+    <tr>
+      <th>2007-05-31</th>
+      <td>74.926459</td>
+      <td>-16.895506</td>
+    </tr>
+    <tr>
+      <th>2007-06-30</th>
+      <td>75.815491</td>
+      <td>0.889032</td>
+    </tr>
+    <tr>
+      <th>2007-07-31</th>
+      <td>80.273499</td>
+      <td>4.458007</td>
+    </tr>
+    <tr>
+      <th>2007-08-31</th>
+      <td>85.246680</td>
+      <td>4.973181</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_vcm</span> <span class="o">=</span> <span class="n">df_vcm</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Crear lienzo</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="c1"># Gráfico de líneas para la serie original</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df_vcm</span><span class="p">[</span><span class="s1">&#39;fechaoperacion&#39;</span><span class="p">],</span> <span class="n">df_vcm</span><span class="p">[</span><span class="s1">&#39;valor&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Original&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+
+<span class="c1"># Gráfico de líneas para la serie diferenciada</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df_vcm</span><span class="p">[</span><span class="s1">&#39;fechaoperacion&#39;</span><span class="p">],</span> <span class="n">df_vcm</span><span class="p">[</span><span class="s1">&#39;diff&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Diferenciada&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+
+<span class="c1"># Línea horizontal en y = 0</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+
+<span class="c1"># Configuración de título y etiquetas</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Diferenciación de serie de tiempo&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Fecha&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Valor&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="c1"># Mostrar gráfico</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
 </div>
-<div class="toctree-wrapper compound">
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/und3_forecast_10_0.png" src="_images/und3_forecast_10_0.png" />
+</div>
+</div>
+</div>
 </div>
 </div>
 
@@ -719,13 +940,13 @@ memory usage: 7.2+ MB
               
             
                 <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='right-next' id="next-link" href="und2_forecast.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Unidad 2: Estructura de los datos en series de tiempo</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="und2_forecast.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Unidad 2: Estructura de los datos en series de tiempo</p>
+        </div>
     </a>
 </div>
             
