@@ -482,6 +482,7 @@
 <p>5 rows × 27 columns</p>
 </div></div></div>
 </div>
+<p>Se realiza una transformacion de los datos separandoos por año,mes,dia y periodo, esto con el fin de poder graficar y analizar mas detalladamente el dataset.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">trf_data</span><span class="p">(</span><span class="n">df_data</span><span class="p">):</span>
@@ -666,6 +667,7 @@
 </table>
 </div></div></div>
 </div>
+<p>Se crea el grafico original donde en el eje x esta representando las fechas y en el eje y los valores de bolsa nacional del kWh.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># gráficando la serie de tiempo</span>
@@ -688,9 +690,11 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/und2_forecast_6_0.png" src="_images/und2_forecast_6_0.png" />
+<img alt="_images/und2_forecast_8_0.png" src="_images/und2_forecast_8_0.png" />
 </div>
 </div>
+<p>Para el analisis de Media movil, estacionalidad, Rezago se analizara para el caso mensual, trimestral y anual, con el fin de determinar si existen patrones en cada uno de estos intervalos de tiempo.</p>
+<p>Para el caso de media movil se realizan 4 medias moviles: MV3,MV6,MV9,MV12. Ya que al tener tantos datos en el intervalo de tiempo mensual puede ser interesante revisar como varia la media movil conforme mas datos antiguos se analizan.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># realizando el promedio movil de la serie de tiempo</span>
@@ -815,9 +819,10 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/und2_forecast_8_0.png" src="_images/und2_forecast_8_0.png" />
+<img alt="_images/und2_forecast_11_0.png" src="_images/und2_forecast_11_0.png" />
 </div>
 </div>
+<p>Como se puede observar la media movil con n=3 es muy similar a la grafica original, por lo que esta media esta fuertemente influenciada por datos aleatorios, por lo que es necesario que se analicen valores de medias moviles mas altos.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># realizando el promedio movil de la serie de tiempo</span>
@@ -999,6 +1004,7 @@
 </table>
 </div></div></div>
 </div>
+<p>Se realizan las graficas de cada una de las medias moviles:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># gráficando la serie de tiempo</span>
@@ -1033,9 +1039,16 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/und2_forecast_10_0.png" src="_images/und2_forecast_10_0.png" />
+<img alt="_images/und2_forecast_15_0.png" src="_images/und2_forecast_15_0.png" />
 </div>
 </div>
+<ul class="simple">
+<li><p>Como se puede observar la grafica todas las media moviles tienen picos pronunciados en los años 2015 y 2017 y en el año 2024</p></li>
+<li><p>Conforme a la media movil tiene mayor valor de n las lineas se vuelven mas suaves.</p></li>
+<li><p>Conforme a la media movil tiene mayor valor de n los picos son mas bajos</p></li>
+<li><p>Valores de medias moviles con un n mas alto no seran sensibles a los efectos de datos aleatorios, por lo que la prediccion tendra una fluctuacion lenta ante periodos recientes</p></li>
+</ul>
+<p>Se realiza un grafico de rezagos, para este caso se haran graficos de rezagos de hasta 9.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Creando función para gráficar los rezagos del dataset</span>
@@ -1062,9 +1075,13 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/und2_forecast_11_0.png" src="_images/und2_forecast_11_0.png" />
+<img alt="_images/und2_forecast_17_0.png" src="_images/und2_forecast_17_0.png" />
 </div>
 </div>
+<ul class="simple">
+<li><p>De las graficas de rezagos no existe un patron de distancia que pueda determinar que exista estacionalidad. Los puntos siempre se mueven de alguna manera en cada uno de los rezagos.</p></li>
+<li><p>Es necesario contar con analisis de disintos intervalos de tiempo para determinar si presenta estacionalidad o no.</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Establecer &#39;fechaoperacion&#39; como el índice del DataFrame</span>
@@ -1092,9 +1109,13 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/und2_forecast_12_0.png" src="_images/und2_forecast_12_0.png" />
+<img alt="_images/und2_forecast_19_0.png" src="_images/und2_forecast_19_0.png" />
 </div>
 </div>
+<ul class="simple">
+<li><p>El grafico de estacionalidad sugiere que existe un patron que se repite mensualmente, esto puede ser contrario a lo que se puede ver en el grafico de rezagos y al revisar la grafica de tendencia, en los datos no se observa que se tenga un patron o ciclo en el tiempo.</p></li>
+<li><p>Es necesario contar con analisis de disintos intervalos de tiempo para determinar si presenta estacionalidad o no.</p></li>
+</ul>
 </div>
 </div>
 </div>
