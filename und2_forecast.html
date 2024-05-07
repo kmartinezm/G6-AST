@@ -1145,6 +1145,8 @@ Implementamos una función para visualizar los rezagos en el conjunto de datos. 
 <div class="section" id="analisis-de-estacionalidad">
 <h3>2.2.3 Análisis de estacionalidad<a class="headerlink" href="#analisis-de-estacionalidad" title="Permalink to this headline">¶</a></h3>
 <p>En esta sección, nos adentramos en el análisis de la estacionalidad de la serie temporal. La estacionalidad es un componente clave que revela patrones recurrentes o ciclos en los datos a lo largo del tiempo, lo que resulta fundamental para comprender su comportamiento a largo plazo. Para llevar a cabo este análisis, seguimos los siguientes pasos:</p>
+<p><strong>1. Descomposición Estacional de la Serie Temporal</strong></p>
+<p>Utilizamos el método de descomposición estacional para separar la serie temporal en sus componentes principales: tendencia, estacionalidad y residuo. Este proceso nos permite identificar y analizar cada componente por separado, lo que facilita la comprensión de la dinámica subyacente de la serie temporal.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Establecer &#39;fechaoperacion&#39; como el índice del DataFrame</span>
@@ -1175,9 +1177,15 @@ Implementamos una función para visualizar los rezagos en el conjunto de datos. 
 <img alt="_images/und2_forecast_19_0.png" src="_images/und2_forecast_19_0.png" />
 </div>
 </div>
+<p><strong>2. Resultados</strong></p>
+<p>Tras examinar los resultados del análisis de estacionalidad, se revelan hallazgos que requieren una comprensión más profunda y una evaluación cuidadosa. Al respecto:</p>
 <ul class="simple">
-<li><p>El grafico de estacionalidad sugiere que existe un patron que se repite mensualmente, esto puede ser contrario a lo que se puede ver en el grafico de rezagos y al revisar la grafica de tendencia, en los datos no se observa que se tenga un patron o ciclo en el tiempo.</p></li>
-<li><p>Es necesario contar con analisis de disintos intervalos de tiempo para determinar si presenta estacionalidad o no.</p></li>
+<li><p>Patrones Mensuales Identificados:
+El análisis de estacionalidad revela la presencia de un patrón recurrente que se repite mensualmente en los datos. Esta observación es fundamental, ya que sugiere la existencia de fluctuaciones predecibles en los valores de la serie temporal en intervalos regulares de tiempo. Sin embargo, es importante destacar que este hallazgo puede parecer contradictorio con las observaciones derivadas del análisis de rezagos y la evaluación de la tendencia.</p></li>
+<li><p>Contrastes con los Análisis de Rezagos y Tendencia:
+Al contrastar los resultados del análisis de estacionalidad con los patrones identificados en el análisis de rezagos y la evaluación de la tendencia, se observan discrepancias significativas. Mientras que el análisis de rezagos y la evaluación de la tendencia no revelan claramente la presencia de un patrón o ciclo en los datos a lo largo del tiempo, el análisis de estacionalidad destaca la existencia de un patrón mensual distintivo. Esta discrepancia plantea interrogantes sobre la consistencia y la interpretación de los resultados obtenidos en diferentes análisis temporales.</p></li>
+<li><p>Necesidad de Análisis en Diferentes Intervalos de Tiempo:
+Ante la presencia de resultados divergentes, se hace evidente la necesidad de realizar análisis en diferentes intervalos de tiempo para determinar de manera más precisa si la serie temporal presenta estacionalidad o no. La exploración de patrones estacionales en intervalos de tiempo más amplios podría proporcionar una visión más completa y matizada de la dinámica temporal de los datos, permitiendo así una interpretación más precisa de su comportamiento a lo largo del tiempo.</p></li>
 </ul>
 </div>
 </div>
