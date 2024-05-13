@@ -16,6 +16,8 @@
 # Continuando con la dinámica de la construcción del documento con repositorio en github, se debe incluir en el documento la descomposición, la estacionariedad y la diferenciación, en caso de ser necesarias, de la variable y/o variables seleccionadas con estructura a través del tiempo. Además, si es necesario, se debe implementar alguna transformación con el fin de controlar la tendencia y la variabilidad, de la misma. Debes justificar, el por qué son o no necesarios dichos procedimientos.
 # 
 # ### 2.3.1 Preparación de los datos
+# 
+# Previo al análisis detallado, es imperativo comprender el proceso de preparación de datos temporales para garantizar su idoneidad y coherencia en el estudio.
 
 # In[1]:
 
@@ -79,6 +81,14 @@ df = trf_data(df_data)
 df.head()
 
 
+# ### 2.2.2 Descomposición de la serie de tiempo
+# 
+# Adentrándonos en la estructura de las series temporales, exploramos el proceso de descomposición. A través de este análisis, separamos las series temporales en sus componentes fundamentales: tendencia, estacionalidad y residuo. Esta descomposición nos permite entender mejor la dinámica subyacente de los datos y revela patrones importantes que pueden ser cruciales para la toma de decisiones y la planificación estratégica. Para ello, llevamos a cabo los siguientes pasos: 
+# 
+# **1. Remuestreo de la Serie Temporal:**
+# 
+# En el siguiente código, realizaremos el proceso de remuestreo de una serie temporal con el fin de transformarla en valores mensuales. Comenzaremos creando una copia del dataframe original para preservar los datos originales. Luego, emplearemos la función resample para agrupar los datos en intervalos mensuales y calcular la media de cada mes. Una vez completado el remuestreo, mostraremos el nuevo dataframe transformado que ahora contiene los datos mensuales. Este procedimiento es importante para la preparación de los datos previa a la aplicación del análisis de promedio móvil, lo que nos permitirá identificar tendencias y patrones a lo largo del tiempo de manera más precisa y clara.
+
 # In[5]:
 
 
@@ -94,6 +104,14 @@ df_vcm = df_vcm[['fechaoperacion','valor']]
 # mostrando el dataframe transformado
 df_vcm.head()
 
+
+# **2. Descomposición:**
+# 
+# En primer lugar, organizamos los datos temporalmente al establecer la columna 'fechaoperacion' como el índice del DataFrame. Posteriormente, nos aseguramos de que la frecuencia de los datos estuviera correctamente definida, optando por configurarla como mensual ('M').
+# 
+# Luego, procedimos a descomponer la serie temporal en sus componentes fundamentales utilizando el método seasonal_decompose con el modelo 'additive'. Este enfoque considera que la serie temporal es la suma de tres componentes principales: tendencia, estacionalidad y residuo.
+# 
+# Finalmente, generamos una visualización que mostraba la serie original junto con sus componentes descompuestos: la tendencia, la estacionalidad y el residuo.
 
 # In[6]:
 
@@ -129,27 +147,34 @@ plt.tight_layout()
 plt.show()
 
 
-# ## Análisis de Descomposición de Serie Temporal
+# **3. Resultados**
 # 
-# La gráfica mostrada descompone una serie temporal en tres componentes principales: tendencia, estacionalidad y residuo. Aquí se proporciona una interpretación detallada de cada uno de estos componentes.
+# La descomposición de la serie temporal en sus componentes principales —tendencia, estacionalidad y residuo— proporciona una visión detallada de la estructura subyacente de los datos. A continuación, se presenta una interpretación exhaustiva de cada uno de estos componentes:
 # 
-# ### 1. **Serie Original**
-# La serie original muestra fluctuaciones constantes con un notable aumento en la amplitud hacia los años más recientes, sugiriendo una mayor volatilidad o cambios en el comportamiento subyacente.
+# - Serie Original
+# La serie original exhibe fluctuaciones constantes, con un aumento notable en la amplitud hacia los años más recientes. Este fenómeno sugiere una mayor volatilidad o cambios en el comportamiento subyacente de los datos a lo largo del tiempo.
 # 
-# ### 2. **Tendencia**
-# - **General**: La tendencia muestra un comportamiento estable hasta aproximadamente 2016, seguido por una caída y un posterior aumento significativo hacia el final del período observado.
-# - **Interpretación**: Este patrón de tendencia podría indicar influencias de factores macroeconómicos, cambios en políticas, o desarrollos en el mercado si los datos son económicos o financieros.
+# - Tendencia
+# Patrón General: La tendencia muestra una estabilidad relativa hasta aproximadamente 2016, seguida de una caída y un posterior aumento significativo hacia el final del período observado.
+# Interpretación: Esta evolución en la tendencia podría estar influenciada por factores macroeconómicos, cambios en políticas o desarrollos específicos del mercado, dependiendo del contexto de los datos.
 # 
-# ### 3. **Estacionalidad**
-# - **General**: Se observan fluctuaciones claras y consistentes, indicativas de una fuerte estacionalidad.
-# - **Interpretación**: La estacionalidad regular podría estar relacionada con ciclos comerciales anuales, comportamientos de consumo estacional, o fenómenos climáticos, dependiendo de la naturaleza de los datos.
+# - Estacionalidad
+# Patrón General: Se observan fluctuaciones claras y consistentes, indicativas de una estacionalidad pronunciada.
+# Interpretación: La presencia de estacionalidad regular puede asociarse con ciclos comerciales anuales, patrones de consumo estacionales o influencias climáticas, según la naturaleza específica de los datos analizados.
 # 
-# ### 4. **Residuo**
-# - **General**: Los residuos presentan un comportamiento errático, con algunos picos significativos.
-# - **Interpretación**: Los residuos, al no mostrar un patrón claro, indican la ausencia de tendencias y estacionalidades remanentes. Los picos podrían señalar eventos atípicos o externos no capturados por los componentes de tendencia y estacionalidad.
+# - Residuo
+# Patrón General: Los residuos exhiben un comportamiento errático, con la presencia de algunos picos significativos.
+# Interpretación: Al no presentar un patrón discernible, los residuos indican la ausencia de tendencias y estacionalidades residuales. La presencia de picos podría señalar eventos atípicos o factores externos no capturados por los componentes de tendencia y estacionalidad.
 # 
-# ### Conclusión
-# La descomposición permite entender mejor la estructura subyacente de los datos, separando los efectos de largo plazo, los patrones periódicos y los efectos irregulares. Este análisis es crucial para la modelación precisa de pronósticos y para la toma de decisiones estratégicas y planificación en contextos empresariales o económicos.
+# ### 2.3.3 Análisis de Estacionariedad
+# 
+# En esta sección, nos sumergimos en el análisis de estacionariedad de las series temporales. Exploramos métodos y técnicas para evaluar la estacionariedad de los datos, lo que nos proporciona información crucial sobre la estabilidad de las propiedades estadísticas a lo largo del tiempo. Este análisis es fundamental para garantizar la fiabilidad de los modelos y las predicciones basadas en series temporales.
+# 
+# Los resultados del test de ADF se interpretan de la siguiente manera:
+# 
+# - El T-Test: Es el valor del estadístico de prueba. Cuanto más negativo sea este valor, más fuerte será la evidencia en contra de la hipótesis nula de no estacionariedad.
+# - El p-value: Es la probabilidad asociada al estadístico de prueba. Un valor de p pequeño (por ejemplo, p < 0.05) indica que podemos rechazar la hipótesis nula y concluir que la serie temporal es estacionaria.
+# - Valores Críticos: Estos son los valores críticos del estadístico de prueba para diferentes niveles de significancia. Comparar el valor del estadístico de prueba con estos valores críticos nos permite determinar si la serie temporal es estacionaria o no.
 
 # In[7]:
 
@@ -161,11 +186,11 @@ print('El p-value es: ',adf[1])
 print('Valores criticos: ',adf[4])
 
 
-# # Análisis de la Prueba de Dickey-Fuller Aumentada (ADF)
+# **2. Resultados**
 # 
-# la prueba de Dickey-Fuller aumentada (ADF) sirve para probar la estacionariedad de una serie temporal.
+# La prueba de Dickey-Fuller aumentada (ADF) es una herramienta fundamental en el análisis de series temporales que se utiliza para evaluar la estacionariedad de los datos. Esta prueba nos permite determinar si una serie temporal exhibe un comportamiento estacionario, es decir, si sus propiedades estadísticas permanecen constantes a lo largo del tiempo.
 # 
-# ## Resultados de la prueba ADF:
+# Resultados de la prueba ADF:
 # 
 # - **El T-Test es**: `-4.283316754925861`
 #   Este valor es el estadístico de la prueba y es más negativo que todos los valores críticos proporcionados. Esto indica una fuerte evidencia contra la hipótesis nula de que existe una raíz unitaria en la serie temporal.
@@ -177,9 +202,17 @@ print('Valores criticos: ',adf[4])
 #   `{'1%': -3.4311647822282243, '5%': -2.8578788898898638, '10%': -2.5739861161899027}`
 #   Estos valores críticos corresponden a los umbrales para los niveles de significancia del 1%, 5% y 10%. Si el estadístico de prueba es más negativo #que uno de estos valores críticos, puedes rechazar la hipótesis nula con ese nivel de confianza.
 # 
-# ## Conclusión
+# **3. Conclusión**
 # 
 # En resumen, los resultados de la prueba ADF sugieren que puedes considerar la serie temporal como estacionaria, lo que implica que no tiene raíz unitaria y muestra un comportamiento constante en términos de media y varianza a lo largo del tiempo. Esto es crucial para muchos modelos de análisis y predicción de series temporales.
+# 
+# ### 2.3.4 Diferenciación
+# 
+# Finalmente, examinamos el análisis de diferenciación como una herramienta para abordar la no estacionariedad en las series temporales. Exploramos cómo aplicar diferenciación para transformar los datos y hacerlos estacionarios, lo que facilita un análisis más preciso y confiable de la serie temporal. Este enfoque es crucial para mitigar los efectos de la tendencia y la estacionalidad, permitiendo una interpretación más precisa de los datos y una toma de decisiones informada.
+# 
+# **1. Cálculo de la diferenciación**
+# 
+# Después de calcular la diferencia entre los valores sucesivos de la serie temporal, se agregó una nueva columna llamada 'diff' al DataFrame 'df_vcm'. Esto nos permite analizar cómo cambian los valores de la serie de un período a otro. A continuación se presenta una vista previa de los primeros 20 registros del DataFrame después de calcular y agregar las diferencias:
 
 # In[8]:
 
@@ -194,6 +227,8 @@ df_vcm.head(20)
 
 df_vcm = df_vcm.reset_index()
 
+
+# Esta salida mostrará los primeros 20 registros del DataFrame 'df_vcm', donde la columna 'diff' ahora contiene las diferencias entre los valores sucesivos de la serie temporal. 
 
 # In[10]:
 
@@ -220,25 +255,17 @@ plt.legend()
 plt.show()
 
 
-# ## Análisis de la Serie de Tiempo
+# **2. Resultados**
 # 
-# ### Comportamiento de la Serie Original:
+# - Comportamiento de la Serie Original: La serie temporal en azul exhibe una tendencia inicialmente estable que se ve alterada por una variación más pronunciada hacia la segunda mitad del período analizado. Este cambio abrupto en la dinámica de la serie sugiere la presencia de factores externos o internos que influyen en su comportamiento. Esta variabilidad podría estar asociada con cambios en las condiciones del mercado, fluctuaciones económicas u otros eventos que afectan la serie a lo largo del tiempo.
 # 
-# La serie en azul muestra una **tendencia generalmente estable** al principio, seguido de una **variación más marcada** hacia la segunda mitad del gráfico. Esto podría indicar una serie temporal que experimenta cambios significativos en su comportamiento en el tiempo, posiblemente debido a factores externos, un cambio en la tendencia, o el inicio de un patrón estacional o cíclico.
+# - Análisis de la Serie Diferenciada:La serie diferenciada en rojo muestra **fluctuaciones alrededor de cero**, con algunos picos pronunciados. Estos picos representan cambios grandes en los valores de un periodo a otro. Las **diferencias grandes y abruptas** (picos altos tanto positivos como negativos) indican momentos de cambio significativo en la serie temporal, lo cual puede ser útil para detectar anomalías o cambios importantes en la dinámica de los datos.
 # 
-# ### Análisis de la Serie Diferenciada:
+# La serie original exhibe una tendencia inicial seguida de una variabilidad creciente hacia la segunda mitad del período analizado. Esta variación puede indicar cambios en las condiciones del entorno o el surgimiento de patrones estacionales.
 # 
-# La serie diferenciada en rojo muestra **fluctuaciones alrededor de cero**, con algunos picos pronunciados. Estos picos representan cambios grandes en los valores de un periodo a otro. Las **diferencias grandes y abruptas** (picos altos tanto positivos como negativos) indican momentos de cambio significativo en la serie temporal, lo cual puede ser útil para detectar anomalías o cambios importantes en la dinámica de los datos.
+# Por otro lado, la serie diferenciada muestra una estabilización alrededor de cero con fluctuaciones pronunciadas. Estas diferencias resaltan momentos de cambio significativo en los valores de la serie temporal, que pueden ser cruciales para comprender su dinámica subyacente.
 # 
-# ## Conclusión: Serie Original vs. Serie Diferenciada
-# 
-# ### Observaciones Generales
-# 
-# La **serie original** muestra un comportamiento inicialmente estable que se vuelve más variable hacia la segunda mitad del período analizado. Esta variabilidad incrementada puede sugerir la influencia de factores externos, cambios en las tendencias subyacentes, o el inicio de patrones estacionales o cíclicos.
-# 
-# Por otro lado, la **serie diferenciada**, representada en rojo, parece centrarse en torno a cero con variaciones notables (picos). Estas fluctuaciones destacan los momentos de cambios significativos en los valores de la serie de tiempo, que son menos evidentes cuando se observa la serie original.
-# 
-# ### Implicaciones para el Análisis y Modelado
+# **Implicaciones para el Análisis y Modelado**
 # 
 # 1. **Estacionariedad**: La serie diferenciada sugiere un esfuerzo exitoso por estabilizar la media, lo cual es crucial para muchos modelos estadísticos y de machine learning que asumen estacionariedad en la serie temporal.
 # 
@@ -246,6 +273,4 @@ plt.show()
 # 
 # 3. **Desarrollo de Modelos**: Modelar la serie original sin considerar la diferenciación podría llevar a modelos que no capturan adecuadamente la dinámica subyacente de la serie. Utilizar la serie diferenciada puede proporcionar una base más sólida para la predicción y el análisis, ya que resalta los cambios críticos en la serie temporal.
 # 
-# ### Conclusión Final
-# 
-# Comparando ambas series, se concluye que la diferenciación es una herramienta valiosa para revelar aspectos ocultos de la serie temporal que no son aparentes en la serie original. Esto permite un análisis más detallado y un modelado más efectivo de la serie temporal, proporcionando insights clave para la toma de decisiones y la planificación estratégica.
+# En conclusión, la comparación entre la serie original y la serie diferenciada revela la importancia de la diferenciación en el análisis de series temporales. La diferenciación proporciona una perspectiva más clara de los cambios y la dinámica de los datos, lo que facilita la toma de decisiones informadas y la planificación estratégica.
