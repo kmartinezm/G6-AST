@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Unidad 3: Preprocesamiento y visualización &#8212; Análisis de Series de Tiempo</title>
+    <title>Unidad 5: Modelos estacionarios en series de tiempo &#8212; Análisis de Series de Tiempo</title>
     
   <link href="_static/css/theme.css" rel="stylesheet">
   <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -54,8 +54,7 @@
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Unidad 4: Introducción a los modelos de pronóstico" href="und4_forecast.html" />
-    <link rel="prev" title="Unidad 2: Estructura de los datos en series de tiempo" href="und2_forecast.html" />
+    <link rel="prev" title="Unidad 4: Introducción a los modelos de pronóstico" href="und4_forecast.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -105,8 +104,8 @@
    Unidad 2: Estructura de los datos en series de tiempo
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="und3_forecast.html">
    Unidad 3: Preprocesamiento y visualización
   </a>
  </li>
@@ -115,8 +114,8 @@
    Unidad 4: Introducción a los modelos de pronóstico
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="und5_forecast.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Unidad 5: Modelos estacionarios en series de tiempo
   </a>
  </li>
@@ -161,7 +160,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/und3_forecast.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="_sources/und5_forecast.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -181,7 +180,7 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/kmartinezm/G6-AST.git/issues/new?title=Issue%20on%20page%20%2Fund3_forecast.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/kmartinezm/G6-AST.git/issues/new?title=Issue%20on%20page%20%2Fund5_forecast.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -202,7 +201,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/kmartinezm/G6-AST.git/master?urlpath=tree/docs/und3_forecast.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/kmartinezm/G6-AST.git/master?urlpath=tree/docs/und5_forecast.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="_static/images/logo_binder.svg"
@@ -226,40 +225,35 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#introduccion">
-   2.1 Introducción
+   5.1 Introducción
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#objetivo">
-   2.2 Objetivo
+   5.2 Objetivo
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#accion">
-   2.3 Acción
+   5.3 Acción
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#preparacion-de-los-datos">
-     2.3.1 Preparación de los datos
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#descomposicion-de-la-serie-de-tiempo">
-     2.2.2 Descomposición de la serie de tiempo
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#analisis-de-estacionariedad">
-     2.3.3 Análisis de Estacionariedad
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#diferenciacion">
-     2.3.4 Diferenciación
+     5.3.1 Preparación de los datos
     </a>
    </li>
   </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#graficos-de-autocorrelacion-acf-y-autocorrelacion-parcial-pacf-para-la-serie-de-tiempo-diferenciada">
+   Gráficos de Autocorrelación (ACF) y Autocorrelación Parcial (PACF) para la serie de tiempo diferenciada
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#resumen-del-modelo-arima-1-1-1-ajustado-a-la-serie-de-tiempo">
+   Resumen del modelo ARIMA(1,1,1) ajustado a la serie de tiempo
+  </a>
  </li>
 </ul>
 
@@ -271,7 +265,7 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Unidad 3: Preprocesamiento y visualización</h1>
+                <h1>Unidad 5: Modelos estacionarios en series de tiempo</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -283,40 +277,35 @@
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#introduccion">
-   2.1 Introducción
+   5.1 Introducción
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#objetivo">
-   2.2 Objetivo
+   5.2 Objetivo
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#accion">
-   2.3 Acción
+   5.3 Acción
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#preparacion-de-los-datos">
-     2.3.1 Preparación de los datos
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#descomposicion-de-la-serie-de-tiempo">
-     2.2.2 Descomposición de la serie de tiempo
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#analisis-de-estacionariedad">
-     2.3.3 Análisis de Estacionariedad
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#diferenciacion">
-     2.3.4 Diferenciación
+     5.3.1 Preparación de los datos
     </a>
    </li>
   </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#graficos-de-autocorrelacion-acf-y-autocorrelacion-parcial-pacf-para-la-serie-de-tiempo-diferenciada">
+   Gráficos de Autocorrelación (ACF) y Autocorrelación Parcial (PACF) para la serie de tiempo diferenciada
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#resumen-del-modelo-arima-1-1-1-ajustado-a-la-serie-de-tiempo">
+   Resumen del modelo ARIMA(1,1,1) ajustado a la serie de tiempo
+  </a>
  </li>
 </ul>
 
@@ -327,22 +316,23 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="unidad-3-preprocesamiento-y-visualizacion">
-<h1>Unidad 3: Preprocesamiento y visualización<a class="headerlink" href="#unidad-3-preprocesamiento-y-visualizacion" title="Permalink to this headline">¶</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="unidad-5-modelos-estacionarios-en-series-de-tiempo">
+<h1>Unidad 5: Modelos estacionarios en series de tiempo<a class="headerlink" href="#unidad-5-modelos-estacionarios-en-series-de-tiempo" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="introduccion">
-<h2>2.1 Introducción<a class="headerlink" href="#introduccion" title="Permalink to this headline">¶</a></h2>
-<p>A través de gráficos y algunas funciones para preprocesar bases de datos, describiremos el comportamiento subyacente dentro de la relación entre los datos.</p>
+<h2>5.1 Introducción<a class="headerlink" href="#introduccion" title="Permalink to this headline">¶</a></h2>
+<p>Aplicaremos la metodología Box-Jenkins para identificar modelos autoregresivos integrados de media móvil (ARIMA) para analizar y predecir valores futuros de series de tiempo.</p>
 </div>
 <div class="section" id="objetivo">
-<h2>2.2 Objetivo<a class="headerlink" href="#objetivo" title="Permalink to this headline">¶</a></h2>
-<p>Manipular las bases de datos que involucran datos en series de tempo por medio de funciones para explicar el comportamiento regular en un intervalo de tiempo.</p>
+<h2>5.2 Objetivo<a class="headerlink" href="#objetivo" title="Permalink to this headline">¶</a></h2>
+<p>Esquematizar los modelos convencionales de series de tiempo a través de la metodología Box-Jenkins para encontrar patrones que nos permitan predecir futuras observaciones.</p>
 </div>
 <div class="section" id="accion">
-<h2>2.3 Acción<a class="headerlink" href="#accion" title="Permalink to this headline">¶</a></h2>
-<p>Continuando con la dinámica de la construcción del documento con repositorio en github, se debe incluir en el documento la descomposición, la estacionariedad y la diferenciación, en caso de ser necesarias, de la variable y/o variables seleccionadas con estructura a través del tiempo. Además, si es necesario, se debe implementar alguna transformación con el fin de controlar la tendencia y la variabilidad, de la misma. Debes justificar, el por qué son o no necesarios dichos procedimientos.</p>
+<h2>5.3 Acción<a class="headerlink" href="#accion" title="Permalink to this headline">¶</a></h2>
+<p>Se implementará la metodología de Box-Jenkins para la construcción de un modelo.</p>
 <div class="section" id="preparacion-de-los-datos">
-<h3>2.3.1 Preparación de los datos<a class="headerlink" href="#preparacion-de-los-datos" title="Permalink to this headline">¶</a></h3>
-<p>Previo al análisis detallado, es imperativo comprender el proceso de preparación de datos temporales para garantizar su idoneidad y coherencia en el estudio.</p>
+<h3>5.3.1 Preparación de los datos<a class="headerlink" href="#preparacion-de-los-datos" title="Permalink to this headline">¶</a></h3>
+<p>Previo al análisis detallado, es imperativo comprender el proceso de preparación de datos temporales para garantizar su idoneidad y coherencia en el estudio.
+cia en el estudio.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># importando librerias</span>
@@ -353,6 +343,10 @@
 <span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
 <span class="kn">from</span> <span class="nn">statsmodels.tsa.seasonal</span> <span class="kn">import</span> <span class="n">seasonal_decompose</span>
 <span class="kn">from</span> <span class="nn">statsmodels.tsa.stattools</span> <span class="kn">import</span> <span class="n">adfuller</span>
+<span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="nn">sm</span>
+<span class="kn">from</span> <span class="nn">statsmodels.tsa.holtwinters</span> <span class="kn">import</span> <span class="n">ExponentialSmoothing</span>
+<span class="kn">from</span> <span class="nn">statsmodels.graphics.tsaplots</span> <span class="kn">import</span> <span class="n">plot_acf</span><span class="p">,</span> <span class="n">plot_pacf</span>
+<span class="kn">from</span> <span class="nn">statsmodels.tsa.arima.model</span> <span class="kn">import</span> <span class="n">ARIMA</span>
 
 <span class="c1"># libreria para visualización de datos</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -652,12 +646,6 @@
 </table>
 </div></div></div>
 </div>
-</div>
-<div class="section" id="descomposicion-de-la-serie-de-tiempo">
-<h3>2.2.2 Descomposición de la serie de tiempo<a class="headerlink" href="#descomposicion-de-la-serie-de-tiempo" title="Permalink to this headline">¶</a></h3>
-<p>Adentrándonos en la estructura de las series temporales, exploramos el proceso de descomposición. A través de este análisis, separamos las series temporales en sus componentes fundamentales: tendencia, estacionalidad y residuo. Esta descomposición nos permite entender mejor la dinámica subyacente de los datos y revela patrones importantes que pueden ser cruciales para la toma de decisiones y la planificación estratégica. Para ello, llevamos a cabo los siguientes pasos:</p>
-<p><strong>1. Remuestreo de la Serie Temporal:</strong></p>
-<p>En el siguiente código, realizaremos el proceso de remuestreo de una serie temporal con el fin de transformarla en valores mensuales. Comenzaremos creando una copia del dataframe original para preservar los datos originales. Luego, emplearemos la función resample para agrupar los datos en intervalos mensuales y calcular la media de cada mes. Una vez completado el remuestreo, mostraremos el nuevo dataframe transformado que ahora contiene los datos mensuales. Este procedimiento es importante para la preparación de los datos previa a la aplicación del análisis de promedio móvil, lo que nos permitirá identificar tendencias y patrones a lo largo del tiempo de manera más precisa y clara.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># remuestreando la serie de tiempo a valores mensuales</span>
@@ -727,116 +715,36 @@
 </table>
 </div></div></div>
 </div>
-<p><strong>2. Descomposición:</strong></p>
-<p>En primer lugar, organizamos los datos temporalmente al establecer la columna ‘fechaoperacion’ como el índice del DataFrame. Posteriormente, nos aseguramos de que la frecuencia de los datos estuviera correctamente definida, optando por configurarla como mensual (‘M’).</p>
-<p>Luego, procedimos a descomponer la serie temporal en sus componentes fundamentales utilizando el método seasonal_decompose con el modelo ‘additive’. Este enfoque considera que la serie temporal es la suma de tres componentes principales: tendencia, estacionalidad y residuo.</p>
-<p>Finalmente, generamos una visualización que mostraba la serie original junto con sus componentes descompuestos: la tendencia, la estacionalidad y el residuo.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Establecer &#39;fechaoperacion&#39; como el índice del DataFrame</span>
-<span class="n">df_vcm</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;fechaoperacion&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Graficar la serie de tiempo y su tendencia estimada</span>
 
-<span class="c1"># Asegúrate de que la frecuencia esté definida (por ejemplo, mensual &#39;M&#39;)</span>
-<span class="n">df_vcm</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">freq</span> <span class="o">=</span> <span class="s1">&#39;M&#39;</span>
-
-<span class="c1"># Realizar la descomposición estacional de la serie temporal</span>
-<span class="n">result</span> <span class="o">=</span> <span class="n">seasonal_decompose</span><span class="p">(</span><span class="n">df_vcm</span><span class="p">[</span><span class="s1">&#39;valor&#39;</span><span class="p">],</span> <span class="n">model</span><span class="o">=</span><span class="s1">&#39;additive&#39;</span><span class="p">)</span>
-
-<span class="c1"># Graficar la serie original, la tendencia, la estacionalidad y el residuo</span>
+<span class="c1"># creando lienzo</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df_vcm</span><span class="p">[</span><span class="s1">&#39;valor&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Original&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">)</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">trend</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Tendencia&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">)</span>
+<span class="c1"># creando gráfica</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df_vcm</span><span class="p">[</span><span class="s1">&#39;fechaoperacion&#39;</span><span class="p">],</span> <span class="n">df_vcm</span><span class="p">[</span><span class="s1">&#39;valor&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Valor&#39;</span><span class="p">)</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">seasonal</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Estacionalidad&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">)</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">resid</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Residuo&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">)</span>
+<span class="n">lowess</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">nonparametric</span><span class="o">.</span><span class="n">lowess</span>
+<span class="n">smoothed</span> <span class="o">=</span> <span class="n">lowess</span><span class="p">(</span><span class="n">df_vcm</span><span class="p">[</span><span class="s1">&#39;valor&#39;</span><span class="p">],</span> <span class="n">df_vcm</span><span class="p">[</span><span class="s1">&#39;fechaoperacion&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df_vcm</span><span class="p">[</span><span class="s1">&#39;fechaoperacion&#39;</span><span class="p">],</span> <span class="n">smoothed</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Tendencia estimada&#39;</span><span class="p">)</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="c1">#</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Fecha&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Precio de bolsa mensual&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/und3_forecast_8_0.png" src="_images/und3_forecast_8_0.png" />
+<img alt="_images/und5_forecast_6_0.png" src="_images/und5_forecast_6_0.png" />
 </div>
 </div>
-<p><strong>3. Resultados</strong></p>
-<p>La descomposición de la serie temporal en sus componentes principales —tendencia, estacionalidad y residuo— proporciona una visión detallada de la estructura subyacente de los datos. A continuación, se presenta una interpretación exhaustiva de cada uno de estos componentes:</p>
-<ul class="simple">
-<li><p>Serie Original
-La serie original exhibe fluctuaciones constantes, con un aumento notable en la amplitud hacia los años más recientes. Este fenómeno sugiere una mayor volatilidad o cambios en el comportamiento subyacente de los datos a lo largo del tiempo.</p></li>
-<li><p>Tendencia
-Patrón General: La tendencia muestra una estabilidad relativa hasta aproximadamente 2016, seguida de una caída y un posterior aumento significativo hacia el final del período observado.
-Interpretación: Esta evolución en la tendencia podría estar influenciada por factores macroeconómicos, cambios en políticas o desarrollos específicos del mercado, dependiendo del contexto de los datos.</p></li>
-<li><p>Estacionalidad
-Patrón General: Se observan fluctuaciones claras y consistentes, indicativas de una estacionalidad pronunciada.
-Interpretación: La presencia de estacionalidad regular puede asociarse con ciclos comerciales anuales, patrones de consumo estacionales o influencias climáticas, según la naturaleza específica de los datos analizados.</p></li>
-<li><p>Residuo
-Patrón General: Los residuos exhiben un comportamiento errático, con la presencia de algunos picos significativos.
-Interpretación: Al no presentar un patrón discernible, los residuos indican la ausencia de tendencias y estacionalidades residuales. La presencia de picos podría señalar eventos atípicos o factores externos no capturados por los componentes de tendencia y estacionalidad.</p></li>
-</ul>
-</div>
-<div class="section" id="analisis-de-estacionariedad">
-<h3>2.3.3 Análisis de Estacionariedad<a class="headerlink" href="#analisis-de-estacionariedad" title="Permalink to this headline">¶</a></h3>
-<p>En esta sección, nos sumergimos en el análisis de estacionariedad de las series temporales. Exploramos métodos y técnicas para evaluar la estacionariedad de los datos, lo que nos proporciona información crucial sobre la estabilidad de las propiedades estadísticas a lo largo del tiempo. Este análisis es fundamental para garantizar la fiabilidad de los modelos y las predicciones basadas en series temporales.</p>
-<p>Los resultados del test de ADF se interpretan de la siguiente manera:</p>
-<ul class="simple">
-<li><p>El T-Test: Es el valor del estadístico de prueba. Cuanto más negativo sea este valor, más fuerte será la evidencia en contra de la hipótesis nula de no estacionariedad.</p></li>
-<li><p>El p-value: Es la probabilidad asociada al estadístico de prueba. Un valor de p pequeño (por ejemplo, p &lt; 0.05) indica que podemos rechazar la hipótesis nula y concluir que la serie temporal es estacionaria.</p></li>
-<li><p>Valores Críticos: Estos son los valores críticos del estadístico de prueba para diferentes niveles de significancia. Comparar el valor del estadístico de prueba con estos valores críticos nos permite determinar si la serie temporal es estacionaria o no.</p></li>
-</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># estacionario</span>
-<span class="n">adf</span> <span class="o">=</span> <span class="n">adfuller</span><span class="p">(</span><span class="n">df_vcm</span><span class="p">[</span><span class="s1">&#39;valor&#39;</span><span class="p">],</span><span class="n">maxlag</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;El T-Test es: &#39;</span><span class="p">,</span><span class="n">adf</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;El p-value es: &#39;</span><span class="p">,</span><span class="n">adf</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Valores criticos: &#39;</span><span class="p">,</span><span class="n">adf</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>El T-Test es:  -4.2831367549258434
-El p-value es:  0.0004750482118971582
-Valores criticos:  {&#39;1%&#39;: -3.461136478222043, &#39;5%&#39;: -2.875078880098608, &#39;10%&#39;: -2.5739861168199027}
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>2. Resultados</strong></p>
-<p>La prueba de Dickey-Fuller aumentada (ADF) es una herramienta fundamental en el análisis de series temporales que se utiliza para evaluar la estacionariedad de los datos. Esta prueba nos permite determinar si una serie temporal exhibe un comportamiento estacionario, es decir, si sus propiedades estadísticas permanecen constantes a lo largo del tiempo.</p>
-<p>Resultados de la prueba ADF:</p>
-<ul class="simple">
-<li><p><strong>El T-Test es</strong>: <code class="docutils literal notranslate"><span class="pre">-4.283316754925861</span></code>
-Este valor es el estadístico de la prueba y es más negativo que todos los valores críticos proporcionados. Esto indica una fuerte evidencia contra la hipótesis nula de que existe una raíz unitaria en la serie temporal.</p></li>
-<li><p><strong>El p-value es</strong>: <code class="docutils literal notranslate"><span class="pre">0.0004572081128972734</span></code>
-El valor p indica la probabilidad de obtener un resultado al menos tan extremo como el observado, bajo la hipótesis nula. Un valor p bajo (típicamente menor que 0.05) sugiere que puedes rechazar la hipótesis nula de que la serie tiene una raíz unitaria.</p></li>
-<li><p><strong>Valores críticos</strong>:
-<code class="docutils literal notranslate"><span class="pre">{'1%':</span> <span class="pre">-3.4311647822282243,</span> <span class="pre">'5%':</span> <span class="pre">-2.8578788898898638,</span> <span class="pre">'10%':</span> <span class="pre">-2.5739861161899027}</span></code>
-Estos valores críticos corresponden a los umbrales para los niveles de significancia del 1%, 5% y 10%. Si el estadístico de prueba es más negativo #que uno de estos valores críticos, puedes rechazar la hipótesis nula con ese nivel de confianza.</p></li>
-</ul>
-<p><strong>3. Conclusión</strong></p>
-<p>En resumen, los resultados de la prueba ADF sugieren que puedes considerar la serie temporal como estacionaria, lo que implica que no tiene raíz unitaria y muestra un comportamiento constante en términos de media y varianza a lo largo del tiempo. Esto es crucial para muchos modelos de análisis y predicción de series temporales.</p>
-</div>
-<div class="section" id="diferenciacion">
-<h3>2.3.4 Diferenciación<a class="headerlink" href="#diferenciacion" title="Permalink to this headline">¶</a></h3>
-<p>Finalmente, examinamos el análisis de diferenciación como una herramienta para abordar la no estacionariedad en las series temporales. Exploramos cómo aplicar diferenciación para transformar los datos y hacerlos estacionarios, lo que facilita un análisis más preciso y confiable de la serie temporal. Este enfoque es crucial para mitigar los efectos de la tendencia y la estacionalidad, permitiendo una interpretación más precisa de los datos y una toma de decisiones informada.</p>
-<p><strong>1. Cálculo de la diferenciación</strong></p>
-<p>Después de calcular la diferencia entre los valores sucesivos de la serie temporal, se agregó una nueva columna llamada ‘diff’ al DataFrame ‘df_vcm’. Esto nos permite analizar cómo cambian los valores de la serie de un período a otro. A continuación se presenta una vista previa de los primeros 20 registros del DataFrame después de calcular y agregar las diferencias:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_vcm</span><span class="p">[</span><span class="s1">&#39;diff&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_vcm</span><span class="p">[</span><span class="s1">&#39;valor&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">diff</span><span class="p">()</span>
-
-<span class="n">df_vcm</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_vcm</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -859,115 +767,35 @@ Estos valores críticos corresponden a los umbrales para los niveles de signific
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>valor</th>
-      <th>diff</th>
-    </tr>
-    <tr>
       <th>fechaoperacion</th>
-      <th></th>
-      <th></th>
+      <th>valor</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th>2006-01-31</th>
+      <th>0</th>
+      <td>2006-01-31</td>
       <td>79.026486</td>
-      <td>NaN</td>
     </tr>
     <tr>
-      <th>2006-02-28</th>
+      <th>1</th>
+      <td>2006-02-28</td>
       <td>75.520919</td>
-      <td>-3.505567</td>
     </tr>
     <tr>
-      <th>2006-03-31</th>
+      <th>2</th>
+      <td>2006-03-31</td>
       <td>65.787447</td>
-      <td>-9.733472</td>
     </tr>
     <tr>
-      <th>2006-04-30</th>
+      <th>3</th>
+      <td>2006-04-30</td>
       <td>54.012347</td>
-      <td>-11.775100</td>
     </tr>
     <tr>
-      <th>2006-05-31</th>
+      <th>4</th>
+      <td>2006-05-31</td>
       <td>53.819582</td>
-      <td>-0.192766</td>
-    </tr>
-    <tr>
-      <th>2006-06-30</th>
-      <td>52.985621</td>
-      <td>-0.833961</td>
-    </tr>
-    <tr>
-      <th>2006-07-31</th>
-      <td>59.316403</td>
-      <td>6.330782</td>
-    </tr>
-    <tr>
-      <th>2006-08-31</th>
-      <td>66.532754</td>
-      <td>7.216351</td>
-    </tr>
-    <tr>
-      <th>2006-09-30</th>
-      <td>103.448612</td>
-      <td>36.915858</td>
-    </tr>
-    <tr>
-      <th>2006-10-31</th>
-      <td>130.511701</td>
-      <td>27.063089</td>
-    </tr>
-    <tr>
-      <th>2006-11-30</th>
-      <td>80.435968</td>
-      <td>-50.075733</td>
-    </tr>
-    <tr>
-      <th>2006-12-31</th>
-      <td>64.689679</td>
-      <td>-15.746289</td>
-    </tr>
-    <tr>
-      <th>2007-01-31</th>
-      <td>56.593622</td>
-      <td>-8.096057</td>
-    </tr>
-    <tr>
-      <th>2007-02-28</th>
-      <td>106.988677</td>
-      <td>50.395055</td>
-    </tr>
-    <tr>
-      <th>2007-03-31</th>
-      <td>100.712232</td>
-      <td>-6.276445</td>
-    </tr>
-    <tr>
-      <th>2007-04-30</th>
-      <td>91.821965</td>
-      <td>-8.890267</td>
-    </tr>
-    <tr>
-      <th>2007-05-31</th>
-      <td>74.926459</td>
-      <td>-16.895506</td>
-    </tr>
-    <tr>
-      <th>2007-06-30</th>
-      <td>75.815491</td>
-      <td>0.889032</td>
-    </tr>
-    <tr>
-      <th>2007-07-31</th>
-      <td>80.273499</td>
-      <td>4.458007</td>
-    </tr>
-    <tr>
-      <th>2007-08-31</th>
-      <td>85.246680</td>
-      <td>4.973181</td>
     </tr>
   </tbody>
 </table>
@@ -975,55 +803,341 @@ Estos valores críticos corresponden a los umbrales para los niveles de signific
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_vcm</span> <span class="o">=</span> <span class="n">df_vcm</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># creando nuevo dataframe para analizar boxplot mensual</span>
+
+<span class="c1"># creando copia del dataframe transformado</span>
+<span class="n">df_mes</span> <span class="o">=</span> <span class="n">df_vcm</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="n">df_mes</span><span class="p">[</span><span class="s1">&#39;mes&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_mes</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;fechaoperacion&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">month</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">df_mes</span> <span class="o">=</span> <span class="n">df_mes</span><span class="p">[[</span><span class="s1">&#39;mes&#39;</span><span class="p">,</span><span class="s1">&#39;valor&#39;</span><span class="p">]]</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>Esta salida mostrará los primeros 20 registros del DataFrame ‘df_vcm’, donde la columna ‘diff’ ahora contiene las diferencias entre los valores sucesivos de la serie temporal.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Crear lienzo</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
-
-<span class="c1"># Gráfico de líneas para la serie original</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df_vcm</span><span class="p">[</span><span class="s1">&#39;fechaoperacion&#39;</span><span class="p">],</span> <span class="n">df_vcm</span><span class="p">[</span><span class="s1">&#39;valor&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Original&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
-
-<span class="c1"># Gráfico de líneas para la serie diferenciada</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df_vcm</span><span class="p">[</span><span class="s1">&#39;fechaoperacion&#39;</span><span class="p">],</span> <span class="n">df_vcm</span><span class="p">[</span><span class="s1">&#39;diff&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Diferenciada&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
-
-<span class="c1"># Línea horizontal en y = 0</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
-
-<span class="c1"># Configuración de título y etiquetas</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Diferenciación de serie de tiempo&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Fecha&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Valor&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-
-<span class="c1"># Mostrar gráfico</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calcular la serie diferenciada</span>
+<span class="n">df_vcm</span><span class="p">[</span><span class="s1">&#39;valor_dif&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_vcm</span><span class="p">[</span><span class="s1">&#39;valor&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">diff</span><span class="p">()</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Graficar ACF y PACF para la serie diferenciada</span>
+<span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
+<span class="n">plot_acf</span><span class="p">(</span><span class="n">df_vcm</span><span class="p">[</span><span class="s1">&#39;valor_dif&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">(),</span> <span class="n">lags</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax1</span><span class="p">)</span>
+<span class="n">plot_pacf</span><span class="p">(</span><span class="n">df_vcm</span><span class="p">[</span><span class="s1">&#39;valor_dif&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">(),</span> <span class="n">lags</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax2</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/und3_forecast_15_0.png" src="_images/und3_forecast_15_0.png" />
+<img alt="_images/und5_forecast_10_0.png" src="_images/und5_forecast_10_0.png" />
 </div>
 </div>
-<p><strong>2. Resultados</strong></p>
+</div>
+</div>
+<div class="section" id="graficos-de-autocorrelacion-acf-y-autocorrelacion-parcial-pacf-para-la-serie-de-tiempo-diferenciada">
+<h2>Gráficos de Autocorrelación (ACF) y Autocorrelación Parcial (PACF) para la serie de tiempo diferenciada<a class="headerlink" href="#graficos-de-autocorrelacion-acf-y-autocorrelacion-parcial-pacf-para-la-serie-de-tiempo-diferenciada" title="Permalink to this headline">¶</a></h2>
+<p>El gráfico ACF muestra que las autocorrelaciones se reducen rápidamente, lo cual es típico en un proceso que podría ajustarse bien con un modelo ARIMA.</p>
+<p>El gráfico PACF muestra un corte brusco después del primer <em>lag</em>, lo que sugiere que un modelo AR(1) podría ser adecuado.</p>
+<p>Estos gráficos son útiles para determinar los parámetros (p) y (q) del modelo ARIMA:</p>
 <ul class="simple">
-<li><p>Comportamiento de la Serie Original: La serie temporal en azul exhibe una tendencia inicialmente estable que se ve alterada por una variación más pronunciada hacia la segunda mitad del período analizado. Este cambio abrupto en la dinámica de la serie sugiere la presencia de factores externos o internos que influyen en su comportamiento. Esta variabilidad podría estar asociada con cambios en las condiciones del mercado, fluctuaciones económicas u otros eventos que afectan la serie a lo largo del tiempo.</p></li>
-<li><p>Análisis de la Serie Diferenciada:La serie diferenciada en rojo muestra <strong>fluctuaciones alrededor de cero</strong>, con algunos picos pronunciados. Estos picos representan cambios grandes en los valores de un periodo a otro. Las <strong>diferencias grandes y abruptas</strong> (picos altos tanto positivos como negativos) indican momentos de cambio significativo en la serie temporal, lo cual puede ser útil para detectar anomalías o cambios importantes en la dinámica de los datos.</p></li>
+<li><p>(p) (AR): El número de <em>lags</em> que muestran correlaciones significativas en el PACF antes de cortar. En este caso, (p) podría ser 1.</p></li>
+<li><p>(q) (MA): El número de <em>lags</em> con correlaciones significativas en el ACF antes de que caiga hacia cero. Aquí, (q) podría ser también 1.</p></li>
 </ul>
-<p>La serie original exhibe una tendencia inicial seguida de una variabilidad creciente hacia la segunda mitad del período analizado. Esta variación puede indicar cambios en las condiciones del entorno o el surgimiento de patrones estacionales.</p>
-<p>Por otro lado, la serie diferenciada muestra una estabilización alrededor de cero con fluctuaciones pronunciadas. Estas diferencias resaltan momentos de cambio significativo en los valores de la serie temporal, que pueden ser cruciales para comprender su dinámica subyacente.</p>
-<p><strong>Implicaciones para el Análisis y Modelado</strong></p>
-<ol class="simple">
-<li><p><strong>Estacionariedad</strong>: La serie diferenciada sugiere un esfuerzo exitoso por estabilizar la media, lo cual es crucial para muchos modelos estadísticos y de machine learning que asumen estacionariedad en la serie temporal.</p></li>
-<li><p><strong>Detección de Anomalías</strong>: Los picos en la serie diferenciada pueden ser útiles para identificar puntos anómalos o eventos extremos que podrían requerir una investigación más profunda o el desarrollo de modelos específicos para predecir o manejar estos cambios.</p></li>
-<li><p><strong>Desarrollo de Modelos</strong>: Modelar la serie original sin considerar la diferenciación podría llevar a modelos que no capturan adecuadamente la dinámica subyacente de la serie. Utilizar la serie diferenciada puede proporcionar una base más sólida para la predicción y el análisis, ya que resalta los cambios críticos en la serie temporal.</p></li>
-</ol>
-<p>En conclusión, la comparación entre la serie original y la serie diferenciada revela la importancia de la diferenciación en el análisis de series temporales. La diferenciación proporciona una perspectiva más clara de los cambios y la dinámica de los datos, lo que facilita la toma de decisiones informadas y la planificación estratégica.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ajustar un modelo ARIMA(1,1,1) a la serie temporal, usando los parámetros sugeridos por los gráficos ACF y PACF</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">ARIMA</span><span class="p">(</span><span class="n">df_vcm</span><span class="p">[</span><span class="s1">&#39;valor&#39;</span><span class="p">],</span> <span class="n">order</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">model_fit</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+
+<span class="c1"># Mostrar el resumen del modelo ajustado</span>
+<span class="n">model_fit</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="simpletable">
+<caption>SARIMAX Results</caption>
+<tr>
+  <th>Dep. Variable:</th>         <td>valor</td>      <th>  No. Observations:  </th>    <td>216</td>   
+</tr>
+<tr>
+  <th>Model:</th>            <td>ARIMA(1, 1, 1)</td>  <th>  Log Likelihood     </th> <td>-1290.861</td>
+</tr>
+<tr>
+  <th>Date:</th>            <td>Mon, 20 May 2024</td> <th>  AIC                </th> <td>2587.721</td> 
+</tr>
+<tr>
+  <th>Time:</th>                <td>16:31:47</td>     <th>  BIC                </th> <td>2597.833</td> 
+</tr>
+<tr>
+  <th>Sample:</th>                  <td>0</td>        <th>  HQIC               </th> <td>2591.807</td> 
+</tr>
+<tr>
+  <th></th>                      <td> - 216</td>      <th>                     </th>     <td> </td>    
+</tr>
+<tr>
+  <th>Covariance Type:</th>        <td>opg</td>       <th>                     </th>     <td> </td>    
+</tr>
+</table>
+<table class="simpletable">
+<tr>
+     <td></td>       <th>coef</th>     <th>std err</th>      <th>z</th>      <th>P>|z|</th>  <th>[0.025</th>    <th>0.975]</th>  
+</tr>
+<tr>
+  <th>ar.L1</th>  <td>    0.7581</td> <td>    0.070</td> <td>   10.867</td> <td> 0.000</td> <td>    0.621</td> <td>    0.895</td>
+</tr>
+<tr>
+  <th>ma.L1</th>  <td>   -0.9530</td> <td>    0.039</td> <td>  -24.198</td> <td> 0.000</td> <td>   -1.030</td> <td>   -0.876</td>
+</tr>
+<tr>
+  <th>sigma2</th> <td> 9575.1188</td> <td>  302.655</td> <td>   31.637</td> <td> 0.000</td> <td> 8981.925</td> <td> 1.02e+04</td>
+</tr>
+</table>
+<table class="simpletable">
+<tr>
+  <th>Ljung-Box (L1) (Q):</th>     <td>0.02</td>  <th>  Jarque-Bera (JB):  </th> <td>2871.77</td>
+</tr>
+<tr>
+  <th>Prob(Q):</th>                <td>0.89</td>  <th>  Prob(JB):          </th>  <td>0.00</td>  
+</tr>
+<tr>
+  <th>Heteroskedasticity (H):</th> <td>28.42</td> <th>  Skew:              </th>  <td>2.24</td>  
+</tr>
+<tr>
+  <th>Prob(H) (two-sided):</th>    <td>0.00</td>  <th>  Kurtosis:          </th>  <td>20.33</td> 
+</tr>
+</table><br/><br/>Warnings:<br/>[1] Covariance matrix calculated using the outer product of gradients (complex-step).</div></div>
+</div>
+</div>
+<div class="section" id="resumen-del-modelo-arima-1-1-1-ajustado-a-la-serie-de-tiempo">
+<h2>Resumen del modelo ARIMA(1,1,1) ajustado a la serie de tiempo<a class="headerlink" href="#resumen-del-modelo-arima-1-1-1-ajustado-a-la-serie-de-tiempo" title="Permalink to this headline">¶</a></h2>
+<p>El modelo ARIMA(1,1,1) ha sido ajustado nuevamente a la serie de tiempo con los siguientes resultados en el resumen:</p>
+<ul class="simple">
+<li><p><strong>Coeficiente AR1:</strong> 0.7581</p></li>
+<li><p><strong>Coeficiente MA1:</strong> -0.9530</p></li>
+<li><p><strong>Log Likelihood:</strong> -1290.861</p></li>
+<li><p><strong>AIC:</strong> 2587.721</p></li>
+<li><p><strong>BIC:</strong> 2597.833</p></li>
+</ul>
+<p>Los coeficientes son significativos y el modelo parece ser adecuado dadas las estadísticas proporcionadas.
+Se escoge un modelo ARIMA(1,1,1) cuando la evidencia inicial (como el análisis de las funciones de autocorrelación y autocorrelación parcial) sugiere que estos componentes son suficientes para modelar los datos de manera adecuada. En este caso particular, el modelo ARIMA(1,1,1) fue sugerido inicialmente basado en la observación de los gráficos ACF y PACF, y confirmado por su desempeño en la adaptación de los datos históricos.</p>
+<p>Este modelo es particularmente útil cuando se desea un modelo simple que aún sea capaz de capturar las dependencias clave en los datos sin sobreajustar o complicar demasiado el modelo, permitiendo realizar predicciones efectivas y entender la dinámica de la serie de tiempo.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Hacer predicciones con el modelo ARIMA ajustado para los próximos 24 períodos</span>
+<span class="n">forecast_24</span> <span class="o">=</span> <span class="n">model_fit</span><span class="o">.</span><span class="n">get_forecast</span><span class="p">(</span><span class="n">steps</span><span class="o">=</span><span class="mi">24</span><span class="p">)</span>
+<span class="n">forecast_conf_int_24</span> <span class="o">=</span> <span class="n">forecast_24</span><span class="o">.</span><span class="n">conf_int</span><span class="p">()</span>
+
+<span class="c1"># Crear un DataFrame para visualizar las predicciones y los intervalos de confianza para 24 meses</span>
+<span class="n">forecast_df_24</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;Predicted&#39;</span><span class="p">:</span> <span class="n">forecast_24</span><span class="o">.</span><span class="n">predicted_mean</span><span class="p">,</span>
+    <span class="s1">&#39;Lower CI&#39;</span><span class="p">:</span> <span class="n">forecast_conf_int_24</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span>
+    <span class="s1">&#39;Upper CI&#39;</span><span class="p">:</span> <span class="n">forecast_conf_int_24</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="p">})</span>
+
+<span class="n">forecast_df_24</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Predicted</th>
+      <th>Lower CI</th>
+      <th>Upper CI</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>216</th>
+      <td>596.349781</td>
+      <td>404.562335</td>
+      <td>788.137227</td>
+    </tr>
+    <tr>
+      <th>217</th>
+      <td>551.573290</td>
+      <td>305.360600</td>
+      <td>797.785979</td>
+    </tr>
+    <tr>
+      <th>218</th>
+      <td>517.630427</td>
+      <td>241.026309</td>
+      <td>794.234544</td>
+    </tr>
+    <tr>
+      <th>219</th>
+      <td>491.900006</td>
+      <td>196.190967</td>
+      <td>787.609045</td>
+    </tr>
+    <tr>
+      <th>220</th>
+      <td>472.395035</td>
+      <td>163.790377</td>
+      <td>780.999693</td>
+    </tr>
+    <tr>
+      <th>221</th>
+      <td>457.609272</td>
+      <td>139.800605</td>
+      <td>775.417940</td>
+    </tr>
+    <tr>
+      <th>222</th>
+      <td>446.400911</td>
+      <td>121.694746</td>
+      <td>771.107076</td>
+    </tr>
+    <tr>
+      <th>223</th>
+      <td>437.904401</td>
+      <td>107.796056</td>
+      <td>768.012746</td>
+    </tr>
+    <tr>
+      <th>224</th>
+      <td>431.463614</td>
+      <td>96.951888</td>
+      <td>765.975339</td>
+    </tr>
+    <tr>
+      <th>225</th>
+      <td>426.581168</td>
+      <td>88.350234</td>
+      <td>764.812103</td>
+    </tr>
+    <tr>
+      <th>226</th>
+      <td>422.880026</td>
+      <td>81.408808</td>
+      <td>764.351244</td>
+    </tr>
+    <tr>
+      <th>227</th>
+      <td>420.074371</td>
+      <td>75.704504</td>
+      <td>764.444239</td>
+    </tr>
+    <tr>
+      <th>228</th>
+      <td>417.947542</td>
+      <td>70.926797</td>
+      <td>764.968287</td>
+    </tr>
+    <tr>
+      <th>229</th>
+      <td>416.335297</td>
+      <td>66.846060</td>
+      <td>765.824534</td>
+    </tr>
+    <tr>
+      <th>230</th>
+      <td>415.113133</td>
+      <td>63.291500</td>
+      <td>766.934766</td>
+    </tr>
+    <tr>
+      <th>231</th>
+      <td>414.186671</td>
+      <td>60.135522</td>
+      <td>768.237819</td>
+    </tr>
+    <tr>
+      <th>232</th>
+      <td>413.484365</td>
+      <td>57.282480</td>
+      <td>769.686249</td>
+    </tr>
+    <tr>
+      <th>233</th>
+      <td>412.951981</td>
+      <td>54.660486</td>
+      <td>771.243476</td>
+    </tr>
+    <tr>
+      <th>234</th>
+      <td>412.548407</td>
+      <td>52.215396</td>
+      <td>772.881418</td>
+    </tr>
+    <tr>
+      <th>235</th>
+      <td>412.242477</td>
+      <td>49.906367</td>
+      <td>774.578588</td>
+    </tr>
+    <tr>
+      <th>236</th>
+      <td>412.010567</td>
+      <td>47.702543</td>
+      <td>776.318591</td>
+    </tr>
+    <tr>
+      <th>237</th>
+      <td>411.834767</td>
+      <td>45.580589</td>
+      <td>778.088946</td>
+    </tr>
+    <tr>
+      <th>238</th>
+      <td>411.701502</td>
+      <td>43.522836</td>
+      <td>779.880168</td>
+    </tr>
+    <tr>
+      <th>239</th>
+      <td>411.600480</td>
+      <td>41.515893</td>
+      <td>781.685067</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Generar fechas de predicción para 24 meses</span>
+<span class="n">prediction_dates_24</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="n">df_vcm</span><span class="p">[</span><span class="s1">&#39;fechaoperacion&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">pd</span><span class="o">.</span><span class="n">DateOffset</span><span class="p">(</span><span class="n">months</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">periods</span><span class="o">=</span><span class="mi">24</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;M&#39;</span><span class="p">)</span>
+
+<span class="c1"># Graficar la serie original y las predicciones para 24 meses</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df_vcm</span><span class="p">[</span><span class="s1">&#39;fechaoperacion&#39;</span><span class="p">],</span> <span class="n">df_vcm</span><span class="p">[</span><span class="s1">&#39;valor&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Datos originales&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">prediction_dates_24</span><span class="p">,</span> <span class="n">forecast_24</span><span class="o">.</span><span class="n">predicted_mean</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Predicciones 24 meses&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Predicciones de Serie de Tiempo con ARIMA(1,1,1) para 24 Meses&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Fecha&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Valor&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/und5_forecast_15_0.png" src="_images/und5_forecast_15_0.png" />
+</div>
 </div>
 </div>
 </div>
@@ -1053,19 +1167,12 @@ Estos valores críticos corresponden a los umbrales para los niveles de signific
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="und2_forecast.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="und4_forecast.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Unidad 2: Estructura de los datos en series de tiempo</p>
+            <p class="prev-next-title">Unidad 4: Introducción a los modelos de pronóstico</p>
         </div>
-    </a>
-    <a class='right-next' id="next-link" href="und4_forecast.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Unidad 4: Introducción a los modelos de pronóstico</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
     </a>
 </div>
             
