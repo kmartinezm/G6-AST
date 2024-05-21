@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Unidad 4: Introducción a los modelos de pronóstico &#8212; Análisis de Series de Tiempo</title>
+    <title>Unidad 5: Modelos estacionarios en series de tiempo &#8212; Análisis de Series de Tiempo</title>
     
   <link href="_static/css/theme.css" rel="stylesheet">
   <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -54,8 +54,7 @@
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Unidad 5: Modelos estacionarios en series de tiempo" href="und5_forecast.html" />
-    <link rel="prev" title="Unidad 3: Preprocesamiento y visualización" href="und3_forecast.html" />
+    <link rel="prev" title="Unidad 4: Introducción a los modelos de pronóstico" href="und4_forecast.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -110,13 +109,13 @@
    Unidad 3: Preprocesamiento y visualización
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="und4_forecast.html">
    Unidad 4: Introducción a los modelos de pronóstico
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="und5_forecast.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Unidad 5: Modelos estacionarios en series de tiempo
   </a>
  </li>
@@ -161,7 +160,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/und4_forecast.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="_sources/und5_forecast.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -181,7 +180,7 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/kmartinezm/G6-AST.git/issues/new?title=Issue%20on%20page%20%2Fund4_forecast.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/kmartinezm/G6-AST.git/issues/new?title=Issue%20on%20page%20%2Fund5_forecast.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -202,7 +201,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/kmartinezm/G6-AST.git/master?urlpath=tree/docs/und4_forecast.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/kmartinezm/G6-AST.git/master?urlpath=tree/docs/und5_forecast.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="_static/images/logo_binder.svg"
@@ -226,25 +225,35 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#introduccion">
-   2.1 Introducción
+   5.1 Introducción
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#objetivo">
-   2.2 Objetivo
+   5.2 Objetivo
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#accion">
-   2.3 Acción
+   5.3 Acción
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#preparacion-de-los-datos">
-     2.3.1 Preparación de los datos
+     5.3.1 Preparación de los datos
     </a>
    </li>
   </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#graficos-de-autocorrelacion-acf-y-autocorrelacion-parcial-pacf-para-la-serie-de-tiempo-diferenciada">
+   Gráficos de Autocorrelación (ACF) y Autocorrelación Parcial (PACF) para la serie de tiempo diferenciada
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#resumen-del-modelo-arima-1-1-1-ajustado-a-la-serie-de-tiempo">
+   Resumen del modelo ARIMA(1,1,1) ajustado a la serie de tiempo
+  </a>
  </li>
 </ul>
 
@@ -256,7 +265,7 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Unidad 4: Introducción a los modelos de pronóstico</h1>
+                <h1>Unidad 5: Modelos estacionarios en series de tiempo</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -268,25 +277,35 @@
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#introduccion">
-   2.1 Introducción
+   5.1 Introducción
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#objetivo">
-   2.2 Objetivo
+   5.2 Objetivo
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#accion">
-   2.3 Acción
+   5.3 Acción
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#preparacion-de-los-datos">
-     2.3.1 Preparación de los datos
+     5.3.1 Preparación de los datos
     </a>
    </li>
   </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#graficos-de-autocorrelacion-acf-y-autocorrelacion-parcial-pacf-para-la-serie-de-tiempo-diferenciada">
+   Gráficos de Autocorrelación (ACF) y Autocorrelación Parcial (PACF) para la serie de tiempo diferenciada
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#resumen-del-modelo-arima-1-1-1-ajustado-a-la-serie-de-tiempo">
+   Resumen del modelo ARIMA(1,1,1) ajustado a la serie de tiempo
+  </a>
  </li>
 </ul>
 
@@ -297,22 +316,23 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="unidad-4-introduccion-a-los-modelos-de-pronostico">
-<h1>Unidad 4: Introducción a los modelos de pronóstico<a class="headerlink" href="#unidad-4-introduccion-a-los-modelos-de-pronostico" title="Permalink to this headline">¶</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="unidad-5-modelos-estacionarios-en-series-de-tiempo">
+<h1>Unidad 5: Modelos estacionarios en series de tiempo<a class="headerlink" href="#unidad-5-modelos-estacionarios-en-series-de-tiempo" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="introduccion">
-<h2>2.1 Introducción<a class="headerlink" href="#introduccion" title="Permalink to this headline">¶</a></h2>
-<p>Abordaremos métodos de suavizamiento, buscando la aproximación cuantitativa del pronóstico de series temporales.</p>
+<h2>5.1 Introducción<a class="headerlink" href="#introduccion" title="Permalink to this headline">¶</a></h2>
+<p>Aplicaremos la metodología Box-Jenkins para identificar modelos autoregresivos integrados de media móvil (ARIMA) para analizar y predecir valores futuros de series de tiempo.</p>
 </div>
 <div class="section" id="objetivo">
-<h2>2.2 Objetivo<a class="headerlink" href="#objetivo" title="Permalink to this headline">¶</a></h2>
-<p>Conocer los modelos básicos de series de tiempo usando las técnicas apropiadas y comunes para ejemplificar las relaciones entre este tipo de datos.</p>
+<h2>5.2 Objetivo<a class="headerlink" href="#objetivo" title="Permalink to this headline">¶</a></h2>
+<p>Esquematizar los modelos convencionales de series de tiempo a través de la metodología Box-Jenkins para encontrar patrones que nos permitan predecir futuras observaciones.</p>
 </div>
 <div class="section" id="accion">
-<h2>2.3 Acción<a class="headerlink" href="#accion" title="Permalink to this headline">¶</a></h2>
-<p>En esta ocasión, se debe aplicar la metodología Holter-Winter y de suavizamiento a la variable tiempo.  Se invita al estudiante en ser claro en sus procedimientos, ya que la forma de justificarlos será evaluada</p>
+<h2>5.3 Acción<a class="headerlink" href="#accion" title="Permalink to this headline">¶</a></h2>
+<p>Se implementará la metodología de Box-Jenkins para la construcción de un modelo.</p>
 <div class="section" id="preparacion-de-los-datos">
-<h3>2.3.1 Preparación de los datos<a class="headerlink" href="#preparacion-de-los-datos" title="Permalink to this headline">¶</a></h3>
-<p>Previo al análisis detallado, es imperativo comprender el proceso de preparación de datos temporales para garantizar su idoneidad y coherencia en el estudio.</p>
+<h3>5.3.1 Preparación de los datos<a class="headerlink" href="#preparacion-de-los-datos" title="Permalink to this headline">¶</a></h3>
+<p>Previo al análisis detallado, es imperativo comprender el proceso de preparación de datos temporales para garantizar su idoneidad y coherencia en el estudio.
+cia en el estudio.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># importando librerias</span>
@@ -325,6 +345,8 @@
 <span class="kn">from</span> <span class="nn">statsmodels.tsa.stattools</span> <span class="kn">import</span> <span class="n">adfuller</span>
 <span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="nn">sm</span>
 <span class="kn">from</span> <span class="nn">statsmodels.tsa.holtwinters</span> <span class="kn">import</span> <span class="n">ExponentialSmoothing</span>
+<span class="kn">from</span> <span class="nn">statsmodels.graphics.tsaplots</span> <span class="kn">import</span> <span class="n">plot_acf</span><span class="p">,</span> <span class="n">plot_pacf</span>
+<span class="kn">from</span> <span class="nn">statsmodels.tsa.arima.model</span> <span class="kn">import</span> <span class="n">ARIMA</span>
 
 <span class="c1"># libreria para visualización de datos</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -696,215 +718,425 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Graficar la serie de tiempo y su tendencia estimada</span>
+
+<span class="c1"># creando lienzo</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+
+<span class="c1"># creando gráfica</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df_vcm</span><span class="p">[</span><span class="s1">&#39;fechaoperacion&#39;</span><span class="p">],</span> <span class="n">df_vcm</span><span class="p">[</span><span class="s1">&#39;valor&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Valor&#39;</span><span class="p">)</span>
+
+
 <span class="n">lowess</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">nonparametric</span><span class="o">.</span><span class="n">lowess</span>
 <span class="n">smoothed</span> <span class="o">=</span> <span class="n">lowess</span><span class="p">(</span><span class="n">df_vcm</span><span class="p">[</span><span class="s1">&#39;valor&#39;</span><span class="p">],</span> <span class="n">df_vcm</span><span class="p">[</span><span class="s1">&#39;fechaoperacion&#39;</span><span class="p">])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df_vcm</span><span class="p">[</span><span class="s1">&#39;fechaoperacion&#39;</span><span class="p">],</span> <span class="n">smoothed</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Tendencia estimada&#39;</span><span class="p">)</span>
+
+<span class="c1">#</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Fecha&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Precio de bolsa mensual&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-
-<span class="c1"># Crear una serie temporal</span>
-<span class="n">Ventas_ts</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">df_vcm</span><span class="p">[</span><span class="s1">&#39;valor&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="s1">&#39;2006-01&#39;</span><span class="p">,</span> <span class="n">periods</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">df_vcm</span><span class="p">),</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;M&#39;</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">Ventas_ts</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/und4_forecast_6_0.png" src="_images/und4_forecast_6_0.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2006-01-31      79.026486
-2006-02-28      75.520919
-2006-03-31      65.787447
-2006-04-30      54.012347
-2006-05-31      53.819582
-                 ...     
-2023-08-31     528.887237
-2023-09-30    1017.549693
-2023-10-31    1013.522208
-2023-11-30     500.608645
-2023-12-31     655.417696
-Freq: M, Length: 216, dtype: float64
+<img alt="_images/und5_forecast_6_0.png" src="_images/und5_forecast_6_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_vcm</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>fechaoperacion</th>
+      <th>valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2006-01-31</td>
+      <td>79.026486</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2006-02-28</td>
+      <td>75.520919</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2006-03-31</td>
+      <td>65.787447</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2006-04-30</td>
+      <td>54.012347</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2006-05-31</td>
+      <td>53.819582</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># creando nuevo dataframe para analizar boxplot mensual</span>
+
+<span class="c1"># creando copia del dataframe transformado</span>
+<span class="n">df_mes</span> <span class="o">=</span> <span class="n">df_vcm</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="n">df_mes</span><span class="p">[</span><span class="s1">&#39;mes&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_mes</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;fechaoperacion&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">month</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">df_mes</span> <span class="o">=</span> <span class="n">df_mes</span><span class="p">[[</span><span class="s1">&#39;mes&#39;</span><span class="p">,</span><span class="s1">&#39;valor&#39;</span><span class="p">]]</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Crear un boxplot de los datos</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">Ventas_ts</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">month</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">Ventas_ts</span><span class="o">.</span><span class="n">values</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;skyblue&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Mes&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calcular la serie diferenciada</span>
+<span class="n">df_vcm</span><span class="p">[</span><span class="s1">&#39;valor_dif&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_vcm</span><span class="p">[</span><span class="s1">&#39;valor&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">diff</span><span class="p">()</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Graficar ACF y PACF para la serie diferenciada</span>
+<span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
+<span class="n">plot_acf</span><span class="p">(</span><span class="n">df_vcm</span><span class="p">[</span><span class="s1">&#39;valor_dif&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">(),</span> <span class="n">lags</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax1</span><span class="p">)</span>
+<span class="n">plot_pacf</span><span class="p">(</span><span class="n">df_vcm</span><span class="p">[</span><span class="s1">&#39;valor_dif&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">(),</span> <span class="n">lags</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/und5_forecast_10_0.png" src="_images/und5_forecast_10_0.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="graficos-de-autocorrelacion-acf-y-autocorrelacion-parcial-pacf-para-la-serie-de-tiempo-diferenciada">
+<h2>Gráficos de Autocorrelación (ACF) y Autocorrelación Parcial (PACF) para la serie de tiempo diferenciada<a class="headerlink" href="#graficos-de-autocorrelacion-acf-y-autocorrelacion-parcial-pacf-para-la-serie-de-tiempo-diferenciada" title="Permalink to this headline">¶</a></h2>
+<p>El gráfico ACF muestra que las autocorrelaciones se reducen rápidamente, lo cual es típico en un proceso que podría ajustarse bien con un modelo ARIMA.</p>
+<p>El gráfico PACF muestra un corte brusco después del primer <em>lag</em>, lo que sugiere que un modelo AR(1) podría ser adecuado.</p>
+<p>Estos gráficos son útiles para determinar los parámetros (p) y (q) del modelo ARIMA:</p>
+<ul class="simple">
+<li><p>(p) (AR): El número de <em>lags</em> que muestran correlaciones significativas en el PACF antes de cortar. En este caso, (p) podría ser 1.</p></li>
+<li><p>(q) (MA): El número de <em>lags</em> con correlaciones significativas en el ACF antes de que caiga hacia cero. Aquí, (q) podría ser también 1.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ajustar un modelo ARIMA(1,1,1) a la serie temporal, usando los parámetros sugeridos por los gráficos ACF y PACF</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">ARIMA</span><span class="p">(</span><span class="n">df_vcm</span><span class="p">[</span><span class="s1">&#39;valor&#39;</span><span class="p">],</span> <span class="n">order</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">model_fit</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+
+<span class="c1"># Mostrar el resumen del modelo ajustado</span>
+<span class="n">model_fit</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="simpletable">
+<caption>SARIMAX Results</caption>
+<tr>
+  <th>Dep. Variable:</th>         <td>valor</td>      <th>  No. Observations:  </th>    <td>216</td>   
+</tr>
+<tr>
+  <th>Model:</th>            <td>ARIMA(1, 1, 1)</td>  <th>  Log Likelihood     </th> <td>-1290.861</td>
+</tr>
+<tr>
+  <th>Date:</th>            <td>Mon, 20 May 2024</td> <th>  AIC                </th> <td>2587.721</td> 
+</tr>
+<tr>
+  <th>Time:</th>                <td>16:31:47</td>     <th>  BIC                </th> <td>2597.833</td> 
+</tr>
+<tr>
+  <th>Sample:</th>                  <td>0</td>        <th>  HQIC               </th> <td>2591.807</td> 
+</tr>
+<tr>
+  <th></th>                      <td> - 216</td>      <th>                     </th>     <td> </td>    
+</tr>
+<tr>
+  <th>Covariance Type:</th>        <td>opg</td>       <th>                     </th>     <td> </td>    
+</tr>
+</table>
+<table class="simpletable">
+<tr>
+     <td></td>       <th>coef</th>     <th>std err</th>      <th>z</th>      <th>P>|z|</th>  <th>[0.025</th>    <th>0.975]</th>  
+</tr>
+<tr>
+  <th>ar.L1</th>  <td>    0.7581</td> <td>    0.070</td> <td>   10.867</td> <td> 0.000</td> <td>    0.621</td> <td>    0.895</td>
+</tr>
+<tr>
+  <th>ma.L1</th>  <td>   -0.9530</td> <td>    0.039</td> <td>  -24.198</td> <td> 0.000</td> <td>   -1.030</td> <td>   -0.876</td>
+</tr>
+<tr>
+  <th>sigma2</th> <td> 9575.1188</td> <td>  302.655</td> <td>   31.637</td> <td> 0.000</td> <td> 8981.925</td> <td> 1.02e+04</td>
+</tr>
+</table>
+<table class="simpletable">
+<tr>
+  <th>Ljung-Box (L1) (Q):</th>     <td>0.02</td>  <th>  Jarque-Bera (JB):  </th> <td>2871.77</td>
+</tr>
+<tr>
+  <th>Prob(Q):</th>                <td>0.89</td>  <th>  Prob(JB):          </th>  <td>0.00</td>  
+</tr>
+<tr>
+  <th>Heteroskedasticity (H):</th> <td>28.42</td> <th>  Skew:              </th>  <td>2.24</td>  
+</tr>
+<tr>
+  <th>Prob(H) (two-sided):</th>    <td>0.00</td>  <th>  Kurtosis:          </th>  <td>20.33</td> 
+</tr>
+</table><br/><br/>Warnings:<br/>[1] Covariance matrix calculated using the outer product of gradients (complex-step).</div></div>
+</div>
+</div>
+<div class="section" id="resumen-del-modelo-arima-1-1-1-ajustado-a-la-serie-de-tiempo">
+<h2>Resumen del modelo ARIMA(1,1,1) ajustado a la serie de tiempo<a class="headerlink" href="#resumen-del-modelo-arima-1-1-1-ajustado-a-la-serie-de-tiempo" title="Permalink to this headline">¶</a></h2>
+<p>El modelo ARIMA(1,1,1) ha sido ajustado nuevamente a la serie de tiempo con los siguientes resultados en el resumen:</p>
+<ul class="simple">
+<li><p><strong>Coeficiente AR1:</strong> 0.7581</p></li>
+<li><p><strong>Coeficiente MA1:</strong> -0.9530</p></li>
+<li><p><strong>Log Likelihood:</strong> -1290.861</p></li>
+<li><p><strong>AIC:</strong> 2587.721</p></li>
+<li><p><strong>BIC:</strong> 2597.833</p></li>
+</ul>
+<p>Los coeficientes son significativos y el modelo parece ser adecuado dadas las estadísticas proporcionadas.
+Se escoge un modelo ARIMA(1,1,1) cuando la evidencia inicial (como el análisis de las funciones de autocorrelación y autocorrelación parcial) sugiere que estos componentes son suficientes para modelar los datos de manera adecuada. En este caso particular, el modelo ARIMA(1,1,1) fue sugerido inicialmente basado en la observación de los gráficos ACF y PACF, y confirmado por su desempeño en la adaptación de los datos históricos.</p>
+<p>Este modelo es particularmente útil cuando se desea un modelo simple que aún sea capaz de capturar las dependencias clave en los datos sin sobreajustar o complicar demasiado el modelo, permitiendo realizar predicciones efectivas y entender la dinámica de la serie de tiempo.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Hacer predicciones con el modelo ARIMA ajustado para los próximos 24 períodos</span>
+<span class="n">forecast_24</span> <span class="o">=</span> <span class="n">model_fit</span><span class="o">.</span><span class="n">get_forecast</span><span class="p">(</span><span class="n">steps</span><span class="o">=</span><span class="mi">24</span><span class="p">)</span>
+<span class="n">forecast_conf_int_24</span> <span class="o">=</span> <span class="n">forecast_24</span><span class="o">.</span><span class="n">conf_int</span><span class="p">()</span>
+
+<span class="c1"># Crear un DataFrame para visualizar las predicciones y los intervalos de confianza para 24 meses</span>
+<span class="n">forecast_df_24</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;Predicted&#39;</span><span class="p">:</span> <span class="n">forecast_24</span><span class="o">.</span><span class="n">predicted_mean</span><span class="p">,</span>
+    <span class="s1">&#39;Lower CI&#39;</span><span class="p">:</span> <span class="n">forecast_conf_int_24</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span>
+    <span class="s1">&#39;Upper CI&#39;</span><span class="p">:</span> <span class="n">forecast_conf_int_24</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="p">})</span>
+
+<span class="n">forecast_df_24</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Predicted</th>
+      <th>Lower CI</th>
+      <th>Upper CI</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>216</th>
+      <td>596.349781</td>
+      <td>404.562335</td>
+      <td>788.137227</td>
+    </tr>
+    <tr>
+      <th>217</th>
+      <td>551.573290</td>
+      <td>305.360600</td>
+      <td>797.785979</td>
+    </tr>
+    <tr>
+      <th>218</th>
+      <td>517.630427</td>
+      <td>241.026309</td>
+      <td>794.234544</td>
+    </tr>
+    <tr>
+      <th>219</th>
+      <td>491.900006</td>
+      <td>196.190967</td>
+      <td>787.609045</td>
+    </tr>
+    <tr>
+      <th>220</th>
+      <td>472.395035</td>
+      <td>163.790377</td>
+      <td>780.999693</td>
+    </tr>
+    <tr>
+      <th>221</th>
+      <td>457.609272</td>
+      <td>139.800605</td>
+      <td>775.417940</td>
+    </tr>
+    <tr>
+      <th>222</th>
+      <td>446.400911</td>
+      <td>121.694746</td>
+      <td>771.107076</td>
+    </tr>
+    <tr>
+      <th>223</th>
+      <td>437.904401</td>
+      <td>107.796056</td>
+      <td>768.012746</td>
+    </tr>
+    <tr>
+      <th>224</th>
+      <td>431.463614</td>
+      <td>96.951888</td>
+      <td>765.975339</td>
+    </tr>
+    <tr>
+      <th>225</th>
+      <td>426.581168</td>
+      <td>88.350234</td>
+      <td>764.812103</td>
+    </tr>
+    <tr>
+      <th>226</th>
+      <td>422.880026</td>
+      <td>81.408808</td>
+      <td>764.351244</td>
+    </tr>
+    <tr>
+      <th>227</th>
+      <td>420.074371</td>
+      <td>75.704504</td>
+      <td>764.444239</td>
+    </tr>
+    <tr>
+      <th>228</th>
+      <td>417.947542</td>
+      <td>70.926797</td>
+      <td>764.968287</td>
+    </tr>
+    <tr>
+      <th>229</th>
+      <td>416.335297</td>
+      <td>66.846060</td>
+      <td>765.824534</td>
+    </tr>
+    <tr>
+      <th>230</th>
+      <td>415.113133</td>
+      <td>63.291500</td>
+      <td>766.934766</td>
+    </tr>
+    <tr>
+      <th>231</th>
+      <td>414.186671</td>
+      <td>60.135522</td>
+      <td>768.237819</td>
+    </tr>
+    <tr>
+      <th>232</th>
+      <td>413.484365</td>
+      <td>57.282480</td>
+      <td>769.686249</td>
+    </tr>
+    <tr>
+      <th>233</th>
+      <td>412.951981</td>
+      <td>54.660486</td>
+      <td>771.243476</td>
+    </tr>
+    <tr>
+      <th>234</th>
+      <td>412.548407</td>
+      <td>52.215396</td>
+      <td>772.881418</td>
+    </tr>
+    <tr>
+      <th>235</th>
+      <td>412.242477</td>
+      <td>49.906367</td>
+      <td>774.578588</td>
+    </tr>
+    <tr>
+      <th>236</th>
+      <td>412.010567</td>
+      <td>47.702543</td>
+      <td>776.318591</td>
+    </tr>
+    <tr>
+      <th>237</th>
+      <td>411.834767</td>
+      <td>45.580589</td>
+      <td>778.088946</td>
+    </tr>
+    <tr>
+      <th>238</th>
+      <td>411.701502</td>
+      <td>43.522836</td>
+      <td>779.880168</td>
+    </tr>
+    <tr>
+      <th>239</th>
+      <td>411.600480</td>
+      <td>41.515893</td>
+      <td>781.685067</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Generar fechas de predicción para 24 meses</span>
+<span class="n">prediction_dates_24</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="n">df_vcm</span><span class="p">[</span><span class="s1">&#39;fechaoperacion&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">pd</span><span class="o">.</span><span class="n">DateOffset</span><span class="p">(</span><span class="n">months</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">periods</span><span class="o">=</span><span class="mi">24</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;M&#39;</span><span class="p">)</span>
+
+<span class="c1"># Graficar la serie original y las predicciones para 24 meses</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df_vcm</span><span class="p">[</span><span class="s1">&#39;fechaoperacion&#39;</span><span class="p">],</span> <span class="n">df_vcm</span><span class="p">[</span><span class="s1">&#39;valor&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Datos originales&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">prediction_dates_24</span><span class="p">,</span> <span class="n">forecast_24</span><span class="o">.</span><span class="n">predicted_mean</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Predicciones 24 meses&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Predicciones de Serie de Tiempo con ARIMA(1,1,1) para 24 Meses&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Fecha&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Valor&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Boxplot de los valores mensuales&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/und4_forecast_7_0.png" src="_images/und4_forecast_7_0.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Estabilización de la variabilidad</span>
-<span class="n">VentasLog</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">Ventas_ts</span><span class="p">)</span>
-
-<span class="c1"># Aplicación del método Holt-Winters</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">ExponentialSmoothing</span><span class="p">(</span><span class="n">VentasLog</span><span class="p">,</span> <span class="n">seasonal_periods</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">trend</span><span class="o">=</span><span class="s1">&#39;add&#39;</span><span class="p">,</span> <span class="n">seasonal</span><span class="o">=</span><span class="s1">&#39;add&#39;</span><span class="p">)</span>
-<span class="n">fit</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
-
-<span class="c1"># Imprimir los parámetros del modelo</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">fit</span><span class="o">.</span><span class="n">params</span><span class="p">)</span>
-
-<span class="c1"># Graficar los resultados</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">VentasLog</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Observado&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fit</span><span class="o">.</span><span class="n">fittedvalues</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Predicho&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Estimación Holt-Winters&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Año&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Observado/predicho&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\users\uenergia\appdata\local\programs\python\python36\lib\site-packages\statsmodels\tsa\holtwinters\model.py:429: FutureWarning: After 0.13 initialization must be handled at model creation
-  FutureWarning,
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;smoothing_level&#39;: 0.8790051179983391, &#39;smoothing_trend&#39;: 0.0, &#39;smoothing_seasonal&#39;: 0.0, &#39;damping_trend&#39;: nan, &#39;initial_level&#39;: 5.015545342915327, &#39;initial_trend&#39;: 0.010128656223691891, &#39;initial_seasons&#39;: array([-0.68742447, -0.47861175, -0.65459621, -0.82284567, -0.93725023,
-       -1.01693852, -1.07559504, -0.95396906, -0.73663761, -0.58885816,
-       -0.82288391, -0.73055972]), &#39;use_boxcox&#39;: False, &#39;lamda&#39;: None, &#39;remove_bias&#39;: False}
-</pre></div>
-</div>
-<img alt="_images/und4_forecast_8_2.png" src="_images/und4_forecast_8_2.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Predicción del siguiente año</span>
-<span class="n">forecast_next_year</span> <span class="o">=</span> <span class="n">fit</span><span class="o">.</span><span class="n">forecast</span><span class="p">(</span><span class="n">steps</span><span class="o">=</span><span class="mi">24</span><span class="p">)</span>
-
-<span class="c1"># Graficar la predicción</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">VentasLog</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Observado&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fit</span><span class="o">.</span><span class="n">fittedvalues</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Entrenado&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="s1">&#39;2024-01&#39;</span><span class="p">,</span> <span class="n">periods</span><span class="o">=</span><span class="mi">24</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;M&#39;</span><span class="p">),</span> <span class="n">forecast_next_year</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Predicción&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Predicción del siguiente año&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Año&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Observado/predicho&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/und4_forecast_9_0.png" src="_images/und4_forecast_9_0.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">forecast_next_year</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-01-31    6.525577
-2024-02-29    6.744519
-2024-03-31    6.578663
-2024-04-30    6.420542
-2024-05-31    6.316266
-2024-06-30    6.246707
-2024-07-31    6.198179
-2024-08-31    6.329933
-2024-09-30    6.557393
-2024-10-31    6.715302
-2024-11-30    6.491404
-2024-12-31    6.593857
-2025-01-31    6.647121
-2025-02-28    6.866063
-2025-03-31    6.700207
-2025-04-30    6.542086
-2025-05-31    6.437810
-2025-06-30    6.368250
-2025-07-31    6.319723
-2025-08-31    6.451477
-2025-09-30    6.678937
-2025-10-31    6.836845
-2025-11-30    6.612948
-2025-12-31    6.715401
-Freq: M, dtype: float64
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">predict_pbna</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">forecast_next_year</span><span class="p">)</span>
-<span class="n">predict_pbna</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-01-31    682.373632
-2024-02-29    849.390244
-2024-03-31    719.576564
-2024-04-30    614.336073
-2024-05-31    553.502477
-2024-06-30    516.309602
-2024-07-31    491.852430
-2024-08-31    561.119201
-2024-09-30    704.433175
-2024-10-31    824.932507
-2024-11-30    659.448899
-2024-12-31    730.593582
-2025-01-31    770.562856
-2025-02-28    959.164513
-2025-03-31    812.573854
-2025-04-30    693.732197
-2025-05-31    625.036534
-2025-06-30    583.036892
-2025-07-31    555.418901
-2025-08-31    633.637634
-2025-09-30    795.473350
-2025-10-31    931.545885
-2025-11-30    744.675356
-2025-12-31    825.014700
-Freq: M, dtype: float64
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_squared_error</span><span class="p">,</span> <span class="n">mean_absolute_error</span>
-
-<span class="c1"># Selecciona un conjunto de datos de prueba</span>
-<span class="n">test_data</span> <span class="o">=</span> <span class="n">VentasLog</span><span class="p">[</span><span class="o">-</span><span class="mi">12</span><span class="p">:]</span>  <span class="c1"># Supongamos que los últimos 12 meses son el conjunto de prueba</span>
-
-<span class="c1"># Realiza la predicción para estos datos de prueba</span>
-<span class="n">forecast_next_year</span> <span class="o">=</span> <span class="n">fit</span><span class="o">.</span><span class="n">forecast</span><span class="p">(</span><span class="n">steps</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
-
-<span class="c1"># Calcula el Error Cuadrático Medio (MSE)</span>
-<span class="n">mse</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">test_data</span><span class="p">,</span> <span class="n">forecast_next_year</span><span class="p">)</span>
-
-<span class="c1"># Calcula el Error Absoluto Medio (MAE)</span>
-<span class="n">mae</span> <span class="o">=</span> <span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">test_data</span><span class="p">,</span> <span class="n">forecast_next_year</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Error Cuadrático Medio (MSE):&quot;</span><span class="p">,</span> <span class="n">mse</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Error Absoluto Medio (MAE):&quot;</span><span class="p">,</span> <span class="n">mae</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Error Cuadrático Medio (MSE): 0.22430213960370213
-Error Absoluto Medio (MAE): 0.35016947773733853
-</pre></div>
-</div>
-</div>
+<img alt="_images/und5_forecast_15_0.png" src="_images/und5_forecast_15_0.png" />
 </div>
 </div>
 </div>
@@ -935,19 +1167,12 @@ Error Absoluto Medio (MAE): 0.35016947773733853
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="und3_forecast.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="und4_forecast.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Unidad 3: Preprocesamiento y visualización</p>
+            <p class="prev-next-title">Unidad 4: Introducción a los modelos de pronóstico</p>
         </div>
-    </a>
-    <a class='right-next' id="next-link" href="und5_forecast.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Unidad 5: Modelos estacionarios en series de tiempo</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
     </a>
 </div>
             
