@@ -242,18 +242,50 @@
     <a class="reference internal nav-link" href="#preparacion-de-los-datos">
      5.3.1 Preparación de los datos
     </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#recopilacion-de-los-datos">
+       5.3.1.1 Recopilación de los datos
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#transformacion-de-datos">
+       5.3.1.2 Transformación de Datos
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#remuestreo-de-la-serie-temporal">
+       5.3.1.3 Remuestreo de la serie temporal
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#validacion-estacionariedad">
+     5.3.2 Validación Estacionariedad
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#autocorrelacion-acf-y-autorcorrelacion-parcial-pcaf">
+     5.3.3 Autocorrelación (ACF) y Autorcorrelación Parcial (PCAF)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#modelo-arima">
+     5.3.4 Modelo ARIMA
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#evaluacion-del-modelo">
+     5.3.5 Evaluación del modelo
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pronostico-arima">
+     5.3.6 Prónostico ARIMA
+    </a>
    </li>
   </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#graficos-de-autocorrelacion-acf-y-autocorrelacion-parcial-pacf-para-la-serie-de-tiempo-diferenciada">
-   Gráficos de Autocorrelación (ACF) y Autocorrelación Parcial (PACF) para la serie de tiempo diferenciada
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#resumen-del-modelo-arima-1-1-1-ajustado-a-la-serie-de-tiempo">
-   Resumen del modelo ARIMA(1,1,1) ajustado a la serie de tiempo
-  </a>
  </li>
 </ul>
 
@@ -294,18 +326,50 @@
     <a class="reference internal nav-link" href="#preparacion-de-los-datos">
      5.3.1 Preparación de los datos
     </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#recopilacion-de-los-datos">
+       5.3.1.1 Recopilación de los datos
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#transformacion-de-datos">
+       5.3.1.2 Transformación de Datos
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#remuestreo-de-la-serie-temporal">
+       5.3.1.3 Remuestreo de la serie temporal
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#validacion-estacionariedad">
+     5.3.2 Validación Estacionariedad
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#autocorrelacion-acf-y-autorcorrelacion-parcial-pcaf">
+     5.3.3 Autocorrelación (ACF) y Autorcorrelación Parcial (PCAF)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#modelo-arima">
+     5.3.4 Modelo ARIMA
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#evaluacion-del-modelo">
+     5.3.5 Evaluación del modelo
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pronostico-arima">
+     5.3.6 Prónostico ARIMA
+    </a>
    </li>
   </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#graficos-de-autocorrelacion-acf-y-autocorrelacion-parcial-pacf-para-la-serie-de-tiempo-diferenciada">
-   Gráficos de Autocorrelación (ACF) y Autocorrelación Parcial (PACF) para la serie de tiempo diferenciada
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#resumen-del-modelo-arima-1-1-1-ajustado-a-la-serie-de-tiempo">
-   Resumen del modelo ARIMA(1,1,1) ajustado a la serie de tiempo
-  </a>
  </li>
 </ul>
 
@@ -355,6 +419,9 @@ cia en el estudio.</p>
 </div>
 </div>
 </div>
+<div class="section" id="recopilacion-de-los-datos">
+<h4>5.3.1.1 Recopilación de los datos<a class="headerlink" href="#recopilacion-de-los-datos" title="Permalink to this headline">¶</a></h4>
+<p>En este bloque, se carga el conjunto de datos desde un archivo CSV utilizando la biblioteca pandas. Se especifica el delimitador de campos y se visualizan las primeras filas del dataframe para verificar que los datos se han cargado correctamente.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># recopilación de datos</span>
@@ -531,6 +598,10 @@ cia en el estudio.</p>
 <p>5 rows × 27 columns</p>
 </div></div></div>
 </div>
+</div>
+<div class="section" id="transformacion-de-datos">
+<h4>5.3.1.2 Transformación de Datos<a class="headerlink" href="#transformacion-de-datos" title="Permalink to this headline">¶</a></h4>
+<p>Este bloque define una función para transformar el dataframe original. Se realiza una copia del dataframe, se convierte la columna de fechas a un formato de fecha adecuado, y se agregan nuevas columnas para el año, mes y día. Luego, se seleccionan y reorganizan las columnas, y finalmente, se pivotea la tabla para facilitar su uso en análisis posteriores.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">trf_data</span><span class="p">(</span><span class="n">df_data</span><span class="p">):</span>
@@ -646,6 +717,10 @@ cia en el estudio.</p>
 </table>
 </div></div></div>
 </div>
+</div>
+<div class="section" id="remuestreo-de-la-serie-temporal">
+<h4>5.3.1.3 Remuestreo de la serie temporal<a class="headerlink" href="#remuestreo-de-la-serie-temporal" title="Permalink to this headline">¶</a></h4>
+<p>En este bloque, se crea una copia del dataframe transformado y se remuestrean los datos a valores mensuales. Se agrupan los datos por fecha y se calcula la media mensual. Luego, se seleccionan las columnas relevantes y se visualiza el nuevo dataframe remuestreado.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># remuestreando la serie de tiempo a valores mensuales</span>
@@ -715,6 +790,38 @@ cia en el estudio.</p>
 </table>
 </div></div></div>
 </div>
+</div>
+</div>
+<div class="section" id="validacion-estacionariedad">
+<h3>5.3.2 Validación Estacionariedad<a class="headerlink" href="#validacion-estacionariedad" title="Permalink to this headline">¶</a></h3>
+<p>La primera etapa de este análisis es la validación de estacionariedad de la serie temporal. La estacionariedad es un requisito fundamental para la modelización ARIMA, ya que asegura que las propiedades estadísticas de la serie no cambien con el tiempo. A continuación, se presentan los resultados obtenidos y se visualiza la tendencia de la serie temporal.</p>
+<p>Para verificar la estacionariedad de la serie, se aplicó la prueba de Dickey-Fuller Aumentada (ADF). Los resultados obtenidos se muestran a continuación:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># estacionario</span>
+<span class="n">adf</span> <span class="o">=</span> <span class="n">adfuller</span><span class="p">(</span><span class="n">df_vcm</span><span class="p">[</span><span class="s1">&#39;valor&#39;</span><span class="p">],</span><span class="n">maxlag</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;El T-Test es: &#39;</span><span class="p">,</span><span class="n">adf</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;El p-value es: &#39;</span><span class="p">,</span><span class="n">adf</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Valores criticos: &#39;</span><span class="p">,</span><span class="n">adf</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>El T-Test es:  -4.2831367549258434
+El p-value es:  0.0004750482118971582
+Valores criticos:  {&#39;1%&#39;: -3.461136478222043, &#39;5%&#39;: -2.875078880098608, &#39;10%&#39;: -2.5739861168199027}
+</pre></div>
+</div>
+</div>
+</div>
+<p>El valor del T-Test es -4.283, el cual es menor que los valores críticos en todos los niveles de significancia (1%, 5% y 10%). Específicamente:</p>
+<ul class="simple">
+<li><p>Nivel de significancia del 1%: El valor crítico es -3.461. Dado que -4.283 &lt; -3.461, rechazamos la hipótesis nula con un nivel de confianza del 99%.</p></li>
+<li><p>Nivel de significancia del 5%: El valor crítico es -2.875. Dado que -4.283 &lt; -2.875, rechazamos la hipótesis nula con un nivel de confianza del 95%.</p></li>
+<li><p>Nivel de significancia del 10%: El valor crítico es -2.573. Dado que -4.283 &lt; -2.573, rechazamos la hipótesis nula con un nivel de confianza del 90%.</p></li>
+<li><p>El p-value obtenido (0.000475) es considerablemente menor que el umbral común de 0.05, lo que refuerza nuestra decisión de rechazar la hipótesis nula de no estacionariedad.</p></li>
+</ul>
+<p>La serie temporal del precio de bolsa mensual es estacionaria. Este resultado valida que las propiedades estadísticas de la serie (como la media y la varianza) permanecen constantes en el tiempo, cumpliendo así con uno de los requisitos clave para la modelización ARIMA.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Graficar la serie de tiempo y su tendencia estimada</span>
@@ -739,119 +846,110 @@ cia en el estudio.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/und5_forecast_6_0.png" src="_images/und5_forecast_6_0.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_vcm</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>fechaoperacion</th>
-      <th>valor</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>2006-01-31</td>
-      <td>79.026486</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>2006-02-28</td>
-      <td>75.520919</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>2006-03-31</td>
-      <td>65.787447</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>2006-04-30</td>
-      <td>54.012347</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>2006-05-31</td>
-      <td>53.819582</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># creando nuevo dataframe para analizar boxplot mensual</span>
-
-<span class="c1"># creando copia del dataframe transformado</span>
-<span class="n">df_mes</span> <span class="o">=</span> <span class="n">df_vcm</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-
-<span class="n">df_mes</span><span class="p">[</span><span class="s1">&#39;mes&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_mes</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;fechaoperacion&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">month</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-
-<span class="n">df_mes</span> <span class="o">=</span> <span class="n">df_mes</span><span class="p">[[</span><span class="s1">&#39;mes&#39;</span><span class="p">,</span><span class="s1">&#39;valor&#39;</span><span class="p">]]</span>
-</pre></div>
+<img alt="_images/und5_forecast_12_0.png" src="_images/und5_forecast_12_0.png" />
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calcular la serie diferenciada</span>
-<span class="n">df_vcm</span><span class="p">[</span><span class="s1">&#39;valor_dif&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_vcm</span><span class="p">[</span><span class="s1">&#39;valor&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">diff</span><span class="p">()</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
+<div class="section" id="autocorrelacion-acf-y-autorcorrelacion-parcial-pcaf">
+<h3>5.3.3 Autocorrelación (ACF) y Autorcorrelación Parcial (PCAF)<a class="headerlink" href="#autocorrelacion-acf-y-autorcorrelacion-parcial-pcaf" title="Permalink to this headline">¶</a></h3>
+<p>Después de validar la estacionariedad de la serie temporal del precio de bolsa mensual, el siguiente paso en la metodología de Box-Jenkins es analizar la autocorrelación (ACF) y la autocorrelación parcial (PACF) de la serie. Este análisis nos ayuda a identificar el comportamiento y la estructura de dependencia temporal en los datos, facilitando la selección de los parámetros para los modelos ARIMA.</p>
+<p>Para calcular y graficar las funciones de autocorrelación (ACF) y autocorrelación parcial (PACF), se utilizó el siguiente código:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Graficar ACF y PACF para la serie diferenciada</span>
+
+<span class="c1"># creando lienzo</span>
 <span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
-<span class="n">plot_acf</span><span class="p">(</span><span class="n">df_vcm</span><span class="p">[</span><span class="s1">&#39;valor_dif&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">(),</span> <span class="n">lags</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax1</span><span class="p">)</span>
-<span class="n">plot_pacf</span><span class="p">(</span><span class="n">df_vcm</span><span class="p">[</span><span class="s1">&#39;valor_dif&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">(),</span> <span class="n">lags</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax2</span><span class="p">)</span>
+
+<span class="c1"># realizando la autocorrelación</span>
+<span class="n">plot_acf</span><span class="p">(</span><span class="n">df_vcm</span><span class="p">[</span><span class="s1">&#39;valor&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">(),</span> <span class="n">lags</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax1</span><span class="p">)</span>
+
+<span class="c1"># realiznado la autocorrelación parcial</span>
+<span class="n">plot_pacf</span><span class="p">(</span><span class="n">df_vcm</span><span class="p">[</span><span class="s1">&#39;valor&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">(),</span> <span class="n">lags</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax2</span><span class="p">)</span>
+
+<span class="c1"># mostrando gráfico</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/und5_forecast_10_0.png" src="_images/und5_forecast_10_0.png" />
+<img alt="_images/und5_forecast_14_0.png" src="_images/und5_forecast_14_0.png" />
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="graficos-de-autocorrelacion-acf-y-autocorrelacion-parcial-pacf-para-la-serie-de-tiempo-diferenciada">
-<h2>Gráficos de Autocorrelación (ACF) y Autocorrelación Parcial (PACF) para la serie de tiempo diferenciada<a class="headerlink" href="#graficos-de-autocorrelacion-acf-y-autocorrelacion-parcial-pacf-para-la-serie-de-tiempo-diferenciada" title="Permalink to this headline">¶</a></h2>
-<p>El gráfico ACF muestra que las autocorrelaciones se reducen rápidamente, lo cual es típico en un proceso que podría ajustarse bien con un modelo ARIMA.</p>
-<p>El gráfico PACF muestra un corte brusco después del primer <em>lag</em>, lo que sugiere que un modelo AR(1) podría ser adecuado.</p>
-<p>Estos gráficos son útiles para determinar los parámetros (p) y (q) del modelo ARIMA:</p>
 <ul class="simple">
-<li><p>(p) (AR): El número de <em>lags</em> que muestran correlaciones significativas en el PACF antes de cortar. En este caso, (p) podría ser 1.</p></li>
-<li><p>(q) (MA): El número de <em>lags</em> con correlaciones significativas en el ACF antes de que caiga hacia cero. Aquí, (q) podría ser también 1.</p></li>
+<li><p><strong>Autocorrelación (ACF):</strong>
+El gráfico de la ACF muestra la correlación entre la serie temporal y sus rezagos hasta 40 períodos. La ACF es útil para identificar la presencia de componentes de media móvil (MA).</p></li>
 </ul>
+<p>Observamos que las autocorrelaciones son significativas hasta el rezago 6, lo que sugiere que un modelo de media móvil de orden 6 (MA(6)) podría ser adecuado para capturar la dependencia temporal en los datos.</p>
+<ul class="simple">
+<li><p><strong>Autocorrelación Parcial (PACF):</strong>
+El gráfico de la PACF muestra la correlación parcial entre la serie temporal y sus rezagos, eliminando el efecto de los rezagos intermedios. La PACF es útil para identificar la presencia de componentes autoregresivos (AR).</p></li>
+</ul>
+<p>Observamos que las autocorrelaciones parciales son significativas hasta el rezago 4, lo que sugiere que un modelo autoregresivo de orden 4 (AR(4)) podría ser adecuado para capturar la dependencia temporal en los datos.</p>
+<p>Después de validar la estacionariedad de la serie temporal del precio de bolsa mensual y analizar las funciones de autocorrelación (ACF) y autocorrelación parcial (PACF), se procedió a la búsqueda del mejor modelo ARIMA. Aunque la serie temporal fue determinada como estacionaria, se identificó que presentaba una estacionariedad débil. Por lo tanto, se realizó una diferenciación adicional para mejorar la modelización.</p>
+<p>Para encontrar el mejor modelo ARIMA, se utilizó la función auto_arima de la biblioteca pmdarima, que selecciona automáticamente el modelo más adecuado basado en criterios de información y pruebas estadísticas. El código utilizado es el siguiente:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pmdarima.arima</span> <span class="kn">import</span> <span class="n">auto_arima</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="c1"># Suponiendo que dif_Indice_ts es tu serie temporal diferenciada</span>
+<span class="c1"># Ajustar el modelo ARIMA automáticamente</span>
+<span class="n">modelo</span> <span class="o">=</span> <span class="n">auto_arima</span><span class="p">(</span><span class="n">df_vcm</span><span class="p">[</span><span class="s1">&#39;valor&#39;</span><span class="p">],</span> <span class="n">seasonal</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">stepwise</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">suppress_warnings</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Mostrar el resumen del modelo ajustado</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">modelo</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                               SARIMAX Results                                
+==============================================================================
+Dep. Variable:                      y   No. Observations:                  216
+Model:               SARIMAX(4, 1, 3)   Log Likelihood               -1271.589
+Date:                Fri, 24 May 2024   AIC                           2559.179
+Time:                        15:20:37   BIC                           2586.144
+Sample:                             0   HQIC                          2570.074
+                                - 216                                         
+Covariance Type:                  opg                                         
+==============================================================================
+                 coef    std err          z      P&gt;|z|      [0.025      0.975]
+------------------------------------------------------------------------------
+ar.L1         -1.3596      0.073    -18.499      0.000      -1.504      -1.216
+ar.L2         -1.4133      0.110    -12.866      0.000      -1.629      -1.198
+ar.L3         -0.9801      0.097    -10.062      0.000      -1.171      -0.789
+ar.L4         -0.5078      0.042    -12.003      0.000      -0.591      -0.425
+ma.L1          1.2854      0.086     14.867      0.000       1.116       1.455
+ma.L2          1.0554      0.123      8.600      0.000       0.815       1.296
+ma.L3          0.4069      0.122      3.333      0.001       0.168       0.646
+sigma2      7977.5712    437.381     18.239      0.000    7120.321    8834.822
+===================================================================================
+Ljung-Box (L1) (Q):                   0.02   Jarque-Bera (JB):              1789.29
+Prob(Q):                              0.89   Prob(JB):                         0.00
+Heteroskedasticity (H):              19.45   Skew:                             2.10
+Prob(H) (two-sided):                  0.00   Kurtosis:                        16.49
+===================================================================================
+
+Warnings:
+[1] Covariance matrix calculated using the outer product of gradients (complex-step).
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p><strong>Modelo SARIMAX(4, 1, 3):</strong> Este modelo indica que el mejor ajuste para los datos se obtiene con un modelo autoregresivo de orden 4 (AR(4)), una diferenciación de orden 1, y una media móvil de orden 3 (MA(3)). La diferenciación de orden 1 se realizó para asegurar una mejor estacionariedad, dado que la serie original presentaba una estacionariedad débil.</p></li>
+<li><p><strong>Coeficientes y Significancia:</strong> Los coeficientes de los términos AR y MA son estadísticamente significativos, como lo indica el valor de p (P&gt;|z|) menor a 0.05 para cada coeficiente. Esto sugiere que los términos incluidos en el modelo son relevantes para explicar la variabilidad en los datos.</p></li>
+</ul>
+<p>El análisis detallado de la autocorrelación y autocorrelación parcial, seguido de la búsqueda automática del mejor modelo ARIMA, permitió identificar el modelo SARIMAX(4, 1, 3) como el más adecuado para la serie temporal del precio de bolsa mensual. Este modelo tiene en cuenta la estructura temporal y la necesidad de diferenciación para alcanzar una mejor estacionariedad, garantizando una mayor precisión en las predicciones futuras.</p>
+</div>
+<div class="section" id="modelo-arima">
+<h3>5.3.4 Modelo ARIMA<a class="headerlink" href="#modelo-arima" title="Permalink to this headline">¶</a></h3>
+<p>Tras validar la estacionariedad de la serie temporal y analizar las funciones de autocorrelación (ACF) y autocorrelación parcial (PACF), se procedió a la modelización utilizando la metodología ARIMA. Se ajustaron y evaluaron dos modelos: SARIMAX(1, 0, 1) y SARIMAX(4, 1, 3). A continuación, se presentan los resultados obtenidos y su interpretación.</p>
+<p>Para ajustar los modelos, se emplearon los siguientes códigos:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ajustar un modelo ARIMA(1,1,1) a la serie temporal, usando los parámetros sugeridos por los gráficos ACF y PACF</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">ARIMA</span><span class="p">(</span><span class="n">df_vcm</span><span class="p">[</span><span class="s1">&#39;valor&#39;</span><span class="p">],</span> <span class="n">order</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">ARIMA</span><span class="p">(</span><span class="n">df_vcm</span><span class="p">[</span><span class="s1">&#39;valor&#39;</span><span class="p">],</span> <span class="n">order</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
 <span class="n">model_fit</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
 
 <span class="c1"># Mostrar el resumen del modelo ajustado</span>
@@ -866,16 +964,16 @@ cia en el estudio.</p>
   <th>Dep. Variable:</th>         <td>valor</td>      <th>  No. Observations:  </th>    <td>216</td>   
 </tr>
 <tr>
-  <th>Model:</th>            <td>ARIMA(1, 1, 1)</td>  <th>  Log Likelihood     </th> <td>-1290.861</td>
+  <th>Model:</th>            <td>ARIMA(1, 0, 1)</td>  <th>  Log Likelihood     </th> <td>-1296.872</td>
 </tr>
 <tr>
-  <th>Date:</th>            <td>Mon, 20 May 2024</td> <th>  AIC                </th> <td>2587.721</td> 
+  <th>Date:</th>            <td>Fri, 24 May 2024</td> <th>  AIC                </th> <td>2601.744</td> 
 </tr>
 <tr>
-  <th>Time:</th>                <td>16:31:47</td>     <th>  BIC                </th> <td>2597.833</td> 
+  <th>Time:</th>                <td>15:20:37</td>     <th>  BIC                </th> <td>2615.245</td> 
 </tr>
 <tr>
-  <th>Sample:</th>                  <td>0</td>        <th>  HQIC               </th> <td>2591.807</td> 
+  <th>Sample:</th>                  <td>0</td>        <th>  HQIC               </th> <td>2607.198</td> 
 </tr>
 <tr>
   <th></th>                      <td> - 216</td>      <th>                     </th>     <td> </td>    
@@ -889,58 +987,200 @@ cia en el estudio.</p>
      <td></td>       <th>coef</th>     <th>std err</th>      <th>z</th>      <th>P>|z|</th>  <th>[0.025</th>    <th>0.975]</th>  
 </tr>
 <tr>
-  <th>ar.L1</th>  <td>    0.7581</td> <td>    0.070</td> <td>   10.867</td> <td> 0.000</td> <td>    0.621</td> <td>    0.895</td>
+  <th>const</th>  <td>  197.1948</td> <td>   69.402</td> <td>    2.841</td> <td> 0.004</td> <td>   61.169</td> <td>  333.221</td>
 </tr>
 <tr>
-  <th>ma.L1</th>  <td>   -0.9530</td> <td>    0.039</td> <td>  -24.198</td> <td> 0.000</td> <td>   -1.030</td> <td>   -0.876</td>
+  <th>ar.L1</th>  <td>    0.8279</td> <td>    0.036</td> <td>   23.247</td> <td> 0.000</td> <td>    0.758</td> <td>    0.898</td>
 </tr>
 <tr>
-  <th>sigma2</th> <td> 9575.1188</td> <td>  302.655</td> <td>   31.637</td> <td> 0.000</td> <td> 8981.925</td> <td> 1.02e+04</td>
+  <th>ma.L1</th>  <td>   -0.0153</td> <td>    0.052</td> <td>   -0.296</td> <td> 0.767</td> <td>   -0.116</td> <td>    0.086</td>
+</tr>
+<tr>
+  <th>sigma2</th> <td> 9556.0915</td> <td>  416.420</td> <td>   22.948</td> <td> 0.000</td> <td> 8739.923</td> <td> 1.04e+04</td>
 </tr>
 </table>
 <table class="simpletable">
 <tr>
-  <th>Ljung-Box (L1) (Q):</th>     <td>0.02</td>  <th>  Jarque-Bera (JB):  </th> <td>2871.77</td>
+  <th>Ljung-Box (L1) (Q):</th>     <td>0.00</td>  <th>  Jarque-Bera (JB):  </th> <td>2969.55</td>
+</tr>
+<tr>
+  <th>Prob(Q):</th>                <td>0.95</td>  <th>  Prob(JB):          </th>  <td>0.00</td>  
+</tr>
+<tr>
+  <th>Heteroskedasticity (H):</th> <td>16.51</td> <th>  Skew:              </th>  <td>2.47</td>  
+</tr>
+<tr>
+  <th>Prob(H) (two-sided):</th>    <td>0.00</td>  <th>  Kurtosis:          </th>  <td>20.48</td> 
+</tr>
+</table><br/><br/>Warnings:<br/>[1] Covariance matrix calculated using the outer product of gradients (complex-step).</div></div>
+</div>
+<ul class="simple">
+<li><p><strong>Coeficientes:</strong> El término AR(1) es significativo (p &lt; 0.05), mientras que el término MA(1) no lo es.</p></li>
+<li><p><strong>AIC/BIC:</strong> Los valores de AIC (2601.744) y BIC (2615.245) nos indican la calidad del ajuste del modelo, siendo AIC un indicador crucial para la selección de modelos.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ajustar un modelo ARIMA(4,1,3) a la serie temporal, usando los parámetros sugeridos por los gráficos ACF y PACF</span>
+<span class="n">model_vf</span> <span class="o">=</span> <span class="n">ARIMA</span><span class="p">(</span><span class="n">df_vcm</span><span class="p">[</span><span class="s1">&#39;valor&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">(),</span> <span class="n">order</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">model_fit_vf</span> <span class="o">=</span> <span class="n">model_vf</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+
+<span class="c1"># Mostrar el resumen del modelo ajustado</span>
+<span class="n">model_fit_vf</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="simpletable">
+<caption>SARIMAX Results</caption>
+<tr>
+  <th>Dep. Variable:</th>         <td>valor</td>      <th>  No. Observations:  </th>    <td>216</td>   
+</tr>
+<tr>
+  <th>Model:</th>            <td>ARIMA(4, 1, 3)</td>  <th>  Log Likelihood     </th> <td>-1271.589</td>
+</tr>
+<tr>
+  <th>Date:</th>            <td>Fri, 24 May 2024</td> <th>  AIC                </th> <td>2559.179</td> 
+</tr>
+<tr>
+  <th>Time:</th>                <td>15:20:37</td>     <th>  BIC                </th> <td>2586.144</td> 
+</tr>
+<tr>
+  <th>Sample:</th>                  <td>0</td>        <th>  HQIC               </th> <td>2570.074</td> 
+</tr>
+<tr>
+  <th></th>                      <td> - 216</td>      <th>                     </th>     <td> </td>    
+</tr>
+<tr>
+  <th>Covariance Type:</th>        <td>opg</td>       <th>                     </th>     <td> </td>    
+</tr>
+</table>
+<table class="simpletable">
+<tr>
+     <td></td>       <th>coef</th>     <th>std err</th>      <th>z</th>      <th>P>|z|</th>  <th>[0.025</th>    <th>0.975]</th>  
+</tr>
+<tr>
+  <th>ar.L1</th>  <td>   -1.3596</td> <td>    0.073</td> <td>  -18.499</td> <td> 0.000</td> <td>   -1.504</td> <td>   -1.216</td>
+</tr>
+<tr>
+  <th>ar.L2</th>  <td>   -1.4133</td> <td>    0.110</td> <td>  -12.866</td> <td> 0.000</td> <td>   -1.629</td> <td>   -1.198</td>
+</tr>
+<tr>
+  <th>ar.L3</th>  <td>   -0.9801</td> <td>    0.097</td> <td>  -10.062</td> <td> 0.000</td> <td>   -1.171</td> <td>   -0.789</td>
+</tr>
+<tr>
+  <th>ar.L4</th>  <td>   -0.5078</td> <td>    0.042</td> <td>  -12.003</td> <td> 0.000</td> <td>   -0.591</td> <td>   -0.425</td>
+</tr>
+<tr>
+  <th>ma.L1</th>  <td>    1.2854</td> <td>    0.086</td> <td>   14.867</td> <td> 0.000</td> <td>    1.116</td> <td>    1.455</td>
+</tr>
+<tr>
+  <th>ma.L2</th>  <td>    1.0554</td> <td>    0.123</td> <td>    8.600</td> <td> 0.000</td> <td>    0.815</td> <td>    1.296</td>
+</tr>
+<tr>
+  <th>ma.L3</th>  <td>    0.4069</td> <td>    0.122</td> <td>    3.333</td> <td> 0.001</td> <td>    0.168</td> <td>    0.646</td>
+</tr>
+<tr>
+  <th>sigma2</th> <td> 7977.5712</td> <td>  437.381</td> <td>   18.239</td> <td> 0.000</td> <td> 7120.321</td> <td> 8834.822</td>
+</tr>
+</table>
+<table class="simpletable">
+<tr>
+  <th>Ljung-Box (L1) (Q):</th>     <td>0.02</td>  <th>  Jarque-Bera (JB):  </th> <td>1789.29</td>
 </tr>
 <tr>
   <th>Prob(Q):</th>                <td>0.89</td>  <th>  Prob(JB):          </th>  <td>0.00</td>  
 </tr>
 <tr>
-  <th>Heteroskedasticity (H):</th> <td>28.42</td> <th>  Skew:              </th>  <td>2.24</td>  
+  <th>Heteroskedasticity (H):</th> <td>19.45</td> <th>  Skew:              </th>  <td>2.10</td>  
 </tr>
 <tr>
-  <th>Prob(H) (two-sided):</th>    <td>0.00</td>  <th>  Kurtosis:          </th>  <td>20.33</td> 
+  <th>Prob(H) (two-sided):</th>    <td>0.00</td>  <th>  Kurtosis:          </th>  <td>16.49</td> 
 </tr>
 </table><br/><br/>Warnings:<br/>[1] Covariance matrix calculated using the outer product of gradients (complex-step).</div></div>
 </div>
-</div>
-<div class="section" id="resumen-del-modelo-arima-1-1-1-ajustado-a-la-serie-de-tiempo">
-<h2>Resumen del modelo ARIMA(1,1,1) ajustado a la serie de tiempo<a class="headerlink" href="#resumen-del-modelo-arima-1-1-1-ajustado-a-la-serie-de-tiempo" title="Permalink to this headline">¶</a></h2>
-<p>El modelo ARIMA(1,1,1) ha sido ajustado nuevamente a la serie de tiempo con los siguientes resultados en el resumen:</p>
 <ul class="simple">
-<li><p><strong>Coeficiente AR1:</strong> 0.7581</p></li>
-<li><p><strong>Coeficiente MA1:</strong> -0.9530</p></li>
-<li><p><strong>Log Likelihood:</strong> -1290.861</p></li>
-<li><p><strong>AIC:</strong> 2587.721</p></li>
-<li><p><strong>BIC:</strong> 2597.833</p></li>
+<li><p><strong>Coeficientes:</strong> Todos los términos AR y MA son significativos (p &lt; 0.05), indicando que estos términos son relevantes para el modelo.</p></li>
+<li><p><strong>AIC/BIC:</strong> Los valores de AIC (2559.179) y BIC (2586.144) son menores comparados con el modelo ARIMA(1, 0, 1), sugiriendo un mejor ajuste del modelo.</p></li>
 </ul>
-<p>Los coeficientes son significativos y el modelo parece ser adecuado dadas las estadísticas proporcionadas.
-Se escoge un modelo ARIMA(1,1,1) cuando la evidencia inicial (como el análisis de las funciones de autocorrelación y autocorrelación parcial) sugiere que estos componentes son suficientes para modelar los datos de manera adecuada. En este caso particular, el modelo ARIMA(1,1,1) fue sugerido inicialmente basado en la observación de los gráficos ACF y PACF, y confirmado por su desempeño en la adaptación de los datos históricos.</p>
-<p>Este modelo es particularmente útil cuando se desea un modelo simple que aún sea capaz de capturar las dependencias clave en los datos sin sobreajustar o complicar demasiado el modelo, permitiendo realizar predicciones efectivas y entender la dinámica de la serie de tiempo.</p>
+<p>Comparando los dos modelos ajustados, el modelo SARIMAX(4, 1, 3) presenta un mejor ajuste en términos de AIC y BIC, y todos sus coeficientes son significativos.</p>
+<p>Este análisis refuerza la elección del modelo SARIMAX(4, 1, 3) como el más adecuado para la serie temporal del precio de bolsa mensual, proporcionando una base sólida para las predicciones y análisis futuros en la metodología de Box-Jenkins.</p>
+</div>
+<div class="section" id="evaluacion-del-modelo">
+<h3>5.3.5 Evaluación del modelo<a class="headerlink" href="#evaluacion-del-modelo" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><strong>Prueba de Ljung-Box:</strong> La prueba de Ljung-Box evalúa si hay autocorrelación significativa en los residuos de un modelo ARIMA. Los resultados que has obtenido son los siguientes:</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Hacer predicciones con el modelo ARIMA ajustado para los próximos 24 períodos</span>
-<span class="n">forecast_24</span> <span class="o">=</span> <span class="n">model_fit</span><span class="o">.</span><span class="n">get_forecast</span><span class="p">(</span><span class="n">steps</span><span class="o">=</span><span class="mi">24</span><span class="p">)</span>
-<span class="n">forecast_conf_int_24</span> <span class="o">=</span> <span class="n">forecast_24</span><span class="o">.</span><span class="n">conf_int</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">statsmodels.stats.diagnostic</span> <span class="kn">import</span> <span class="n">acorr_ljungbox</span>
+
+<span class="c1"># Obtener los residuos del modelo ajustado</span>
+<span class="n">residuals</span> <span class="o">=</span> <span class="n">model_fit_vf</span><span class="o">.</span><span class="n">resid</span>
+
+<span class="c1"># Prueba de Ljung-Box para autocorrelación en los residuos</span>
+<span class="n">ljung_box_result</span> <span class="o">=</span> <span class="n">acorr_ljungbox</span><span class="p">(</span><span class="n">residuals</span><span class="o">.</span><span class="n">dropna</span><span class="p">(),</span> <span class="n">lags</span><span class="o">=</span><span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">],</span> <span class="n">return_df</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Prueba de Ljung-Box:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ljung_box_result</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Prueba de Ljung-Box:
+      lb_stat  lb_pvalue
+10   6.751698   0.748660
+20  18.629080   0.546040
+30  22.686147   0.827939
+</pre></div>
+</div>
+</div>
+</div>
+<p>Los altos p-valores indican que no se rechaza la hipótesis nula de que no hay autocorrelación en los residuos a esos rezagos. En otras palabras, no hay evidencia significativa de autocorrelación en los residuos a los rezagos 10, 20, y 30. Esto sugiere que los residuos se comportan como ruido blanco, lo que es deseable y sugiere que el modelo ARIMA ajustado es adecuado.</p>
+<ul class="simple">
+<li><p><strong>Estadístico de Durbin-Watson:</strong> El estadístico de Durbin-Watson se utiliza para detectar la autocorrelación de primer orden en los residuos de un modelo de regresión:</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">statsmodels.stats.stattools</span> <span class="kn">import</span> <span class="n">durbin_watson</span>
+
+<span class="c1"># Prueba de Durbin-Watson para autocorrelación en los residuos</span>
+<span class="n">dw_stat</span> <span class="o">=</span> <span class="n">durbin_watson</span><span class="p">(</span><span class="n">residuals</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Estadístico de Durbin-Watson: </span><span class="si">{</span><span class="n">dw_stat</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Estadístico de Durbin-Watson: 1.967331812982635
+</pre></div>
+</div>
+</div>
+</div>
+<p>El valor del estadístico de Durbin-Watson varía entre 0 y 4:</p>
+<ul class="simple">
+<li><p>Un valor alrededor de 2 sugiere que no hay autocorrelación de primer orden en los residuos.</p></li>
+<li><p>Un valor cercano a 0 sugiere autocorrelación positiva.</p></li>
+<li><p>Un valor cercano a 4 sugiere autocorrelación negativa.</p></li>
+</ul>
+<p>En este caso, el estadístico de Durbin-Watson es aproximadamente 2, lo que indica que no hay autocorrelación significativa de primer orden en los residuos. Esto es consistente con los resultados de la prueba de Ljung-Box y sugiere que los residuos son efectivamente ruido blanco.</p>
+<p>Los resultados de la prueba de Ljung-Box y el estadístico de Durbin-Watson sugieren que los residuos del modelo ARIMA(4,1,3) no presentan autocorrelación significativa y se comportan como ruido blanco.</p>
+</div>
+<div class="section" id="pronostico-arima">
+<h3>5.3.6 Prónostico ARIMA<a class="headerlink" href="#pronostico-arima" title="Permalink to this headline">¶</a></h3>
+<p>Luego de ajustar el modelo SARIMAX(4, 1, 3) como el más adecuado para la serie temporal del precio de bolsa mensual, se realizaron predicciones para los próximos 12 meses. Este pronóstico es crucial para la planificación y toma de decisiones estratégicas en el mercado de energía.</p>
+<p>Para generar las predicciones y visualizar los resultados, se utilizaron los siguientes bloques de código:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Hacer predicciones con el modelo ARIMA ajustado para los próximos 12 períodos</span>
+<span class="n">forecast_12</span> <span class="o">=</span> <span class="n">model_fit_vf</span><span class="o">.</span><span class="n">get_forecast</span><span class="p">(</span><span class="n">steps</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">forecast_conf_int_12</span> <span class="o">=</span> <span class="n">forecast_12</span><span class="o">.</span><span class="n">conf_int</span><span class="p">()</span>
 
 <span class="c1"># Crear un DataFrame para visualizar las predicciones y los intervalos de confianza para 24 meses</span>
-<span class="n">forecast_df_24</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
-    <span class="s1">&#39;Predicted&#39;</span><span class="p">:</span> <span class="n">forecast_24</span><span class="o">.</span><span class="n">predicted_mean</span><span class="p">,</span>
-    <span class="s1">&#39;Lower CI&#39;</span><span class="p">:</span> <span class="n">forecast_conf_int_24</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span>
-    <span class="s1">&#39;Upper CI&#39;</span><span class="p">:</span> <span class="n">forecast_conf_int_24</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">forecast_df_12</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;Predicted&#39;</span><span class="p">:</span> <span class="n">forecast_12</span><span class="o">.</span><span class="n">predicted_mean</span><span class="p">,</span>
+    <span class="s1">&#39;Lower CI&#39;</span><span class="p">:</span> <span class="n">forecast_conf_int_12</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span>
+    <span class="s1">&#39;Upper CI&#39;</span><span class="p">:</span> <span class="n">forecast_conf_int_12</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
 <span class="p">})</span>
 
-<span class="n">forecast_df_24</span>
+<span class="n">forecast_df_12</span>
 </pre></div>
 </div>
 </div>
@@ -971,147 +1211,75 @@ Se escoge un modelo ARIMA(1,1,1) cuando la evidencia inicial (como el análisis 
   <tbody>
     <tr>
       <th>216</th>
-      <td>596.349781</td>
-      <td>404.562335</td>
-      <td>788.137227</td>
+      <td>798.637248</td>
+      <td>623.578654</td>
+      <td>973.695841</td>
     </tr>
     <tr>
       <th>217</th>
-      <td>551.573290</td>
-      <td>305.360600</td>
-      <td>797.785979</td>
+      <td>909.751931</td>
+      <td>671.188760</td>
+      <td>1148.315103</td>
     </tr>
     <tr>
       <th>218</th>
-      <td>517.630427</td>
-      <td>241.026309</td>
-      <td>794.234544</td>
+      <td>709.861294</td>
+      <td>444.123146</td>
+      <td>975.599442</td>
     </tr>
     <tr>
       <th>219</th>
-      <td>491.900006</td>
-      <td>196.190967</td>
-      <td>787.609045</td>
+      <td>605.610649</td>
+      <td>322.970212</td>
+      <td>888.251086</td>
     </tr>
     <tr>
       <th>220</th>
-      <td>472.395035</td>
-      <td>163.790377</td>
-      <td>780.999693</td>
+      <td>848.230405</td>
+      <td>544.214987</td>
+      <td>1152.245824</td>
     </tr>
     <tr>
       <th>221</th>
-      <td>457.609272</td>
-      <td>139.800605</td>
-      <td>775.417940</td>
+      <td>805.189202</td>
+      <td>456.522016</td>
+      <td>1153.856389</td>
     </tr>
     <tr>
       <th>222</th>
-      <td>446.400911</td>
-      <td>121.694746</td>
-      <td>771.107076</td>
+      <td>724.485901</td>
+      <td>358.304219</td>
+      <td>1090.667584</td>
     </tr>
     <tr>
       <th>223</th>
-      <td>437.904401</td>
-      <td>107.796056</td>
-      <td>768.012746</td>
+      <td>710.196044</td>
+      <td>329.526420</td>
+      <td>1090.865668</td>
     </tr>
     <tr>
       <th>224</th>
-      <td>431.463614</td>
-      <td>96.951888</td>
-      <td>765.975339</td>
+      <td>762.662978</td>
+      <td>359.652186</td>
+      <td>1165.673771</td>
     </tr>
     <tr>
       <th>225</th>
-      <td>426.581168</td>
-      <td>88.350234</td>
-      <td>764.812103</td>
+      <td>812.477149</td>
+      <td>388.151533</td>
+      <td>1236.802764</td>
     </tr>
     <tr>
       <th>226</th>
-      <td>422.880026</td>
-      <td>81.408808</td>
-      <td>764.351244</td>
+      <td>725.584689</td>
+      <td>281.868066</td>
+      <td>1169.301312</td>
     </tr>
     <tr>
       <th>227</th>
-      <td>420.074371</td>
-      <td>75.704504</td>
-      <td>764.444239</td>
-    </tr>
-    <tr>
-      <th>228</th>
-      <td>417.947542</td>
-      <td>70.926797</td>
-      <td>764.968287</td>
-    </tr>
-    <tr>
-      <th>229</th>
-      <td>416.335297</td>
-      <td>66.846060</td>
-      <td>765.824534</td>
-    </tr>
-    <tr>
-      <th>230</th>
-      <td>415.113133</td>
-      <td>63.291500</td>
-      <td>766.934766</td>
-    </tr>
-    <tr>
-      <th>231</th>
-      <td>414.186671</td>
-      <td>60.135522</td>
-      <td>768.237819</td>
-    </tr>
-    <tr>
-      <th>232</th>
-      <td>413.484365</td>
-      <td>57.282480</td>
-      <td>769.686249</td>
-    </tr>
-    <tr>
-      <th>233</th>
-      <td>412.951981</td>
-      <td>54.660486</td>
-      <td>771.243476</td>
-    </tr>
-    <tr>
-      <th>234</th>
-      <td>412.548407</td>
-      <td>52.215396</td>
-      <td>772.881418</td>
-    </tr>
-    <tr>
-      <th>235</th>
-      <td>412.242477</td>
-      <td>49.906367</td>
-      <td>774.578588</td>
-    </tr>
-    <tr>
-      <th>236</th>
-      <td>412.010567</td>
-      <td>47.702543</td>
-      <td>776.318591</td>
-    </tr>
-    <tr>
-      <th>237</th>
-      <td>411.834767</td>
-      <td>45.580589</td>
-      <td>778.088946</td>
-    </tr>
-    <tr>
-      <th>238</th>
-      <td>411.701502</td>
-      <td>43.522836</td>
-      <td>779.880168</td>
-    </tr>
-    <tr>
-      <th>239</th>
-      <td>411.600480</td>
-      <td>41.515893</td>
-      <td>781.685067</td>
+      <td>729.154271</td>
+      <td>272.129741</td>
+      <td>1186.178802</td>
     </tr>
   </tbody>
 </table>
@@ -1120,13 +1288,13 @@ Se escoge un modelo ARIMA(1,1,1) cuando la evidencia inicial (como el análisis 
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Generar fechas de predicción para 24 meses</span>
-<span class="n">prediction_dates_24</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="n">df_vcm</span><span class="p">[</span><span class="s1">&#39;fechaoperacion&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">pd</span><span class="o">.</span><span class="n">DateOffset</span><span class="p">(</span><span class="n">months</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">periods</span><span class="o">=</span><span class="mi">24</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;M&#39;</span><span class="p">)</span>
+<span class="n">prediction_dates_12</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="n">df_vcm</span><span class="p">[</span><span class="s1">&#39;fechaoperacion&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">pd</span><span class="o">.</span><span class="n">DateOffset</span><span class="p">(</span><span class="n">months</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">periods</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;M&#39;</span><span class="p">)</span>
 
 <span class="c1"># Graficar la serie original y las predicciones para 24 meses</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df_vcm</span><span class="p">[</span><span class="s1">&#39;fechaoperacion&#39;</span><span class="p">],</span> <span class="n">df_vcm</span><span class="p">[</span><span class="s1">&#39;valor&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Datos originales&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">prediction_dates_24</span><span class="p">,</span> <span class="n">forecast_24</span><span class="o">.</span><span class="n">predicted_mean</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Predicciones 24 meses&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Predicciones de Serie de Tiempo con ARIMA(1,1,1) para 24 Meses&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">prediction_dates_12</span><span class="p">,</span> <span class="n">forecast_12</span><span class="o">.</span><span class="n">predicted_mean</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Predicciones 24 meses&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Predicciones de Serie de Tiempo con ARIMA(4,1,3) para 24 Meses&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Fecha&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Valor&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
@@ -1136,8 +1304,15 @@ Se escoge un modelo ARIMA(1,1,1) cuando la evidencia inicial (como el análisis 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/und5_forecast_15_0.png" src="_images/und5_forecast_15_0.png" />
+<img alt="_images/und5_forecast_30_0.png" src="_images/und5_forecast_30_0.png" />
 </div>
+</div>
+<ul class="simple">
+<li><p>La gráfica muestra la serie temporal original y las predicciones para los próximos 12 meses.</p></li>
+<li><p>Las predicciones se visualizan con una línea de puntos, y los intervalos de confianza están representados por una sombra alrededor de las predicciones.</p></li>
+<li><p>Esto proporciona una representación visual clara de la tendencia futura esperada del precio de bolsa mensual y la incertidumbre asociada a estas predicciones.</p></li>
+</ul>
+<p>El modelo SARIMAX(4, 1, 3) ha proporcionado un pronóstico robusto para los próximos 12 meses del precio de bolsa de energía. Las predicciones y sus intervalos de confianza permiten una evaluación detallada de las posibles variaciones futuras, proporcionando información valiosa para la planificación y toma de decisiones estratégicas en el mercado de energía.</p>
 </div>
 </div>
 </div>
