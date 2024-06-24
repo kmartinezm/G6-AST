@@ -3,19 +3,19 @@
 
 # # Unidad 3: Preprocesamiento y visualización
 # 
-# ## 2.1 Introducción
+# ## 3.1 Introducción
 # 
 # A través de gráficos y algunas funciones para preprocesar bases de datos, describiremos el comportamiento subyacente dentro de la relación entre los datos.
 # 
-# ## 2.2 Objetivo
+# ## 3.2 Objetivo
 # 
 # Manipular las bases de datos que involucran datos en series de tempo por medio de funciones para explicar el comportamiento regular en un intervalo de tiempo.
 # 
-# ## 2.3 Acción
+# ## 3.3 Acción
 # 
 # Continuando con la dinámica de la construcción del documento con repositorio en github, se debe incluir en el documento la descomposición, la estacionariedad y la diferenciación, en caso de ser necesarias, de la variable y/o variables seleccionadas con estructura a través del tiempo. Además, si es necesario, se debe implementar alguna transformación con el fin de controlar la tendencia y la variabilidad, de la misma. Debes justificar, el por qué son o no necesarios dichos procedimientos.
 # 
-# ### 2.3.1 Preparación de los datos
+# ### 3.3.1 Preparación de los datos
 # 
 # Previo al análisis detallado, es imperativo comprender el proceso de preparación de datos temporales para garantizar su idoneidad y coherencia en el estudio.
 
@@ -81,7 +81,7 @@ df = trf_data(df_data)
 df.head()
 
 
-# ### 2.2.2 Descomposición de la serie de tiempo
+# ### 3.2.2 Descomposición de la serie de tiempo
 # 
 # Adentrándonos en la estructura de las series temporales, exploramos el proceso de descomposición. A través de este análisis, separamos las series temporales en sus componentes fundamentales: tendencia, estacionalidad y residuo. Esta descomposición nos permite entender mejor la dinámica subyacente de los datos y revela patrones importantes que pueden ser cruciales para la toma de decisiones y la planificación estratégica. Para ello, llevamos a cabo los siguientes pasos: 
 # 
@@ -166,7 +166,7 @@ plt.show()
 # Patrón General: Los residuos exhiben un comportamiento errático, con la presencia de algunos picos significativos.
 # Interpretación: Al no presentar un patrón discernible, los residuos indican la ausencia de tendencias y estacionalidades residuales. La presencia de picos podría señalar eventos atípicos o factores externos no capturados por los componentes de tendencia y estacionalidad.
 # 
-# ### 2.3.3 Análisis de Estacionariedad
+# ### 3.3.3 Análisis de Estacionariedad
 # 
 # En esta sección, nos sumergimos en el análisis de estacionariedad de las series temporales. Exploramos métodos y técnicas para evaluar la estacionariedad de los datos, lo que nos proporciona información crucial sobre la estabilidad de las propiedades estadísticas a lo largo del tiempo. Este análisis es fundamental para garantizar la fiabilidad de los modelos y las predicciones basadas en series temporales.
 # 
@@ -206,7 +206,7 @@ print('Valores criticos: ',adf[4])
 # 
 # En resumen, los resultados de la prueba ADF sugieren que puedes considerar la serie temporal como estacionaria, lo que implica que no tiene raíz unitaria y muestra un comportamiento constante en términos de media y varianza a lo largo del tiempo. Esto es crucial para muchos modelos de análisis y predicción de series temporales.
 # 
-# ### 2.3.4 Diferenciación
+# ### 3.3.4 Diferenciación
 # 
 # Finalmente, examinamos el análisis de diferenciación como una herramienta para abordar la no estacionariedad en las series temporales. Exploramos cómo aplicar diferenciación para transformar los datos y hacerlos estacionarios, lo que facilita un análisis más preciso y confiable de la serie temporal. Este enfoque es crucial para mitigar los efectos de la tendencia y la estacionalidad, permitiendo una interpretación más precisa de los datos y una toma de decisiones informada.
 # 

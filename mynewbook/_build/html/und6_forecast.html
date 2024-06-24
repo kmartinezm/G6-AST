@@ -54,6 +54,7 @@
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Unidad 7: Redes neuronales recurrentes" href="und7_forecast.html" />
     <link rel="prev" title="Unidad 5: Modelos estacionarios en series de tiempo" href="und5_forecast.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -122,6 +123,11 @@
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    Unidad 6: Regresión en series de tiempo
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="und7_forecast.html">
+   Unidad 7: Redes neuronales recurrentes
   </a>
  </li>
 </ul>
@@ -793,30 +799,6 @@ cia en el estudio.</p>
 </table>
 </div></div></div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
-RangeIndex: 156360 entries, 0 to 156359
-Data columns (total 6 columns):
- #   Column          Non-Null Count   Dtype         
----  ------          --------------   -----         
- 0   fechaoperacion  156360 non-null  datetime64[ns]
- 1   ano             156360 non-null  int64         
- 2   mes             156360 non-null  int64         
- 3   dia             156360 non-null  int64         
- 4   periodo         156360 non-null  object        
- 5   valor           156360 non-null  float64       
-dtypes: datetime64[ns](1), float64(1), int64(3), object(1)
-memory usage: 7.2+ MB
-</pre></div>
-</div>
-</div>
-</div>
 </div>
 <div class="section" id="remuestreo-de-la-serie-temporal">
 <h4>6.3.1.3 Remuestreo de la serie temporal<a class="headerlink" href="#remuestreo-de-la-serie-temporal" title="Permalink to this headline">¶</a></h4>
@@ -968,11 +950,11 @@ memory usage: 7.2+ MB
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>15:18:40 - cmdstanpy - INFO - Chain [1] start processing
-15:18:40 - cmdstanpy - INFO - Chain [1] done processing
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>20:08:48 - cmdstanpy - INFO - Chain [1] start processing
+20:08:48 - cmdstanpy - INFO - Chain [1] done processing
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;prophet.forecaster.Prophet at 0x1b7fa7249d0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;prophet.forecaster.Prophet at 0x1f0b27d0250&gt;
 </pre></div>
 </div>
 </div>
@@ -991,12 +973,6 @@ memory usage: 7.2+ MB
 <span class="n">future</span> <span class="o">=</span> <span class="n">model_ph</span><span class="o">.</span><span class="n">make_future_dataframe</span><span class="p">(</span><span class="n">periods</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;M&#39;</span><span class="p">)</span>  <span class="c1"># Predecir 12 meses hacia adelante</span>
 
 <span class="n">forecast_ph</span> <span class="o">=</span> <span class="n">model_ph</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">future</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Python\Python311\Lib\site-packages\prophet\forecaster.py:1854: FutureWarning: &#39;M&#39; is deprecated and will be removed in a future version, please use &#39;ME&#39; instead.
-  dates = pd.date_range(
 </pre></div>
 </div>
 </div>
@@ -1024,7 +1000,7 @@ c:\Python\Python311\Lib\site-packages\prophet\plot.py:73: FutureWarning: The beh
   ax.plot(m.history[&#39;ds&#39;].dt.to_pydatetime(), m.history[&#39;y&#39;], &#39;k.&#39;,
 </pre></div>
 </div>
-<img alt="_images/und6_forecast_17_1.png" src="_images/und6_forecast_17_1.png" />
+<img alt="_images/und6_forecast_16_1.png" src="_images/und6_forecast_16_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1044,7 +1020,7 @@ c:\Python\Python311\Lib\site-packages\prophet\plot.py:354: FutureWarning: The be
   df_y[&#39;ds&#39;].dt.to_pydatetime(), seas[name + &#39;_lower&#39;],
 </pre></div>
 </div>
-<img alt="_images/und6_forecast_18_1.png" src="_images/und6_forecast_18_1.png" />
+<img alt="_images/und6_forecast_17_1.png" src="_images/und6_forecast_17_1.png" />
 </div>
 </div>
 </div>
@@ -1097,10 +1073,10 @@ c:\Python\Python311\Lib\site-packages\prophet\plot.py:354: FutureWarning: The be
   <th>Model:</th>            <td>ARIMA(4, 1, 3)</td>  <th>  Log Likelihood     </th> <td>-1271.589</td>
 </tr>
 <tr>
-  <th>Date:</th>            <td>Mon, 27 May 2024</td> <th>  AIC                </th> <td>2559.179</td> 
+  <th>Date:</th>            <td>Sun, 23 Jun 2024</td> <th>  AIC                </th> <td>2559.179</td> 
 </tr>
 <tr>
-  <th>Time:</th>                <td>15:19:04</td>     <th>  BIC                </th> <td>2586.144</td> 
+  <th>Time:</th>                <td>20:09:08</td>     <th>  BIC                </th> <td>2586.144</td> 
 </tr>
 <tr>
   <th>Sample:</th>                  <td>0</td>        <th>  HQIC               </th> <td>2570.074</td> 
@@ -1304,10 +1280,6 @@ c:\Python\Python311\Lib\site-packages\prophet\plot.py:354: FutureWarning: The be
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\uenergia\AppData\Local\Temp\ipykernel_19144\1744597310.py:2: FutureWarning: &#39;M&#39; is deprecated and will be removed in a future version, please use &#39;ME&#39; instead.
-  precio_ts = pd.Series(df_vcm[&#39;valor&#39;].values, index=pd.date_range(start=&#39;2006-01&#39;, periods=len(df_vcm), freq=&#39;M&#39;))
-</pre></div>
-</div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-01-31    682.405436
 2024-02-29    849.408270
 2024-03-31    719.570056
@@ -1320,7 +1292,7 @@ c:\Python\Python311\Lib\site-packages\prophet\plot.py:354: FutureWarning: The be
 2024-10-31    824.921868
 2024-11-30    659.444182
 2024-12-31    730.551716
-Freq: ME, dtype: float64
+Freq: M, dtype: float64
 </pre></div>
 </div>
 </div>
@@ -1364,17 +1336,32 @@ Freq: ME, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\uenergia\AppData\Local\Temp\ipykernel_19144\2027461562.py:4: FutureWarning: &#39;M&#39; is deprecated and will be removed in a future version, please use &#39;ME&#39; instead.
-  prediction_dates_12 = pd.date_range(start=df_vcm[&#39;fechaoperacion&#39;].iloc[-1] + pd.DateOffset(months=1), periods=12, freq=&#39;M&#39;)
-C:\Users\uenergia\AppData\Local\Temp\ipykernel_19144\2027461562.py:10: FutureWarning: &#39;M&#39; is deprecated and will be removed in a future version, please use &#39;ME&#39; instead.
-  plt.plot(pd.date_range(start=&#39;2024-01&#39;, periods=12, freq=&#39;M&#39;), forecast_ph_pred[&#39;yhat&#39;], label=&#39;Modelo Prophet&#39;, color=&#39;blue&#39;)
-C:\Users\uenergia\AppData\Local\Temp\ipykernel_19144\2027461562.py:11: FutureWarning: &#39;M&#39; is deprecated and will be removed in a future version, please use &#39;ME&#39; instead.
-  plt.fill_between(pd.date_range(start=&#39;2024-01&#39;, periods=12, freq=&#39;M&#39;), forecast_ph_pred[&#39;yhat_lower&#39;], forecast_ph_pred[&#39;yhat_upper&#39;], color=&#39;blue&#39;, alpha=0.2)
-C:\Users\uenergia\AppData\Local\Temp\ipykernel_19144\2027461562.py:18: FutureWarning: &#39;M&#39; is deprecated and will be removed in a future version, please use &#39;ME&#39; instead.
-  plt.plot(pd.date_range(start=&#39;2024-01&#39;, periods=12, freq=&#39;M&#39;), forecast_hw, label=&#39;Modelo ETS&#39;, color=&#39;orange&#39;)
+<img alt="_images/und6_forecast_26_0.png" src="_images/und6_forecast_26_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Crear el gráfico comparativo</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
+
+<span class="c1"># Datos reales</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df_vcm</span><span class="p">[</span><span class="s1">&#39;fechaoperacion&#39;</span><span class="p">],</span> <span class="n">df_vcm</span><span class="p">[</span><span class="s1">&#39;valor&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Datos Originales&#39;</span><span class="p">)</span>
+
+<span class="c1"># Predicciones Prophet</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="s1">&#39;2024-01&#39;</span><span class="p">,</span> <span class="n">periods</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;M&#39;</span><span class="p">),</span> <span class="n">forecast_ph_pred</span><span class="p">[</span><span class="s1">&#39;yhat&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Modelo Prophet&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="s1">&#39;2024-01&#39;</span><span class="p">,</span> <span class="n">periods</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;M&#39;</span><span class="p">),</span> <span class="n">forecast_ph_pred</span><span class="p">[</span><span class="s1">&#39;yhat_lower&#39;</span><span class="p">],</span> <span class="n">forecast_ph_pred</span><span class="p">[</span><span class="s1">&#39;yhat_upper&#39;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+
+<span class="c1"># Formatear el gráfico</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Fecha&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$/kWh&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Pronóstico de precio de bolsa - Modelo PROPHET&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img alt="_images/und6_forecast_27_1.png" src="_images/und6_forecast_27_1.png" />
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/und6_forecast_27_0.png" src="_images/und6_forecast_27_0.png" />
 </div>
 </div>
 </div>
@@ -1413,6 +1400,13 @@ C:\Users\uenergia\AppData\Local\Temp\ipykernel_19144\2027461562.py:18: FutureWar
             <p class="prev-next-subtitle">previous</p>
             <p class="prev-next-title">Unidad 5: Modelos estacionarios en series de tiempo</p>
         </div>
+    </a>
+    <a class='right-next' id="next-link" href="und7_forecast.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Unidad 7: Redes neuronales recurrentes</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
     </a>
 </div>
             

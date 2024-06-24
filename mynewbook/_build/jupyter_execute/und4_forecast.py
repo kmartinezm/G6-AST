@@ -3,19 +3,19 @@
 
 # # Unidad 4: Introducción a los modelos de pronóstico
 # 
-# ## 2.1 Introducción
+# ## 4.1 Introducción
 # 
 # Abordaremos métodos de suavizamiento, buscando la aproximación cuantitativa del pronóstico de series temporales.
 # 
-# ## 2.2 Objetivo
+# ## 4.2 Objetivo
 # 
 # Conocer los modelos básicos de series de tiempo usando las técnicas apropiadas y comunes para ejemplificar las relaciones entre este tipo de datos. 
 # 
-# ## 2.3 Acción
+# ## 4.3 Acción
 # 
 # En esta ocasión, se debe aplicar la metodología Holter-Winter y de suavizamiento a la variable tiempo.  Se invita al estudiante en ser claro en sus procedimientos, ya que la forma de justificarlos será evaluada
 # 
-# ### 2.3.1 Preparación de los datos
+# ### 4.3.1 Preparación de los datos
 # 
 # Previo al análisis detallado, es imperativo comprender el proceso de preparación de datos temporales para garantizar su idoneidad y coherencia en el estudio.
 
@@ -38,7 +38,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 
-# #### 2.3.1.1 Recopilación de los datos
+# #### 4.3.1.1 Recopilación de los datos
 # 
 # En este bloque, se carga el conjunto de datos desde un archivo CSV utilizando la biblioteca pandas. Se especifica el delimitador de campos y se visualizan las primeras filas del dataframe para verificar que los datos se han cargado correctamente.
 
@@ -50,7 +50,7 @@ df_data = pd.read_csv('./dataset.csv',sep=';')
 df_data.head()
 
 
-# #### 2.3.1.2 Transformación de Datos
+# #### 4.3.1.2 Transformación de Datos
 # 
 # Este bloque define una función para transformar el dataframe original. Se realiza una copia del dataframe, se convierte la columna de fechas a un formato de fecha adecuado, y se agregan nuevas columnas para el año, mes y día. Luego, se seleccionan y reorganizan las columnas, y finalmente, se pivotea la tabla para facilitar su uso en análisis posteriores.
 
@@ -91,7 +91,7 @@ df = trf_data(df_data)
 df.head()
 
 
-# #### 2.3.1.3 Remuestreo de la serie temporal
+# #### 4.3.1.3 Remuestreo de la serie temporal
 # 
 # En este bloque, se crea una copia del dataframe transformado y se remuestrean los datos a valores mensuales. Se agrupan los datos por fecha y se calcula la media mensual. Luego, se seleccionan las columnas relevantes y se visualiza el nuevo dataframe remuestreado.
 
@@ -111,11 +111,11 @@ df_vcm = df_vcm[['fechaoperacion','valor']]
 df_vcm.head()
 
 
-# ### 2.3.2 Visualización y Creación de la Serie Temporal
+# ### 4.3.2 Visualización y Creación de la Serie Temporal
 # 
 # Se realizarán dos tareas fundamentales: la visualización de la serie temporal y la estimación de su tendencia mediante técnicas de suavizamiento, así como la creación de una serie temporal para el análisis con la metodología Holt-Winters.
 # 
-# #### 2.3.2.1 Visualización y Suavizamiento de la Serie Temporal
+# #### 4.3.2.1 Visualización y Suavizamiento de la Serie Temporal
 # 
 # Primero, se grafica la serie de tiempo con los datos remuestreados a valores mensuales. Se utiliza la técnica de suavizamiento LOWESS (Locally Weighted Scatterplot Smoothing) para estimar la tendencia de la serie temporal. LOWESS es un método no paramétrico que ajusta múltiples regresiones locales, proporcionando una estimación suave de la tendencia subyacente.
 
@@ -134,11 +134,11 @@ plt.legend()
 plt.show()
 
 
-# ### 2.3.3 Aplicación de la metodología Holt-Winters
+# ### 4.3.3 Aplicación de la metodología Holt-Winters
 # 
 # En esta sección, se detalla la aplicación de la metodología Holt-Winters para el pronóstico de series temporales. Este método es particularmente útil para series con tendencia y estacionalidad. A continuación, se justifica cada procedimiento y se presenta el código correspondiente.
 # 
-# #### 2.3.3.1 Creación de la Serie Temporal
+# #### 4.3.3.1 Creación de la Serie Temporal
 # 
 # A continuación, se crea una serie temporal utilizando los valores mensuales transformados. Esto es esencial para aplicar modelos de pronóstico, como la metodología Holt-Winters. Holt-Winters es una técnica de suavizamiento exponencial que considera la tendencia y la estacionalidad de los datos, y es particularmente útil para series temporales con patrones estacionales y tendencias
 # 
@@ -159,7 +159,7 @@ plt.title('Boxplot de los valores mensuales')
 plt.show()
 
 
-# #### 2.3.3.2 Estabilización de la Variabilidad
+# #### 4.3.3.2 Estabilización de la Variabilidad
 # 
 # Para estabilizar la variabilidad, se aplica una transformación logarítmica a la serie temporal. Luego, se ajusta un modelo Holt-Winters que considera tanto la tendencia como la estacionalidad aditivas.
 # 
@@ -186,7 +186,7 @@ plt.legend()
 plt.show()
 
 
-# #### 2.3.3.3 Predicción del Modelo
+# #### 4.3.3.3 Predicción del Modelo
 # 
 # Finalmente, se utiliza el modelo ajustado para predecir los valores de la serie temporal para el próximo año (12 meses). Se grafican las observaciones originales, los valores ajustados por el modelo, y las predicciones.
 # 
@@ -198,19 +198,37 @@ plt.show()
 # Predicción del siguiente año
 forecast_next_year = fit.forecast(steps=12)
 
-# Graficar la predicción
+# Convertir los valores predichos y las predicciones a la escala original
+fittedvalues_original = np.exp(fit.fittedvalues)
+forecast_next_year_original = np.exp(forecast_next_year)
+
+# Graficar los resultados en la escala original
 plt.figure(figsize=(12, 8))
-plt.plot(preciolog, label='Observado')
-plt.plot(fit.fittedvalues, label='Entrenado')
-plt.plot(pd.date_range(start='2024-01', periods=12, freq='M'), forecast_next_year, label='Predicción')
-plt.title("Predicción del siguiente año")
+plt.plot(precio_ts, label='Observado')
+plt.plot(fittedvalues_original, label='Entrenado')
+plt.plot(pd.date_range(start=precio_ts.index[-1], periods=12, freq='M'), forecast_next_year_original, label='Predicción')
+plt.title("Predicción del precio de bolsa")
 plt.xlabel('Año')
-plt.ylabel('Observado/predicho')
+plt.ylabel('$/kWh')
 plt.legend()
 plt.show()
 
 
-# ### 2.3.4 Evalaución del Modelo
+# In[10]:
+
+
+# Graficar los resultados en la escala original
+plt.figure(figsize=(12, 8))
+plt.plot(precio_ts, label='Datos Originales')
+plt.plot(pd.date_range(start=precio_ts.index[-1], periods=12, freq='M'), forecast_next_year_original, label='Predicción Holt-Winter')
+plt.title("Pronóstico de precio de bolsa - Modelo Holt-Winter")
+plt.xlabel('Año')
+plt.ylabel('$/kWh')
+plt.legend()
+plt.show()
+
+
+# ### 4.3.4 Evalaución del Modelo
 # 
 # En esta sección, se evalúa el desempeño del modelo Holt-Winters utilizando dos métricas comunes: el Error Cuadrático Medio (MSE) y el Error Absoluto Medio (MAE). Estas métricas proporcionan una medida cuantitativa de qué tan bien se ajustan las predicciones del modelo a los datos reales.
 # 
@@ -227,7 +245,7 @@ plt.show()
 # 
 # Estos valores proporcionan una indicación del rendimiento del modelo Holt-Winters en la predicción de los últimos 12 meses de la serie temporal. Un MSE y MAE más bajos indican un mejor ajuste del modelo a los datos de prueba.
 
-# In[10]:
+# In[11]:
 
 
 from sklearn.metrics import mean_squared_error, mean_absolute_error
@@ -248,7 +266,7 @@ print("Error Cuadrático Medio (MSE):", mse)
 print("Error Absoluto Medio (MAE):", mae)
 
 
-# ### 2.3.5 Conclusión
+# ### 4.3.5 Conclusión
 # 
 # Se realizó un análisis de una serie temporal utilizando la metodología Holt-Winters. Se han aplicado técnicas de preparación de datos, suavizamiento y modelado para comprender y predecir los patrones en los datos de precios de bolsa mensuales.
 # 

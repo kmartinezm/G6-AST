@@ -335,12 +335,26 @@ prediction_dates_12 = pd.date_range(start=df_vcm['fechaoperacion'].iloc[-1] + pd
 # Graficar la serie original y las predicciones para 24 meses
 plt.figure(figsize=(14, 7))
 plt.plot(df_vcm['fechaoperacion'], df_vcm['valor'], label='Datos originales', marker='o')
-plt.plot(prediction_dates_12, forecast_12.predicted_mean, label='Predicciones 24 meses', marker='o', linestyle='--')
-plt.title('Predicciones de Serie de Tiempo con ARIMA(4,1,3) para 24 Meses')
+plt.plot(prediction_dates_12, forecast_12.predicted_mean, label='Predicciones 12 meses', marker='o', linestyle='--')
+plt.title('Predicciones de Serie de Tiempo con ARIMA(4,1,3) para 12 Meses')
 plt.xlabel('Fecha')
-plt.ylabel('Valor')
+plt.ylabel('$/kWh')
 plt.legend()
 plt.grid(True)
+plt.show()
+
+
+# In[16]:
+
+
+# Graficar la serie original y las predicciones para 24 meses
+plt.figure(figsize=(14, 7))
+plt.plot(df_vcm['fechaoperacion'], df_vcm['valor'], label='Datos originales')
+plt.plot(prediction_dates_12, forecast_12.predicted_mean, label='Predicción ARIMA')
+plt.title('Pronóstico de precio de bolsa - Modelo ARIMA')
+plt.xlabel('Fecha')
+plt.ylabel('$/kWh')
+plt.legend()
 plt.show()
 
 

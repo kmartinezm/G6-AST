@@ -46,7 +46,7 @@ from prophet import Prophet
 # 
 # En este bloque, se carga el conjunto de datos desde un archivo CSV utilizando la biblioteca pandas. Se especifica el delimitador de campos y se visualizan las primeras filas del dataframe para verificar que los datos se han cargado correctamente.
 
-# In[76]:
+# In[2]:
 
 
 # recopilación de datos
@@ -58,7 +58,7 @@ df_data.head()
 # 
 # Este bloque define una función para transformar el dataframe original. Se realiza una copia del dataframe, se convierte la columna de fechas a un formato de fecha adecuado, y se agregan nuevas columnas para el año, mes y día. Luego, se seleccionan y reorganizan las columnas, y finalmente, se pivotea la tabla para facilitar su uso en análisis posteriores.
 
-# In[77]:
+# In[3]:
 
 
 def trf_data(df_data):
@@ -87,7 +87,7 @@ def trf_data(df_data):
     return df
 
 
-# In[78]:
+# In[4]:
 
 
 # dataset trasnformado
@@ -95,17 +95,11 @@ df = trf_data(df_data)
 df.head()
 
 
-# In[79]:
-
-
-df.info()
-
-
 # #### 6.3.1.3 Remuestreo de la serie temporal
 # 
 # En este bloque, se crea una copia del dataframe transformado y se remuestrean los datos a valores mensuales. Se agrupan los datos por fecha y se calcula la media mensual. Luego, se seleccionan las columnas relevantes y se visualiza el nuevo dataframe remuestreado.
 
-# In[80]:
+# In[5]:
 
 
 # remuestreando la serie de tiempo a valores mensuales
@@ -139,7 +133,7 @@ df_vcm
 # - Creación de una copia del DataFrame: Se generará una copia del DataFrame original. Este paso es esencial para mantener la integridad de los datos originales, evitando modificaciones accidentales durante el proceso de análisis.
 # - Renombrar columnas: Adaptaremos el formato del DataFrame para que sea compatible con los requisitos específicos del modelo Prophet. Esto implica renombrar la columna que contiene las fechas (fechaoperacion) a ds y la columna de valores (valor) a y. Este cambio es fundamental para que el modelo pueda interpretar correctamente los datos.
 
-# In[81]:
+# In[6]:
 
 
 # creando copia del dataframe
@@ -156,7 +150,7 @@ df_ph.rename(columns={'fechaoperacion': 'ds', 'valor': 'y'}, inplace=True)
 # 
 # - Ajuste del modelo: Ajustaremos el modelo a los datos formateados. Este proceso permite que Prophet aprenda de los datos históricos, capturando patrones y tendencias subyacentes.
 
-# In[82]:
+# In[7]:
 
 
 # Inicializar y ajustar el modelo Prophet
@@ -170,7 +164,7 @@ model_ph.fit(df_ph)
 # - Extensión del horizonte temporal: Crearemos un nuevo DataFrame que extienda el horizonte temporal de nuestros datos en 12 meses hacia adelante. Este DataFrame es esencial para que el modelo pueda generar predicciones para un período futuro específico.
 # - Generación de predicciones: Utilizaremos el modelo ajustado para realizar predicciones sobre el período extendido. Esto nos permitirá visualizar posibles tendencias y comportamientos futuros de la serie temporal.
 
-# In[83]:
+# In[8]:
 
 
 # Hacer una predicción para el futuro
@@ -185,7 +179,7 @@ forecast_ph = model_ph.predict(future)
 # - Gráfico de predicciones: Se generará un gráfico que muestre las predicciones realizadas por el modelo. Esta visualización facilitará la comprensión de las proyecciones futuras y permitirá identificar posibles tendencias y puntos de interés.
 # - Análisis de componentes: Adicionalmente, se graficarán los componentes de la predicción, tales como la tendencia y la estacionalidad. Esta descomposición es vital para entender las contribuciones individuales de diferentes factores a la serie temporal, proporcionando una visión más detallada y completa.
 
-# In[84]:
+# In[9]:
 
 
 # Graficar los resultados
@@ -193,7 +187,7 @@ model_ph.plot(forecast_ph)
 plt.show()
 
 
-# In[85]:
+# In[10]:
 
 
 # Graficar los componentes de la predicción
@@ -205,7 +199,7 @@ plt.show()
 # 
 # El uso del modelo Prophet nos permite no solo ajustar nuestros datos históricos de manera precisa, sino también proyectar tendencias futuras con un alto grado de confianza. Este enfoque integral facilita la toma de decisiones informadas basadas en datos, permitiendo a la organización anticiparse a cambios y planificar estratégicamente.
 
-# In[86]:
+# In[11]:
 
 
 # transformación de la predicción para gráfico de modelos
@@ -229,7 +223,7 @@ forecast_ph_pred = forecast_ph_pred[cond]
 # - Se ajusta un modelo ARIMA configurado con parámetros específicos, determinados a partir de análisis previos de los datos.
 # - Se generan predicciones para los próximos 12 meses, incluyendo intervalos de confianza para evaluar la precisión de las predicciones.
 
-# In[87]:
+# In[12]:
 
 
 # Ajustar un modelo ARIMA(4,1,3) a la serie temporal, usando los parámetros sugeridos por los gráficos ACF y PACF
@@ -240,7 +234,7 @@ model_ar = model_ar.fit()
 model_ar.summary()
 
 
-# In[88]:
+# In[13]:
 
 
 # Hacer predicciones con el modelo ARIMA ajustado para los próximos 12 períodos
@@ -266,7 +260,7 @@ forecast_ar
 # - Se aplica el método Holt-Winters a los datos, utilizando componentes aditivos para capturar tanto la tendencia como la estacionalidad.
 # - Se generan predicciones para los próximos 12 meses, ofreciendo una visión anticipada del comportamiento futuro de la serie temporal.
 
-# In[89]:
+# In[14]:
 
 
 # Crear una serie temporal
@@ -293,7 +287,7 @@ forecast_hw
 # - Se crea un gráfico que compara las predicciones de los tres modelos con los datos reales.
 # - Se incluyen intervalos de confianza para las predicciones de Prophet y ARIMA para evaluar la incertidumbre de las predicciones.
 
-# In[90]:
+# In[15]:
 
 
 # Crear el gráfico comparativo
@@ -319,6 +313,27 @@ plt.plot(pd.date_range(start='2024-01', periods=12, freq='M'), forecast_hw, labe
 plt.xlabel('Fecha')
 plt.ylabel('Valor')
 plt.title('Comparación de Predicciones: Prophet vs ARIMA vs ETS')
+plt.legend()
+plt.show()
+
+
+# In[17]:
+
+
+# Crear el gráfico comparativo
+plt.figure(figsize=(14, 7))
+
+# Datos reales
+plt.plot(df_vcm['fechaoperacion'], df_vcm['valor'], label='Datos Originales')
+
+# Predicciones Prophet
+plt.plot(pd.date_range(start='2024-01', periods=12, freq='M'), forecast_ph_pred['yhat'], label='Modelo Prophet', color='blue')
+plt.fill_between(pd.date_range(start='2024-01', periods=12, freq='M'), forecast_ph_pred['yhat_lower'], forecast_ph_pred['yhat_upper'], color='blue', alpha=0.2)
+
+# Formatear el gráfico
+plt.xlabel('Fecha')
+plt.ylabel('$/kWh')
+plt.title('Pronóstico de precio de bolsa - Modelo PROPHET')
 plt.legend()
 plt.show()
 
